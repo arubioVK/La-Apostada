@@ -23,3 +23,5 @@ El usuario previamente logueado, puede realizar su apuesta. Además de ver las a
 * Nombre: Pablo      Apellidos: Muñoz Aceituno  Correo: p.munozac@alumnos.urjc.es Cuenta Github: ovejaURJC
 * Nombre: Álvaro     Apellidos: Rubio Jiménez   Correo: a.rubioji@alumnos.urjc.es Cuenta Github: arubioVK
  
+## Servicio Interno
+La página se apoya en un servicio el cual calcula dinámicamente las cuotas de las apuestas que se están llevando a cabo en función de las apuestas que se vayan realizando.
