@@ -12,11 +12,11 @@ public class GreetingController {
 	@Autowired
 	private UsersService usersService;
 
-	@RequestMapping("/greeting")
+	@RequestMapping("/Home")
 	public String greeting(Model model) {
 		model.addAttribute("name", usersService.getNumUsers() + " users");
 
-		return "greeting_template";
+		return "index";
 	}
 	
 }
