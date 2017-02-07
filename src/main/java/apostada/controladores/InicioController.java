@@ -1,21 +1,18 @@
 package apostada.controladores;
 
-import apostada.servicios.UsuarioService;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class GreetingController {
+public class InicioController {
 
-	@Autowired
-	private UsuarioService userService;
+	@RequestMapping("/inicio")
+	public String inicio(Model model) {
 
-	@RequestMapping("/Home")
-	public String greeting(Model model) {
+		
 		model.addAttribute("name", " users");
-
+		
 		return "index";
 	}
 	
