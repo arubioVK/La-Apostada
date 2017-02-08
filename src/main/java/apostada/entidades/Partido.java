@@ -1,15 +1,13 @@
 package apostada.entidades;
 
 import java.util.Calendar;
-import java.util.List;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.ManyToOne;
-import javax.persistence.OneToMany;
 
-import org.hibernate.annotations.Entity;
-import org.hibernate.annotations.Generated;
+
 import org.springframework.data.annotation.Id;
 
 @Entity
@@ -32,6 +30,92 @@ public class Partido {
 	
 	private int golLocal;
 	private int golVisitante;
+	
+	//Valor entre "1"(Victoria Local)"2"(Empate)"3"(Victoria Visitante)
+	private int resultado;
+	
+	public Partido(){}
+	public long getId(){
+		return id;
+	}
+	
+	public void setId(long id){
+		this.id=id;
+	}
+	
+	public Equipo getEquipoLocal() {
+		return equipoLocal;
+	}
+	
+	public void setEquipoLocal(Equipo equipoLocal) {
+		this.equipoLocal=equipoLocal;
+	}
+	
+	public void setEquipoVisitante(Equipo equipoVisitante) {
+		this.equipoVisitante=equipoVisitante;
+	}	
+	
+	public Equipo getEquipoVisitante() {
+		return equipoVisitante;
+	}
+	
+	
+	public double getCuotaEmpate() {
+		return cuotaEmpate;
+	}	
+	public void setCuotaEmpate(double cuotaEmpate) {
+		this.cuotaEmpate = cuotaEmpate;
+	}
+
+	public double getCuotaLocal() {
+		return cuotaLocal;
+	}
+
+	public void setCuotaLocal(double cuotaLocal) {
+		this.cuotaLocal = cuotaLocal;
+	}
+
+	public double getCuotaVisitante() {
+		return cuotaVisitante;
+	}
+
+	public void setCuotaVisitante(double cuotaVisitante) {
+		this.cuotaVisitante = cuotaVisitante;
+	}
+
+	public Calendar getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(Calendar fecha) {
+		this.fecha = fecha;
+	}
+
+	public int getGolLocal() {
+		return golLocal;
+	}
+
+	public void setGolLocal(int golLocal) {
+		this.golLocal = golLocal;
+	}
+
+	public int getGolVisitante() {
+		return golVisitante;
+	}
+
+	public void setGolVisitante(int golVisitante) {
+		this.golVisitante = golVisitante;
+	}
+
+	public int getResultado() {
+		return resultado;
+	}
+
+	public void setResultado(int resultado) {
+		this.resultado = resultado;
+	}
+	
+	
 	
 	
 }

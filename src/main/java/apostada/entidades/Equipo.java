@@ -2,14 +2,12 @@ package apostada.entidades;
 
 import java.util.List;
 
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
-import org.hibernate.annotations.Entity;
-import org.hibernate.annotations.Generated;
-import org.hibernate.annotations.ManyToAny;
 import org.springframework.data.annotation.Id;
 
 @Entity
@@ -26,7 +24,43 @@ public class Equipo {
 	
 	@OneToMany(mappedBy="equipoLocal")
 	private List<Partido>partidosLocal;
+	
 	@OneToMany(mappedBy="equipoVisitante")
 	private List<Partido>partidosVisitante;
+	
+	public Equipo(){}
+	
+	public long getId(){
+		return id;
+	}
+	
+	public void setId(long id){
+		this.id=id;
+	}
+	
+	public String getName() {
+		return name;
+	}
+	public void setName(String name) {
+		this.name = name;
+	}
+	public Liga getLiga(){
+		return liga;
+	}
+	public void setLiga(Liga liga){
+		this.liga=liga;
+	}
+	public List<Partido> getPartidosLocal() {
+		return partidosLocal;
+	}
+	public void setPartidosLocal(List<Partido> partidosLocal) {
+		this.partidosLocal=partidosLocal;
+	}
+	public List<Partido> getPartidosVisitante() {
+		return partidosVisitante;
+	}
+	public void setPartidosVisitante(List<Partido> partidosVisitante) {
+		this.partidosVisitante=partidosVisitante;
+	}
 	
 }
