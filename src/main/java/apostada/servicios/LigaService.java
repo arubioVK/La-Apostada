@@ -20,8 +20,24 @@ public class LigaService {
 		return ligaRepository.findByName(name);
 	}
 	
+	public List<Liga> findAll() {
+		return ligaRepository.findAll();
+	}
+	
+	public Long count() {
+		return ligaRepository.count();
+	}
+	
+	public boolean exists(long id) {
+		return ligaRepository.exists(id);
+	}
+	
 	public Liga save(Liga liga) {
 		return ligaRepository.save(liga);
+	}
+	
+	public void delete(Liga liga) {
+		ligaRepository.delete(liga);
 	}
 	
 }
