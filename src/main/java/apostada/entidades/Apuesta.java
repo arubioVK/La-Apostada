@@ -1,5 +1,7 @@
 package apostada.entidades;
 
+import java.util.Date;
+
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -18,6 +20,7 @@ public class Apuesta {
 	
 	private double cuota;
 	private double cantidadApostada;
+	private Date fecha;
 	
 	//Valor entre "1"(Victoria Local)"2"(Empate)"3"(Victoria Visitante)
 	private int resultado;
@@ -61,6 +64,14 @@ public class Apuesta {
 
 	public void setResultado(int resultado) {
 		this.resultado = resultado;
+	}
+
+	public Date getFecha() {
+		return fecha;
+	}
+
+	public void setFecha(Date fecha) {
+		this.fecha = fecha;
 	}
 
 }

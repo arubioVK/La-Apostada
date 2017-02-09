@@ -1,6 +1,6 @@
 package apostada.entidades;
 
-import java.util.Calendar;
+import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,7 +24,7 @@ public class Partido {
 	private double cuotaEmpate;
 	private double cuotaVisitante;
 	
-	private Calendar fecha;
+	private Date fecha;
 	
 	private int golLocal;
 	private int golVisitante;
@@ -33,6 +33,20 @@ public class Partido {
 	private int resultado;
 	
 	public Partido(){}
+	public Partido(Equipo el, Equipo eV, double cL, double cE, double cV, Date f, int gL, int gV){
+		equipoLocal=el;
+		equipoVisitante = eV;
+		cuotaLocal=cL;
+		cuotaEmpate=cE;
+		cuotaVisitante=cV;
+		fecha = f;
+		golLocal=gL;
+		golVisitante = gV;
+		if(gL>gV){resultado=10;}
+		else if(gV>gL){ resultado=3;}
+		else{resultado=2;}
+		
+	}
 	public long getId(){
 		return id;
 	}
@@ -81,11 +95,11 @@ public class Partido {
 		this.cuotaVisitante = cuotaVisitante;
 	}
 
-	public Calendar getFecha() {
+	public Date getFecha() {
 		return fecha;
 	}
 
-	public void setFecha(Calendar fecha) {
+	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
 

@@ -27,6 +27,10 @@ public class Equipo {
 	private List<Partido>partidosVisitante;
 	
 	public Equipo(){}
+	public Equipo(String n, Liga l){
+		name = n;
+		liga = l;		
+	}
 	
 	public long getId(){
 		return id;

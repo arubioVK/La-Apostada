@@ -20,6 +20,9 @@ public class Liga {
 	private List<Equipo> equipos;
 	
 	public Liga(){}
+	public Liga(String n){
+		name = n;
+	}
 	
 	public long getId(){
 		return id;
