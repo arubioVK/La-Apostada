@@ -7,7 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 @Controller
-public class GreetingController {
+public class HomeController {
 
 	@Autowired
 	private UsuarioService userService;
@@ -16,7 +16,7 @@ public class GreetingController {
 	public String greeting(Model model) {
 		model.addAttribute("name", " users");
 
-		return "index";
+		return "home";
 	}
 	
 }
