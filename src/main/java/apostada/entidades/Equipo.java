@@ -5,10 +5,9 @@ import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
+import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
-
-import org.springframework.data.annotation.Id;
 
 @Entity
 public class Equipo {
@@ -16,7 +15,6 @@ public class Equipo {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	
 	private String name;
 	
 	@ManyToOne
@@ -35,7 +33,7 @@ public class Equipo {
 	}
 	
 	public void setId(long id){
-		this.id=id;
+		this.id = id;
 	}
 	
 	public String getName() {
@@ -44,11 +42,11 @@ public class Equipo {
 	public void setName(String name) {
 		this.name = name;
 	}
-	public Liga getLiga(){
+	public Liga getLiga() {
 		return liga;
 	}
-	public void setLiga(Liga liga){
-		this.liga=liga;
+	public void setLiga(Liga liga) {
+		this.liga = liga;
 	}
 	public List<Partido> getPartidosLocal() {
 		return partidosLocal;
