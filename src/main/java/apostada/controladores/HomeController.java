@@ -1,6 +1,5 @@
 package apostada.controladores;
 
-import apostada.servicios.UsersService;
 import apostada.servicios.UsuarioService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -11,14 +10,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 public class HomeController {
 
 	@Autowired
+	private UsuarioService usuarioService;
 
-	private UsuarioService userService;
-
-	@RequestMapping("/Home")
+	@RequestMapping("/home")
 	public String greeting(Model model) {
 
-	//	model.addAttribute("name", UsersService.getNumApuestas());
-
+		//	model.addAttribute("name", UsersService.getNumApuestas());
 
 		return "home";
 	}
