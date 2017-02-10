@@ -33,6 +33,12 @@ public class Partido {
 	private int resultado;
 	
 	public Partido(){}
+	public Partido(Equipo el, Equipo eV, double cL, double cE, double cV, Date f){		equipoLocal=el;
+	equipoVisitante = eV;
+	cuotaLocal=cL;
+	cuotaEmpate=cE;
+	cuotaVisitante=cV;
+	fecha = f;}
 	public Partido(Equipo el, Equipo eV, double cL, double cE, double cV, Date f, int gL, int gV){
 		equipoLocal=el;
 		equipoVisitante = eV;
