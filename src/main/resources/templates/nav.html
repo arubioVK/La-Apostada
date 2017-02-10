@@ -11,10 +11,10 @@
 		</div>
 		<div id="navbar" class="navbar-collapse collapse">
 			{{#usuario}}
-				<p class="navbar-text">Bienvenido {{usuario.name}}</p>
+				<p class="navbar-text navbar-right">Bienvenido {{usuario.name}}</p>
 			{{/usuario}}
 			{{^usuario}}
-				<form class="navbar-form navbar-right">
+				<form class="navbar-form navbar-right" action="/login" method="POST">
 					<div class="form-group">
 						<input class="form-control" type="text" placeholder="Email" name="email">
 					</div>
