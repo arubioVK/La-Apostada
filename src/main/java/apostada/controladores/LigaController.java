@@ -1,6 +1,5 @@
 package apostada.controladores;
 
-import apostada.entidades.Liga;
 import apostada.servicios.LigaService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -17,9 +16,7 @@ public class LigaController {
 	@RequestMapping("/liga/{id}")
 	public String inicio(@PathVariable long id, Model model) {
 		
-		//Liga liga = ligaService.findById(id);
-		
-		return "Liga" + String.valueOf(id);
+		return "liga" + String.valueOf(id);
 	}
 	
 }

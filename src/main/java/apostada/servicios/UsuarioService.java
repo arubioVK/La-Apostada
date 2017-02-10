@@ -20,8 +20,24 @@ public class UsuarioService {
 		return usuarioRepository.findByName(name);
 	}
 	
+	public List<Usuario> findAll() {
+		return usuarioRepository.findAll();
+	}
+	
+	public Long count() {
+		return usuarioRepository.count();
+	}
+	
+	public boolean exists(long id) {
+		return usuarioRepository.exists(id);
+	}
+	
 	public Usuario save(Usuario usuario) {
 		return usuarioRepository.save(usuario);
+	}
+	
+	public void delete(Usuario usuario) {
+		usuarioRepository.delete(usuario);
 	}
 	
 }

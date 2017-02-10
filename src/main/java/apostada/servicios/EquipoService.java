@@ -20,8 +20,24 @@ public class EquipoService {
 		return equipoRepository.findByName(name);
 	}
 	
+	public List<Equipo> findAll() {
+		return equipoRepository.findAll();
+	}
+	
+	public Long count() {
+		return equipoRepository.count();
+	}
+	
+	public boolean exists(long id) {
+		return equipoRepository.exists(id);
+	}
+	
 	public Equipo save(Equipo equipo) {
 		return equipoRepository.save(equipo);
+	}
+	
+	public void delete(Equipo equipo) {
+		equipoRepository.delete(equipo);
 	}
 	
 }
