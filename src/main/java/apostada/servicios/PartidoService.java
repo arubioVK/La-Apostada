@@ -1,5 +1,7 @@
 package apostada.servicios;
 
+import apostada.entidades.Equipo;
+import apostada.entidades.Liga;
 import apostada.entidades.Partido;
 import apostada.repositorios.PartidoRepository;
 import java.util.List;
@@ -15,7 +17,9 @@ public class PartidoService {
 	public Partido findById(long id) {
 		return partidoRepository.findOne(id);
 	}
-	
+	public List<Partido> findByLiga(Liga id) {
+		return partidoRepository.findPartidoByLiga(id);
+	}
 	public List<Partido> findAll() {
 		return partidoRepository.findAll();
 	}

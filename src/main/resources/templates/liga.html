@@ -86,35 +86,34 @@
 
 			<hr>
 
-			<h2 class="sub-header">Apuestas de la Liga BBVA:</h2>
+			<h2 class="sub-header">Apuestas de la Liga {{liga.name}}:</h2>
 			<div class="table-responsive">
 				<table class="table table-striped">
-					<thead>
-						<tr>
-							<th>LIGA</th>
-							<th>Equipo local</th>
-							<th>Equipo visitante</th>
-							<th>Cuota</th>
-							<th>Fecha</th>
-						</tr>
-					</thead>
-					<tbody>
-						<tr>
-							<td>BBVA</td>
-							<td>Real Madrid</td>
-							<td>Barsa</td>
-							<td>1.5</td>
-							<td>21/02/2017</td>
-						</tr>
-						<tr>
-							<td>BBVA</td>
-							<td>Betis</td>
-							<td>Talavera</td>
-							<td>100</td>
-							<td>08/02/2017</td>
-						</tr>
+									<thead>
+					<tr>
+					
+						<th>Equipo local</th>
+						<th>Equipo visitante</th>
+						<th>CuotaLocal</th>
+						<th>CuotaEmpate</th>
+						<th>CuotaVisitante</th>
+						<th>Fecha</th>
+					</tr>
+				</thead>
+				<tbody>
+				{{#equipos}}
+					<tr>
+						
+						<td>{{equipoLocal.name}}</td>
+						<td>{{equipoVisitante.name}}</td>
+						<td>{{cuotaLocal}}</td>
+						<td>{{cuotaEmpate}}</td>
+						<td>{{cuotaVisitante}}</td>
+						<td>{{fecha}}</td>
+						
+					</tr>
+					{{/equipos}}
 
-					</tbody>
 				</table>
 			</div>
 		</div> <!-- /container -->

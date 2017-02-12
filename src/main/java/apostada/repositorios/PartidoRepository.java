@@ -23,7 +23,7 @@ public interface PartidoRepository extends JpaRepository<Partido, Long> {
 	
 	//Todos los partidos
 	@Query("SELECT p FROM Partido p")
-	List<Partido> findPartido();
+	List<Partido> findPartidos();
 	
 	//Consulta Partidos de un equipo concreto
 	@Query("SELECT p FROM Partido p WHERE p.equipoLocal=?1 OR p.equipoVisitante=?1")
@@ -32,4 +32,5 @@ public interface PartidoRepository extends JpaRepository<Partido, Long> {
 	//Consulta Partidos de una liga concreta
 	@Query("SELECT p FROM Partido p WHERE p.equipoLocal.liga=?1")
 	List<Partido> findPartidoByLiga(Liga l);
+	
 }
