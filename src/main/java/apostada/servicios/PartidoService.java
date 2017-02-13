@@ -4,6 +4,8 @@ import apostada.entidades.Equipo;
 import apostada.entidades.Liga;
 import apostada.entidades.Partido;
 import apostada.repositorios.PartidoRepository;
+
+import java.util.Date;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
@@ -17,8 +19,8 @@ public class PartidoService {
 	public Partido findById(long id) {
 		return partidoRepository.findOne(id);
 	}
-	public List<Partido> findByLiga(Liga id) {
-		return partidoRepository.findPartidoByLiga(id);
+	public List<Partido> findByLiga(Liga id) {//PARA LIGA
+		return partidoRepository.findPartidoByLiga(id,new Date());
 	}
 	public List<Partido> findAll() {
 		return partidoRepository.findAll();
@@ -29,17 +31,25 @@ public class PartidoService {
 	public Long count() {
 		return partidoRepository.count();
 	}
-	
+	public List<Partido> findJugados(Liga id) {//PARA LIGA JUGADOS
+		return partidoRepository.findByPartidoFinalizado(id);
+	}
+	public List<Partido> findNoJugados() {
+		Date f= new Date();
+	return partidoRepository.findPartidoByAnteriorFecha( f);
+	}
 	public boolean exists(long id) {
 		return partidoRepository.exists(id);
 	}
-	
 	public Partido save(Partido partido) {
 		return partidoRepository.save(partido);
 	}
 	
 	public void delete(Partido partido) {
 		partidoRepository.delete(partido);
+	}
+	public List<Partido> findProximosPartidos() {//PARA HOME
+		return partidoRepository.findPartidoByAnteriorFecha(new Date());
 	}
 	
 }

@@ -18,8 +18,8 @@ public interface PartidoRepository extends JpaRepository<Partido, Long> {
 	List<Partido> findPartidoByAnteriorFecha(Date f);
 	
 	//Consulta Partidos Finalizados
-	@Query("SELECT p FROM Partido p WHERE p.resultado BETWEEN 1 AND 3")
-	List<Partido> findByPartidoFinalizado();
+	@Query("SELECT p FROM Partido p WHERE (p.equipoLocal.liga=?1) AND (p.resultado BETWEEN 1 AND 3)")
+	List<Partido> findByPartidoFinalizado(Liga id);
 	
 	//Todos los partidos
 	@Query("SELECT p FROM Partido p")
@@ -29,8 +29,8 @@ public interface PartidoRepository extends JpaRepository<Partido, Long> {
 	@Query("SELECT p FROM Partido p WHERE p.equipoLocal=?1 OR p.equipoVisitante=?1")
 	List<Partido> findPartidoByEquipoName(Equipo e);
 	
-	//Consulta Partidos de una liga concreta
-	@Query("SELECT p FROM Partido p WHERE p.equipoLocal.liga=?1")
-	List<Partido> findPartidoByLiga(Liga l);
+	//Consulta Partidos de una liga concreta JUGABLES
+	@Query("SELECT p FROM Partido p WHERE (p.equipoLocal.liga=?1) AND (p.fecha BETWEEN ?2 AND '20201212')")
+	List<Partido> findPartidoByLiga(Liga l,Date f);
 	
 }

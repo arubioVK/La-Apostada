@@ -27,7 +27,7 @@ public class HomeController {
 	@RequestMapping(value={"/", "/home",})
 	public String home(Model model) {
 		model.addAttribute("num_apuestas", apuestaService.count());
-		model.addAttribute("equipos", partidoService.findAll());
+		model.addAttribute("equipos", partidoService.findProximosPartidos());
 
 		return "home";
 	}

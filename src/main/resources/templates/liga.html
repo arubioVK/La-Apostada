@@ -83,10 +83,19 @@
 					<p><a class="btn btn-default" href="/liga/3" role="button">Ver apuestas &raquo;</a></p>
 				</div>
 			</div>
+<div class="masthead">
+        <nav>
+          <ul class="nav nav-justified">
+            
+            <li class="active"><a href="/liga/{{liga.id}}">Partidos Disponibles para apostar</a></li>
+            <li class= "active"><a href="/liga/{{liga.id}}/jugados">Partidos jugados</a></li>
 
+          </ul>
+        </nav>
+      </div>
 			<hr>
 
-			<h2 class="sub-header">Apuestas de la Liga {{liga}}:</h2>
+			<h2 class="sub-header">Partidos de la {{liga.name}}:</h2>
 			<div class="table-responsive">
 				<table class="table table-striped">
 									<thead>
