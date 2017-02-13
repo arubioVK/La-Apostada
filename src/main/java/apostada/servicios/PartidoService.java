@@ -23,7 +23,9 @@ public class PartidoService {
 	public List<Partido> findAll() {
 		return partidoRepository.findAll();
 	}
-	
+	public List<Partido> findByEquipo(Equipo id){
+		return partidoRepository.findPartidoByEquipoName(id);
+	}
 	public Long count() {
 		return partidoRepository.count();
 	}

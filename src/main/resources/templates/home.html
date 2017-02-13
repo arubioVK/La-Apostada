@@ -19,11 +19,11 @@
 				<p><a class="btn btn-default" href="/liga/1" role="button">Ver apuestas &raquo;</a></p>
 			</div>
 			<div class="col-md-4">
-				<h2>PREMIER LIGE</h2>
+				<h2>PREMIER LEAGUE</h2>
 				<p><a class="btn btn-default" href="/liga/2" role="button">Ver apuestas &raquo;</a></p>
 			</div>
 			<div class="col-md-4">
-				<h2>BUNDESLIGA</h2>
+				<h2>SERIE A</h2>
 				<p><a class="btn btn-default" href="/liga/3" role="button">Ver apuestas &raquo;</a></p>
 			</div>
 		</div>
@@ -49,8 +49,8 @@
 				{{#equipos}}
 					<tr>
 						
-						<td>{{equipoLocal.name}}</td>
-						<td>{{equipoVisitante.name}}</td>
+						<td><a href="/equipo/{{equipoLocal.id}}">{{equipoLocal.name}}</a></td>
+						<td><a href="/equipo/{{equipoLocal.id}}">{{equipoVisitante.name}}</a></td>
 						<td>{{cuotaLocal}}</td>
 						<td>{{cuotaEmpate}}</td>
 						<td>{{cuotaVisitante}}</td>

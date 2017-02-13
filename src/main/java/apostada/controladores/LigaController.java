@@ -26,7 +26,7 @@ public class LigaController {
 		model.addAttribute("liga",liga.getName());
 
 		model.addAttribute("equipos",partidoService.findByLiga(liga));
-		return "liga" /*+ String.valueOf(id)*/;
+		return "liga";
 	}
 	
 }

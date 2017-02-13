@@ -3,7 +3,7 @@
 	<!-- Main jumbotron for a primary marketing message or call to action -->
 	<div class="jumbotron">
 		<div class="container">
-			<h1>La Apostada</h1>
+			<h1><a href="/home">La Apostada</a></h1>
 			<p>Donde vienen los tontos a gastarse los dineros</p>
 
 			<!--<p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>-->
@@ -18,11 +18,11 @@
 				<p><a class="btn btn-default" href="/liga/1" role="button">Ver apuestas &raquo;</a></p>
 			</div>
 			<div class="col-md-4">
-				<h2>LIGA ITALIANA</h2>
+				<h2>PREMIER LEAGUE</h2>
 				<p><a class="btn btn-default" href="/liga/2" role="button">Ver apuestas &raquo;</a></p>
 			</div>
 			<div class="col-md-4">
-				<h2>LIGA ALEMANA</h2>
+				<h2>SERIE A</h2>
 				<p><a class="btn btn-default" href="/liga/3" role="button">Ver apuestas &raquo;</a></p>
 			</div>
 		</div>
@@ -34,28 +34,28 @@
 			<table class="table table-striped">
 				<thead>
 					<tr>
-						<th>LIGA</th>
 						<th>Equipo local</th>
 						<th>Equipo visitante</th>
-						<th>Cuota</th>
+						<th>CuotaLocal</th>
+						<th>CuotaEmpate</th>
+						<th>CuotaVisitante</th>
 						<th>Fecha</th>
 					</tr>
 				</thead>
 				<tbody>
+				{{#partidos}}
 					<tr>
-						<td>BBVA</td>
-						<td>Real Madrid</td>
-						<td>Barsa</td>
-						<td>1.5</td>
-						<td>21/02/2017</td>
+						
+						<td><a href="/equipo/{{equipoLocal.id}}">{{equipoLocal.name}}</a></td>
+						<td><a href="/equipo/{{equipoLocal.id}}">{{equipoVisitante.name}}</a></td>
+						<td>{{cuotaLocal}}</td>
+						<td>{{cuotaEmpate}}</td>
+						<td>{{cuotaVisitante}}</td>
+						<td>{{fecha}}</td>
+						
 					</tr>
-					<tr>
-						<td>BBVA</td>
-						<td>Betis</td>
-						<td>Talavera</td>
-						<td>100</td>
-						<td>08/02/2017</td>
-					</tr>
+					{{/partidos}}
+					
 
 				</tbody>
 			</table>

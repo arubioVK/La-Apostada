@@ -138,7 +138,7 @@ public class constructorBD implements InitializingBean {
 	   	 partidoService.save(new Partido(sev,spo,1.1,6,15,fecha292));
 	   	 partidoService.save(new Partido(valencia,depor,5,3.8,1.6,fecha292));
 	   	 partidoService.save(new Partido(grana,barsa,5.5,4.2,1.6,fecha292));
-	   	 /*
+	   	 
 		 //Premier League
 		 Liga premier = new Liga("Premier League");
 		 ligaService.save(premier);
@@ -248,7 +248,7 @@ public class constructorBD implements InitializingBean {
 		 partidoService.save(new Partido(cry,totte,11,5.75,1.25,fecha284));
 	   	 
 	   	 
-	   	 
+	/*   	 
 		 //Serie A
 		 Liga serie = new Liga("Serie A");
 		 ligaService.save(premier);

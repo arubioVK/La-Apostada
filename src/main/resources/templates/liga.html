@@ -61,7 +61,7 @@
 		<!-- Main jumbotron for a primary marketing message or call to action -->
 		<div class="jumbotron">
 			<div class="container">
-				<h1>La Apostada</h1>
+				<h1><a href="/home">La Apostada</a></h1>
 				<p>Donde vienen los tontos a gastarse los dineros</p>
 				<!--<p><a class="btn btn-primary btn-lg" href="#" role="button">Learn more &raquo;</a></p>-->
 			</div>
@@ -72,15 +72,15 @@
 			<div class="row">
 				<div class="col-md-4">
 					<h2>LIGA BBVA</h2>
-					<p><a class="btn btn-default" href="#" role="button">Ver apuestas &raquo;</a></p>
+					<p><a class="btn btn-default" href="/liga/1" role="button">Ver apuestas &raquo;</a></p>
 				</div>
 				<div class="col-md-4">
-					<h2>LIGA ITALIANA</h2>
-					<p><a class="btn btn-default" href="#" role="button">Ver apuestas &raquo;</a></p>
+					<h2>PREMIER LEAGUE</h2>
+					<p><a class="btn btn-default" href="/liga/2" role="button">Ver apuestas &raquo;</a></p>
 				</div>
 				<div class="col-md-4">
-					<h2>LIGA ALEMANA</h2>
-					<p><a class="btn btn-default" href="#" role="button">Ver apuestas &raquo;</a></p>
+					<h2>SERIE A</h2>
+					<p><a class="btn btn-default" href="/liga/3" role="button">Ver apuestas &raquo;</a></p>
 				</div>
 			</div>
 
@@ -104,8 +104,8 @@
 				{{#equipos}}
 					<tr>
 						
-						<td>{{equipoLocal.name}}</td>
-						<td>{{equipoVisitante.name}}</td>
+						<td><a href="/equipo/{{equipoLocal.id}}">{{equipoLocal.name}}</a></td>
+						<td><a href="/equipo/{{equipoLocal.id}}">{{equipoVisitante.name}}</a></td>
 						<td>{{cuotaLocal}}</td>
 						<td>{{cuotaEmpate}}</td>
 						<td>{{cuotaVisitante}}</td>
@@ -116,12 +116,10 @@
 
 				</table>
 			</div>
-		</div> <!-- /container -->
+		</div>
 
 
-		<!-- Bootstrap core JavaScript
-		================================================== -->
-		<!-- Placed at the end of the document so the pages load faster -->
+		
 		<script src="/assets/css/jquery.min.js"></script>
 		<script>window.jQuery || document.write('<script src="../../assets/js/vendor/jquery.min.js"><\/script>')</script>
 		<script src="/assets/css/bootstrap.min.js"></script>
