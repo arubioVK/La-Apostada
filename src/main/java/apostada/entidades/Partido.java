@@ -48,7 +48,7 @@ public class Partido {
 		fecha = f;
 		golLocal=gL;
 		golVisitante = gV;
-		if(gL>gV){resultado=10;}
+		if(gL>gV){resultado=1;}
 		else if(gV>gL){ resultado=3;}
 		else{resultado=2;}
 		

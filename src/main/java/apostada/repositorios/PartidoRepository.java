@@ -26,11 +26,14 @@ public interface PartidoRepository extends JpaRepository<Partido, Long> {
 	List<Partido> findPartidos();
 	
 	//Consulta Partidos de un equipo concreto
-	@Query("SELECT p FROM Partido p WHERE p.equipoLocal=?1 OR p.equipoVisitante=?1")
-	List<Partido> findPartidoByEquipoName(Equipo e);
+	@Query("SELECT p FROM Partido p WHERE (p.equipoLocal=?1 OR p.equipoVisitante=?1) AND (p.fecha BETWEEN ?2 AND '20201212')")
+	List<Partido> findPartidoByEquipoName(Equipo e, Date f);
 	
 	//Consulta Partidos de una liga concreta JUGABLES
 	@Query("SELECT p FROM Partido p WHERE (p.equipoLocal.liga=?1) AND (p.fecha BETWEEN ?2 AND '20201212')")
 	List<Partido> findPartidoByLiga(Liga l,Date f);
 	
+	//Consulta partidos Finalizados de un equipo
+	@Query("SELECT p FROM Partido p WHERE (p.equipoLocal = ?1 OR p.equipoVisitante=?1)AND(p.resultado BETWEEN 1 AND 3)")
+	List<Partido>findByPartidoEquipoFinalizado(Equipo e);
 }

@@ -26,10 +26,13 @@ public class PartidoService {
 		return partidoRepository.findAll();
 	}
 	public List<Partido> findByEquipo(Equipo id){
-		return partidoRepository.findPartidoByEquipoName(id);
+		return partidoRepository.findPartidoByEquipoName(id, new Date());
 	}
 	public Long count() {
 		return partidoRepository.count();
+	}
+	public List<Partido> findJugadosEquipo(Equipo id) {//PARA Partidos de un equipo JUGADOS
+		return partidoRepository.findByPartidoEquipoFinalizado(id);
 	}
 	public List<Partido> findJugados(Liga id) {//PARA LIGA JUGADOS
 		return partidoRepository.findByPartidoFinalizado(id);

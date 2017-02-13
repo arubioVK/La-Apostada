@@ -248,10 +248,10 @@ public class constructorBD implements InitializingBean {
 		 partidoService.save(new Partido(cry,totte,11,5.75,1.25,fecha284));
 	   	 
 	   	 
-	/*   	 
+	  	 
 		 //Serie A
 		 Liga serie = new Liga("Serie A");
-		 ligaService.save(premier);
+		 ligaService.save(serie);
 		 //Equipo italiano
 		 Equipo  juv= new Equipo("Juventus",serie);
 		 Equipo  roma= new Equipo("Roma",serie);
@@ -349,7 +349,7 @@ public class constructorBD implements InitializingBean {
 		 partidoService.save(new Partido(laz,tor,1.75,3.6,4.5,fecha284));
 		 partidoService.save(new Partido(pes,udi,12,6.5,1.22,fecha284));
 
-*/
+		 
 	       // LOG.info("...Bootstrapping completed");
 	    }
 

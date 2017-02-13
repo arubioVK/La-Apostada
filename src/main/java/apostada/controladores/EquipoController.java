@@ -24,7 +24,7 @@ public class EquipoController {
 		Equipo equipo = equipoService.findById(id);
 		 
 		if (equipo != null) {
-			model.addAttribute("partidos", partidoService.findByEquipo(equipo));
+			model.addAttribute("equipos", partidoService.findByEquipo(equipo));
 			model.addAttribute("equipo", equipo);
 			return "equipo";	
 		} else {
