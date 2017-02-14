@@ -20,6 +20,10 @@ public class UsuarioService {
 		return usuarioRepository.findByName(name);
 	}
 	
+	public Usuario findByEmail(String email) {
+		return usuarioRepository.findByEmail(email);
+	}
+	
 	public List<Usuario> findAll() {
 		return usuarioRepository.findAll();
 	}
@@ -38,6 +42,11 @@ public class UsuarioService {
 	
 	public void delete(Usuario usuario) {
 		usuarioRepository.delete(usuario);
+	}
+
+	public boolean checkLogin(Usuario usuario) {
+		Usuario usuarioEncontrado = usuarioRepository.findByEmailAndPassword(usuario.getEmail(), usuario.getPassword());
+		return usuarioEncontrado != null;
 	}
 	
 }

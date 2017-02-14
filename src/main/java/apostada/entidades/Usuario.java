@@ -17,20 +17,21 @@ public class Usuario {
 	private long id;
 	
 	private String name;
+	private String email;
 	private String password;
 	private double puntos;
 	
-	@OneToMany(cascade=CascadeType.ALL)
-	private List<Apuesta>apuestas;
+	@OneToMany(cascade = CascadeType.ALL)
+	private List<Apuesta> apuestas;
 	
 	public Usuario(){}
 	
-	public long getId(){
+	public long getId() {
 		return id;
 	}
 	
-	public void setId(long id){
-		this.id=id;
+	public void setId(long id) {
+		this.id = id;
 	}
 
 	public String getName() {
@@ -39,6 +40,14 @@ public class Usuario {
 
 	public void setName(String name) {
 		this.name = name;
+	}
+	
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
 	}
 
 	public String getPassword() {
@@ -56,11 +65,12 @@ public class Usuario {
 	public void setPuntos(double puntos) {
 		this.puntos = puntos;
 	}
-	public List<Apuesta> getApuestas(){
+	public List<Apuesta> getApuestas() {
 		return apuestas;
 	}
 	
-	public void setApuestas(List<Apuesta>apuestas){
-		this.apuestas=apuestas;
+	public void setApuestas(List<Apuesta> apuestas) {
+		this.apuestas = apuestas;
 	}
+	
 }

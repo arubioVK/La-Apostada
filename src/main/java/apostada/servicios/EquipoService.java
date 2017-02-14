@@ -16,7 +16,7 @@ public class EquipoService {
 		return equipoRepository.findOne(id);
 	}
 	
-	public List<Equipo> findByName(String name) {
+	public Equipo findByName(String name) {
 		return equipoRepository.findByName(name);
 	}
 	

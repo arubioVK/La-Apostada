@@ -1,6 +1,5 @@
 package apostada.advices;
 
-import apostada.entidades.Usuario;
 import com.samskivert.mustache.Mustache;
 import com.samskivert.mustache.Template;
 import java.io.IOException;
@@ -12,7 +11,7 @@ import org.springframework.web.bind.annotation.ControllerAdvice;
 import org.springframework.web.bind.annotation.ModelAttribute;
 
 @ControllerAdvice
-public class NavAdvice {
+public class FlashAdvice {
 
 	private final Mustache.Compiler compiler;
 
@@ -20,25 +19,25 @@ public class NavAdvice {
 	private HttpSession httpSession;
 	
 	@Autowired
-	public NavAdvice(Mustache.Compiler compiler) {
+	public FlashAdvice(Mustache.Compiler compiler) {
 		this.compiler = compiler;
 	}
 
-	@ModelAttribute("nav")
-	public Mustache.Lambda nav(Map<String, Object> model) {
-		return new Nav(compiler, httpSession);
+	@ModelAttribute("flash")
+	public Mustache.Lambda flash(Map<String, Object> model) {
+		return new Flash(compiler, httpSession);
 	}
-
+	
 }
 
-class Nav implements Mustache.Lambda {
-	
+class Flash implements Mustache.Lambda {
+
 	String body;
 
 	private Mustache.Compiler compiler;
 	private HttpSession httpSession;
-
-	public Nav(Mustache.Compiler compiler, HttpSession httpSession) {
+	
+	public Flash(Mustache.Compiler compiler, HttpSession httpSession) {
 		this.compiler = compiler;
 		this.httpSession = httpSession;
 	}
@@ -46,17 +45,16 @@ class Nav implements Mustache.Lambda {
 	@Override
 	public void execute(Template.Fragment frag, Writer out) throws IOException {
 		Map<String, Object> map = (Map<String, Object>) frag.context();
-		if (httpSession.getAttribute("id") != null) {
-			// Get user
-			
-		} else {
-			Usuario newUsuario = new Usuario();
-			newUsuario.setName("Pedro");
-			map.put("usuario", null);
+		if (httpSession.getAttribute("success") != null) {
+			map.put("success", httpSession.getAttribute("success"));
+			httpSession.setAttribute("success", null);
+		} else if (httpSession.getAttribute("error") != null) {
+			map.put("error", httpSession.getAttribute("error"));
+			httpSession.setAttribute("error", null);
 		}
 		
 		body = frag.execute();
-		compiler.compile("{{>nav}}").execute(map, out);
+		compiler.compile("{{>flash}}").execute(map, out);
 	}
 
 }
