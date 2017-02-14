@@ -36,4 +36,7 @@ public interface PartidoRepository extends JpaRepository<Partido, Long> {
 	//Consulta partidos Finalizados de un equipo
 	@Query("SELECT p FROM Partido p WHERE (p.equipoLocal = ?1 OR p.equipoVisitante=?1)AND(p.resultado BETWEEN 1 AND 3)")
 	List<Partido>findByPartidoEquipoFinalizado(Equipo e);
+	//Consulta un partido por su id
+	@Query("SELECT p FROM Partido p WHERE p.id = ?1")
+	Partido findPartida(Long id);
 }

@@ -41,7 +41,7 @@ public class HomeController {
 			httpSession.setAttribute("error","Cantidad insuficientes para apostar");
 		}
 		else{
-			Apuesta apuesta = new Apuesta(partido,u ,cuota, cantidad, fe, resultado);
+			Apuesta apuesta = new Apuesta(partido, u ,cuota, cantidad, fe, resultado);
 			u.restarPuntos(cantidad);
 			//Modificar cuotas
 			partido.ajusteCuota(cantidad,resultado);
