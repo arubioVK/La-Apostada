@@ -21,10 +21,17 @@ public class Usuario {
 	private String password;
 	private double puntos;
 	
-	@OneToMany(cascade = CascadeType.ALL)
+	@OneToMany(mappedBy="user")
 	private List<Apuesta> apuestas;
 	
 	public Usuario(){}
+
+	public Usuario(String n, String e, String p){
+		name = n;
+		email = e;
+		password = p;
+		puntos = 1000;
+	}
 	
 	public long getId() {
 		return id;
@@ -71,6 +78,9 @@ public class Usuario {
 	
 	public void setApuestas(List<Apuesta> apuestas) {
 		this.apuestas = apuestas;
+	}
+	public void restarPuntos(double puntos){
+		this.puntos -=puntos;
 	}
 	
 }

@@ -12,6 +12,7 @@ public class ApuestasController {
 
 	@RequestMapping("/apuestas")
 	public String index(Model model) {
+		
 		return "apuestas";
 	}
 	
