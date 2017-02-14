@@ -1,0 +1,66 @@
+{{#layout}}
+	{{#title}}{{usuario.name}}{{/title}}
+	<!-- Main jumbotron for a primary marketing message or call to action -->
+	<div class="jumbotron">
+		<div class="container">
+			<h1><a href="/home">La Apostada</a></h1>
+			<p>Hola {{usuario.name}}, tienes un total de {{usuario.puntos}}</p>
+
+
+		</div>
+	</div>
+
+
+
+
+<div class="masthead">
+        <nav>
+          <ul class="nav nav-justified">
+            
+            <li><a href="/usuario">Tus apuestas actuales</a></li>
+            <li><a href="#">Historial de tus apuestas</a></li>
+
+          </ul>
+        </nav>
+      </div>
+
+
+
+
+		<hr>
+
+		<h2 class="sub-header">Tus apuestas:</h2>
+		<div class="table-responsive">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Equipo local</th>
+						<th>Equipo visitante</th>
+						<th>CuotaLocal</th>
+						<th>CuotaEmpate</th>
+						<th>CuotaVisitante</th>
+						<th>Fecha</th>
+					</tr>
+				</thead>
+				<tbody>
+				{{#equipos}}
+					<tr>
+						
+						<td><a href="/equipo/{{equipoLocal.id}}">{{equipoLocal.name}}</a></td>
+						<td><a href="/equipo/{{equipoVisitante.id}}">{{equipoVisitante.name}}</a></td>
+						 	<td>{{cuotaLocal}}</td>
+						 	<td>{{cuotaEmpate}}</td>
+						 	<td>{{cuotaVisitante}}</td>
+						    <td>{{fecha}}</td>
+
+						</form>
+						
+					</tr>
+					{{/equipos}}
+					
+
+				</tbody>
+			</table>
+		</div>
+	</div>
+{{/layout}}
