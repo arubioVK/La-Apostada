@@ -25,3 +25,5 @@ El usuario previamente logueado, puede realizar su apuesta. Además de ver las a
  
 ## Servicio Interno
 La página se apoya en un servicio el cual calcula dinámicamente las cuotas de las apuestas que se están llevando a cabo en función de las apuestas que se vayan realizando.
+
+## Capturas de pantalla

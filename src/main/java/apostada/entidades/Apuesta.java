@@ -17,7 +17,8 @@ public class Apuesta {
 	
 	@ManyToOne
 	private Partido partido;
-	
+	@ManyToOne
+	private Usuario user;
 	private double cuota;
 	private double cantidadApostada;
 	private Date fecha;
@@ -25,7 +26,18 @@ public class Apuesta {
 	//Valor entre "1"(Victoria Local)"2"(Empate)"3"(Victoria Visitante)
 	private int resultado;
 	
+	private boolean reclamado;
+	
 	public Apuesta(){}
+	public Apuesta(Partido p,Usuario u ,double c, double ca, Date f, int r){
+		partido = p;
+		user = u;
+		cuota = c;
+		cantidadApostada = ca;
+		fecha = f;
+		resultado = r;
+		reclamado = false;
+	}
 	
 	public long getId(){
 		return id;
@@ -72,6 +84,14 @@ public class Apuesta {
 
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
+	}
+
+	public boolean isReclamado() {
+		return reclamado;
+	}
+
+	public void setReclamado(boolean reclamado) {
+		this.reclamado = reclamado;
 	}
 
 }

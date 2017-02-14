@@ -133,6 +133,35 @@ public class Partido {
 		this.resultado = resultado;
 	}
 	
+	public void ajusteCuota(double cantidad, int resultado){
+		double ajusteap =cantidad /1000;
+		double ajusteot = ajusteap / 2;
+		if(resultado==1){
+			this.cuotaEmpate +=ajusteot;
+			this.cuotaVisitante+=ajusteot;
+			this.cuotaLocal -= ajusteap;
+			if(this.cuotaLocal < 1.01) {
+				this.cuotaLocal = 1.01;
+			}
+		}
+		else if(resultado == 2){
+			this.cuotaLocal +=ajusteot;
+			this.cuotaVisitante+=ajusteot;
+			this.cuotaEmpate -= ajusteap;
+			if(this.cuotaEmpate < 1.01) {
+				this.cuotaEmpate = 1.01;
+			}
+		}
+		else {
+			this.cuotaLocal +=ajusteot;
+			this.cuotaEmpate+=ajusteot;
+			this.cuotaVisitante -= ajusteap;
+			if(this.cuotaVisitante < 1.01) {
+				this.cuotaVisitante = 1.01;
+			}
+		}
+		
+	}
 	
 	
 	

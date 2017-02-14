@@ -62,10 +62,10 @@
 						
 						<td><a href="/equipo/{{equipoLocal.id}}">{{equipoLocal.name}}</a></td>
 						<td><a href="/equipo/{{equipoVisitante.id}}">{{equipoVisitante.name}}</a></td>
-						<form action = "template">
-						 	<td><input type="radio" name="cuota" value="cuotaLocal"  name = "id" value="equipos.id" name ="resultado" value= "1" >{{cuotaLocal}}</td>
-						 	<td><input type="radio" name="cuota" value="cuotaEmpate" name = "id" value="equipos.id" name ="resultado" value= "2" >{{cuotaEmpate}}</td>
-						 	<td><input type="radio" name="cuota" value="cuotaVisitante" name = "id" value="equipos.id" name ="resultado" value= "3" >{{cuotaVisitante}}</td>
+						<form action = "equipo/{{equipo.id}}">
+							 <td><input type="radio" name="cuota" value="{{cuotaLocal}}"  name = "partido" value="{{equipos}}" name ="resultado" value= "1" name = "fe" value="{{fecha}}">{{cuotaLocal}}</td>
+						 	 <td><input type="radio" name="cuota" value="{{cuotaEmpate}}" name = "partido" value="{{equipos}}" name ="resultado" value= "2" name = "fe" value="{{fecha}}" >{{cuotaEmpate}}</td>
+							 <td><input type="radio" name="cuota" value="{{cuotaVisitante}}" name = "partido" value="{{equipos}}" name ="resultado" value= "3" name = "fe" value="{{fecha}}" >{{cuotaVisitante}}</td>
 						
 							<td>{{fecha}}</td>
 							<td><input type="text" name="cantidad" placeholder="Cantidad"></td>
