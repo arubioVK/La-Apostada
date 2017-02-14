@@ -52,9 +52,13 @@ public class RegistroController {
 		}
 		
 		// Save usuario
+		if (usuarioService.save(usuario) != null) {
+			httpSession.setAttribute("success", "Ya puedes iniciar sesion");
+		} else {
+			httpSession.setAttribute("error", "Algo ha ido mal");
+		}
 		
-		httpSession.setAttribute("success", "Ya puedes iniciar sesion");
-		return "login";
+		return "registro";
 	}
 
 }
