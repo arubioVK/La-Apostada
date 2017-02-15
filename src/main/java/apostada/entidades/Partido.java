@@ -1,12 +1,22 @@
 package apostada.entidades;
 
+import java.text.DecimalFormat;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.time.format.DateTimeFormatter;
+import java.time.format.TextStyle;
 import java.util.Date;
+import java.util.List;
+import java.util.Locale;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
+import javax.persistence.Transient;
 
 @Entity
 public class Partido {
@@ -20,11 +30,17 @@ public class Partido {
 	@ManyToOne
 	private Equipo equipoVisitante;
 	
+	@OneToMany
+	private List<Apuesta> apuestas;
+	
 	private double cuotaLocal;
 	private double cuotaEmpate;
 	private double cuotaVisitante;
 	
 	private Date fecha;
+	
+	@Transient
+	private String fechaBuena;
 	
 	private int golLocal;
 	private int golVisitante;
@@ -128,12 +144,25 @@ public class Partido {
 		this.golVisitante = golVisitante;
 	}
 
+	public List<Apuesta> getApuestas() {
+		return apuestas;
+	}
+
+	public void setApuestas(List<Apuesta> apuestas) {
+		this.apuestas = apuestas;
+	}
+	
 	public int getResultado() {
 		return resultado;
 	}
 
 	public void setResultado(int resultado) {
 		this.resultado = resultado;
+	}
+	
+	public String getFechaBuena() {
+		return String.format("%02d", fecha.getDate()) + "/" + String.format("%02d", fecha.getMonth())
+				+ " " + String.format("%02d", fecha.getHours()) + ":" + String.format("%02d", fecha.getMinutes());
 	}
 	
 	public void ajusteCuota(double cantidad, int resultado){

@@ -12,6 +12,8 @@ import javax.persistence.OneToMany;
 @Entity
 public class Usuario {
 	
+	public static final int PUNTOS_POR_DEFECTO = 1000;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
@@ -30,7 +32,7 @@ public class Usuario {
 		name = n;
 		email = e;
 		password = p;
-		puntos = 1000;
+		puntos = PUNTOS_POR_DEFECTO;
 	}
 	
 	public long getId() {

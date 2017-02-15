@@ -44,7 +44,7 @@ public class HomeController {
 		Usuario usuario = sessionService.getUsuarioActual();
 		model.addAttribute("usuario", usuario);
 		model.addAttribute("num_apuestas", apuestaService.count());
-		model.addAttribute("equipos", partidoService.findProximosPartidos());
+		model.addAttribute("partidos", partidoService.findProximosPartidos());
 
 		return "home";
 	}
@@ -74,7 +74,7 @@ public class HomeController {
 		
 		model.addAttribute("usuario", usuario);
 		model.addAttribute("num_apuestas", apuestaService.count());
-		model.addAttribute("equipos", partidoService.findProximosPartidos());
+		model.addAttribute("partidos", partidoService.findProximosPartidos());
 
 		return "home";
 	}

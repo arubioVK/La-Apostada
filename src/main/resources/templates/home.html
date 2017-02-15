@@ -28,10 +28,11 @@
 
 		<hr>
 
+		{{#flash}}{{/flash}}
+		
 		<h2 class="sub-header">Apuestas del momento:</h2>
 		<div class="table-responsive">
 			<table class="table table-striped">
-
 				<thead>
 					<tr>
 						<th>Equipo local</th>
@@ -43,21 +44,40 @@
 					</tr>
 				</thead>
 				<tbody>
-					{{#equipos}}
-						<tr>
-							<form action="/" methods="POST">
-								<td><a href="/equipo/{{equipoLocal.id}}">{{equipoLocal.name}}</a></td>
-								<td><a href="/equipo/{{equipoVisitante.id}}">{{equipoVisitante.name}}</a></td>
-								<td><input type="radio" name="cuota" value="{{cuotaLocal}}"  name = "partido" value="{{equipos}}" name ="resultado" value= "1" >{{cuotaLocal}}</td>
-								<td><input type="radio" name="cuota" value="{{cuotaEmpate}}" name = "partido" value="{{equipos}}" name ="resultado" value= "2"  >{{cuotaEmpate}}</td>
-								<td><input type="radio" name="cuota" value="{{cuotaVisitante}}" name = "partido" value="{{equipos}}" name ="resultado" value= "3"  >{{cuotaVisitante}}</td>
+					{{#partidos}}
+						<tr class="form-ajax" data-action="/" data-method="POST" data-toggle="buttons">
+							<td><a href="/equipo/{{equipoLocal.id}}">{{equipoLocal.name}}</a></td>
+							<td><a href="/equipo/{{equipoVisitante.id}}">{{equipoVisitante.name}}</a></td>
 
-								<td>{{fecha}}</td>
-								<td><input type="text" name="cantidad" placeholder="Cantidad"></td>
-								<td><input type="submit" value="Apostar"></td>
-							</form>
+							<input type="hidden" name="partido" value="{{id}}">
+
+							<td>
+								<label class="btn btn-default">
+									<input type="radio" name="resultado" value= "1" autocomplete="off">{{cuotaLocal}}
+								</label>
+							</td>
+							<td>
+								<label class="btn btn-default">
+									<input type="radio" name="resultado" value="2" autocomplete="off">{{cuotaEmpate}}
+								</label>
+							</td>
+							<td>
+								<label class="btn btn-default">
+									<input type="radio" name="resultado" value="3" autocomplete="off">{{cuotaVisitante}}
+								</label>
+							</td>
+
+							<td>{{fechaBuena}}</td>
+							<td>
+								<div class="input-group">
+									<input type="text" class="form-control" name="cantidad" placeholder="Cantidad">
+									<span class="input-group-btn">
+										<input class="btn btn-default enviar-apuesta" type="submit" value="Apostar">
+									</span>
+								</div>
+							</td>
 						</tr>
-					{{/equipos}}
+					{{/partidos}}
 				</tbody>
 			</table>
 		</div>

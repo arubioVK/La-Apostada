@@ -52,6 +52,7 @@ public class RegistroController {
 		}
 		
 		// Save usuario
+		usuario.setPuntos(Usuario.PUNTOS_POR_DEFECTO);
 		if (usuarioService.save(usuario) != null) {
 			httpSession.setAttribute("success", "Ya puedes iniciar sesion");
 		} else {
