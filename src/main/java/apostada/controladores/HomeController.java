@@ -1,7 +1,6 @@
 package apostada.controladores;
 
 import apostada.entidades.Usuario;
-import apostada.servicios.ApuestaService;
 import apostada.servicios.PartidoService;
 import apostada.servicios.SessionService;
 
@@ -18,16 +17,13 @@ public class HomeController {
 	private SessionService sessionService;
 	
 	@Autowired
-	private ApuestaService apuestaService;
-	
-	@Autowired
 	private PartidoService partidoService;
 	
 	@RequestMapping(value={"/", "/home",}, method=RequestMethod.GET)
 	public String home(Model model) {
 		Usuario usuario = sessionService.getUsuarioActual();
 		model.addAttribute("usuario", usuario);
-		model.addAttribute("num_apuestas", apuestaService.count());
+		model.addAttribute("num_apuestas", partidoService.findProximosPartidos().size());
 		model.addAttribute("partidos", partidoService.findProximosPartidos());
 
 		return "home";

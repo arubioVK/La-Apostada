@@ -5,12 +5,9 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import apostada.entidades.Apuesta;
-import apostada.entidades.Equipo;
-import apostada.entidades.Liga;
 import apostada.entidades.Usuario;
 import apostada.servicios.ApuestaService;
 import apostada.servicios.EquipoService;
@@ -35,6 +32,10 @@ public class UsuarioController {
 	@RequestMapping("/cuenta")
 	public String cuenta(Model model) {
 		Usuario usuario = sessionService.getUsuarioActual();
+		if (usuario == null) {
+			return "redirect:/";
+		}
+		
 		List<Apuesta> apuestasGanadas= apuestaService.findApuestaUserGanada(usuario);
 		List<Apuesta> apuestasPerdidas = apuestaService.findApuestaUserPerdida(usuario);
 		List<Apuesta> apuestasNoFinalizadas = apuestaService.findApuestaUserNoFinalizada(usuario);

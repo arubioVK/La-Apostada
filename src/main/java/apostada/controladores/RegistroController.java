@@ -1,6 +1,7 @@
 package apostada.controladores;
 
 import apostada.entidades.Usuario;
+import apostada.servicios.SessionService;
 import apostada.servicios.UsuarioService;
 import java.util.regex.Pattern;
 import javax.servlet.http.HttpSession;
@@ -18,20 +19,24 @@ public class RegistroController {
 	HttpSession httpSession;
 	
 	@Autowired
+	SessionService sessionService;
+	
+	@Autowired
 	UsuarioService usuarioService;
 	
 	@RequestMapping(value="/registro", method=RequestMethod.GET)
 	public String registro(Model model) {
+		if (sessionService.getUsuarioActual() != null) {
+			return "redirect:/";
+		}
+		
 		return "registro";
 	}
 	
 	@RequestMapping(value="/registro", method=RequestMethod.POST)
 	public String registro(@ModelAttribute Usuario usuario) {
-		Usuario usuarioFound = usuarioService.findByEmail(usuario.getEmail());
-		
-		if (usuarioFound != null) {
-			httpSession.setAttribute("error", "Ese email ya esta en uso");
-			return "registro";
+		if (sessionService.getUsuarioActual() != null) {
+			return "redirect:/";
 		}
 		
 		if (usuario.getName() == null || usuario.getName().isEmpty()) {
@@ -44,10 +49,15 @@ public class RegistroController {
 			return "registro";
 		}
 		
-		System.out.println(usuario.getPassword());
-		
 		if (usuario.getPassword() == null || usuario.getPassword().isEmpty() || usuario.getPassword().length() < 4) {
 			httpSession.setAttribute("error", "La contraseña es demasiado corta. (min 4)");
+			return "registro";
+		}
+		
+		Usuario usuarioFound = usuarioService.findByEmail(usuario.getEmail());
+		
+		if (usuarioFound != null) {
+			httpSession.setAttribute("error", "Ese email ya esta en uso");
 			return "registro";
 		}
 		
