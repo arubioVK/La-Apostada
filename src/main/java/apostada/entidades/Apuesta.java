@@ -11,6 +11,10 @@ import javax.persistence.ManyToOne;
 @Entity
 public class Apuesta {
 	
+	public final static int RESULTADO_VICTORIA_LOCAL = 1;
+	public final static int RESULTADO_EMPATE = 2;
+	public final static int RESULTADO_VICTORIA_VISITANTE = 3;
+	
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;

@@ -12,11 +12,13 @@ public class LogoutController {
 	
 	@Autowired
 	private HttpSession httpSession;
+	
+	@Autowired
+	private SessionService sessionService;
 
 	@RequestMapping("/logout")
 	public String index(Model model) {
-		SessionService utils = new SessionService();
-		utils.logoutUsuario();
+		sessionService.logoutUsuario();
 		
 		return "redirect:/";
 	}

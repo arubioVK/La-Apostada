@@ -19,31 +19,40 @@ public class PartidoService {
 	public Partido findById(long id) {
 		return partidoRepository.findOne(id);
 	}
+	
 	public List<Partido> findByLiga(Liga id) {//PARA LIGA
 		return partidoRepository.findPartidoByLiga(id,new Date());
 	}
+	
 	public List<Partido> findAll() {
 		return partidoRepository.findAll();
 	}
+	
 	public List<Partido> findByEquipo(Equipo id){
 		return partidoRepository.findPartidoByEquipoName(id, new Date());
 	}
+	
 	public Long count() {
 		return partidoRepository.count();
 	}
+	
 	public List<Partido> findJugadosEquipo(Equipo id) {//PARA Partidos de un equipo JUGADOS
 		return partidoRepository.findByPartidoEquipoFinalizado(id);
 	}
+	
 	public List<Partido> findJugados(Liga id) {//PARA LIGA JUGADOS
 		return partidoRepository.findByPartidoFinalizado(id);
 	}
+	
 	public List<Partido> findNoJugados() {
-		Date f= new Date();
-	return partidoRepository.findPartidoByAnteriorFecha( f);
+		Date fecha = new Date();
+		return partidoRepository.findPartidoByAnteriorFecha(fecha);
 	}
+	
 	public boolean exists(long id) {
 		return partidoRepository.exists(id);
 	}
+	
 	public Partido save(Partido partido) {
 		return partidoRepository.save(partido);
 	}

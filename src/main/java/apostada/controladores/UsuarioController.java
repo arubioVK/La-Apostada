@@ -15,14 +15,16 @@ import apostada.servicios.PartidoService;
 public class UsuarioController {
 
 	@Autowired
-	EquipoService equipoService;
+	private EquipoService equipoService;
+	
 	@Autowired
 	private PartidoService partidoService;
-	@RequestMapping("/usuario")
-	public String usuario(Model model) {
+	
+	@RequestMapping("/cuenta")
+	public String cuenta(Model model) {
 		
 		
-		return "usuario";
+		return "cuenta";
 	}
 	
 }

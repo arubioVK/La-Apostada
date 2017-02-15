@@ -34,11 +34,12 @@ public class Partido {
 	
 	public Partido(){}
 	public Partido(Equipo el, Equipo eV, double cL, double cE, double cV, Date f){		equipoLocal=el;
-	equipoVisitante = eV;
-	cuotaLocal=cL;
-	cuotaEmpate=cE;
-	cuotaVisitante=cV;
-	fecha = f;}
+		equipoVisitante = eV;
+		cuotaLocal=cL;
+		cuotaEmpate=cE;
+		cuotaVisitante=cV;
+		fecha = f;
+	}
 	public Partido(Equipo el, Equipo eV, double cL, double cE, double cV, Date f, int gL, int gV){
 		equipoLocal=el;
 		equipoVisitante = eV;
@@ -48,11 +49,12 @@ public class Partido {
 		fecha = f;
 		golLocal=gL;
 		golVisitante = gV;
-		if(gL>gV){resultado=1;}
-		else if(gV>gL){ resultado=3;}
-		else{resultado=2;}
+		if(gL>gV){resultado = Apuesta.RESULTADO_VICTORIA_LOCAL;}
+		else if(gV>gL){ resultado = Apuesta.RESULTADO_VICTORIA_VISITANTE;}
+		else{resultado = Apuesta.RESULTADO_EMPATE;}
 		
 	}
+	
 	public long getId(){
 		return id;
 	}
@@ -81,6 +83,7 @@ public class Partido {
 	public double getCuotaEmpate() {
 		return cuotaEmpate;
 	}	
+	
 	public void setCuotaEmpate(double cuotaEmpate) {
 		this.cuotaEmpate = cuotaEmpate;
 	}
@@ -136,23 +139,21 @@ public class Partido {
 	public void ajusteCuota(double cantidad, int resultado){
 		double ajusteap =cantidad /1000;
 		double ajusteot = ajusteap / 2;
-		if(resultado==1){
+		if(resultado == Apuesta.RESULTADO_VICTORIA_LOCAL) {
 			this.cuotaEmpate +=ajusteot;
 			this.cuotaVisitante+=ajusteot;
 			this.cuotaLocal -= ajusteap;
 			if(this.cuotaLocal < 1.01) {
 				this.cuotaLocal = 1.01;
 			}
-		}
-		else if(resultado == 2){
+		} else if(resultado == Apuesta.RESULTADO_EMPATE){
 			this.cuotaLocal +=ajusteot;
 			this.cuotaVisitante+=ajusteot;
 			this.cuotaEmpate -= ajusteap;
 			if(this.cuotaEmpate < 1.01) {
 				this.cuotaEmpate = 1.01;
 			}
-		}
-		else {
+		} else {
 			this.cuotaLocal +=ajusteot;
 			this.cuotaEmpate+=ajusteot;
 			this.cuotaVisitante -= ajusteap;
@@ -160,9 +161,6 @@ public class Partido {
 				this.cuotaVisitante = 1.01;
 			}
 		}
-		
 	}
-	
-	
 	
 }

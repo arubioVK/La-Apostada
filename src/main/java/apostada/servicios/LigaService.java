@@ -24,7 +24,6 @@ public class LigaService {
 		return ligaRepository.findAll();
 	}
 	
-	
 	public Long count() {
 		return ligaRepository.count();
 	}
