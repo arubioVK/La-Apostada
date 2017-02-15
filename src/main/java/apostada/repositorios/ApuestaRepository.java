@@ -10,12 +10,21 @@ import org.springframework.data.jpa.repository.Query;
 
 public interface ApuestaRepository extends JpaRepository<Apuesta, Long> {
 	
-	/*//Apuestas ganadas de un usuario
+	//Apuestas ganadas de un usuario
 	@Query("SELECT a FROM Apuesta a JOIN a.partido p WHERE a.user=?1 AND a.resultado=p.resultado")
-	List<Apuesta> findApyestaByUser(Usuario s);
+	List<Apuesta> findApuestaByUserGanadas(Usuario s);
+	//Apùestas perdidas de un usuario
+	@Query("SELECT a FROM Apuesta a JOIN a.partido p WHERE a.user=?1 AND a.resultado<>p.resultado")
+	List<Apuesta> findApuestaByUserPerdidas(Usuario s);
+	//Apuestas ganadas de un usuario no Reclamadas
+	@Query("SELECT a FROM Apuesta a JOIN a.partido p WHERE a.user=?1 AND a.resultado=p.resultado AND a.reclamado = 'false'")
+	List<Apuesta> findApuestaByUserGanadasnoReclamadas(Usuario s);
+	//Apuestas perdidas de un usuario no Reclamadas
+	@Query("SELECT a FROM Apuesta a JOIN a.partido p WHERE a.user=?1 AND a.resultado<>p.resultado AND a.reclamado = 'false'")
+	List<Apuesta> findApuestaByUserPerdidasnoReclamadas(Usuario s);
 	//Apuestas de un usuario
 	@Query("SELECT a FROM Apuesta a WHERE a.user=?1")
-	List<Apuesta> findApuestaByUser(Usuario s);*/
+	List<Apuesta> findApuestaByUser(Usuario s);
 	//Todas las apuestas
 	@Query("SELECT a FROM Apuesta a")
 	List<Apuesta> findApuesta();

@@ -1,6 +1,7 @@
 package apostada.servicios;
 
 import apostada.entidades.Apuesta;
+import apostada.entidades.Usuario;
 import apostada.repositorios.ApuestaRepository;
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -35,5 +36,24 @@ public class ApuestaService {
 	public void delete(Apuesta apuesta) {
 		apuestaRepository.delete(apuesta);
 	}
+	
+	public List<Apuesta> findApuestaUserGanada(Usuario u){
+		return apuestaRepository.findApuestaByUserGanadas(u);
+	}
+	public List<Apuesta> findApuestaUserPerdida(Usuario u){
+		return apuestaRepository.findApuestaByUserPerdidas(u);
+	}	
+	public List<Apuesta> findApuestaUser(Usuario u){
+		return apuestaRepository.findApuestaByUser(u);
+	}
+	public List<Apuesta> findApuestaUserGanadasinReclamar(Usuario u){
+		return apuestaRepository.findApuestaByUserGanadasnoReclamadas(u);
+	}
+	public List<Apuesta> findApuestaUserPerdidasinReclamar(Usuario u){
+		return apuestaRepository.findApuestaByUserPerdidasnoReclamadas(u);
+	}
+	
+	
+	
 	
 }

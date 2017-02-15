@@ -79,8 +79,19 @@ public class Usuario {
 	public void setApuestas(List<Apuesta> apuestas) {
 		this.apuestas = apuestas;
 	}
+	public void sumarPuntos(double puntos){
+		this.puntos += puntos;
+	}
 	public void restarPuntos(double puntos){
 		this.puntos -=puntos;
 	}
 	
+	public void reclamarApuestas(List<Apuesta>aciertos){
+	 double cantidad = 0;
+	 for(Apuesta acierto:aciertos){
+		 cantidad+=acierto.getCuota()*acierto.getCantidadApostada();
+	 }
+		sumarPuntos(cantidad);
+	}
+		
 }

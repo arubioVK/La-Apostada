@@ -58,7 +58,7 @@ public class LigaController {
 	}
 	
 	@RequestMapping(value="/liga/{id}", method=RequestMethod.POST)
-	public String inicio(@PathVariable long id, Model model, @RequestParam double cuota, @RequestParam Partido partido, @RequestParam int resultado, @RequestParam Date fe, @RequestParam double cantidad ) {
+	public String inicio(@PathVariable long id, Model model, @RequestParam double cuota, @RequestParam Partido partido, @RequestParam int resultado, @RequestParam double cantidad ) {
 		Usuario usuario = sessionService.getUsuarioActual();
 		Liga liga =ligaService.findById(id);
 		
@@ -69,9 +69,8 @@ public class LigaController {
 			else if (cantidad <= 0) {
 				httpSession.setAttribute("error","Cantidad insuficientes para apostar");
 			} else {
-				Apuesta apuesta = new Apuesta(partido, usuario, cuota, cantidad, fe, resultado);
+				Apuesta apuesta = new Apuesta(partido, usuario, cuota, cantidad, new Date(), resultado);
 				usuario.restarPuntos(cantidad);
-				//Modificar cuotas
 				partido.ajusteCuota(cantidad,resultado);
 				partidoService.save(partido);
 				apuestaService.save(apuesta);

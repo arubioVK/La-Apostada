@@ -46,7 +46,7 @@ public class HomeController {
 	}
 	
 	@RequestMapping(value={"/", "/home",}, method=RequestMethod.POST)
-	public String home(Model model, @RequestParam double cuota, @RequestParam Partido partido, @RequestParam int resultado, @RequestParam Date fe, @RequestParam double cantidad ) {
+	public String home(Model model, @RequestParam double cuota, @RequestParam Partido partido, @RequestParam int resultado, @RequestParam double cantidad ) {
 		Usuario usuario = sessionService.getUsuarioActual();
 		
 		if (usuario != null) {
@@ -55,7 +55,7 @@ public class HomeController {
 			} else if (cantidad <= 0) {
 				httpSession.setAttribute("error", "Cantidad insuficientes para apostar");
 			} else {
-				Apuesta apuesta = new Apuesta(partido, usuario ,cuota, cantidad, fe, resultado);
+				Apuesta apuesta = new Apuesta(partido, usuario ,cuota, cantidad, new Date(), resultado);
 				usuario.restarPuntos(cantidad);
 				// Modificar cuotas
 				partido.ajusteCuota(cantidad,resultado);
