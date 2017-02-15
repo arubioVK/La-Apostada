@@ -34,8 +34,23 @@ public class UsuarioController {
 	
 	@RequestMapping("/cuenta")
 	public String cuenta(Model model) {
-		
-		
+		Usuario usuario = sessionService.getUsuarioActual();
+		List<Apuesta> apuestasGanadas= apuestaService.findApuestaUserGanada(usuario);
+		List<Apuesta> apuestasPerdidas = apuestaService.findApuestaUserPerdida(usuario);
+		List<Apuesta> apuestasNoFinalizadas = apuestaService.findApuestaUserNoFinalizada(usuario);
+
+		model.addAttribute("usuario", usuario);
+		model.addAttribute("apuestasGanadas", apuestasGanadas);
+		model.addAttribute("apuestasPerdidas", apuestasPerdidas);
+		model.addAttribute("apuestasNoFinalizadas", apuestasNoFinalizadas);
+
+		//usuario.reclamarApuestas(apuestasGanadas);
+/*		for(Apuesta a:apuestasGanadas){
+			a.setReclamado(true);
+		}
+		for(Apuesta a: apuestasPerdidas){
+			a.setReclamado(true);
+		}*/
 		return "cuenta";
 	}
 	
