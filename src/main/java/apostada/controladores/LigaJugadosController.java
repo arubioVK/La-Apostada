@@ -23,9 +23,9 @@ public class LigaJugadosController {
 	@RequestMapping("/liga/{id}/jugados")
 	public String inicio(@PathVariable long id, Model model) {
 		Liga liga =ligaService.findById(id);
-		model.addAttribute("liga",liga);
-
-		model.addAttribute("equipos",partidoService.findJugados(liga));
+		model.addAttribute("liga", liga);
+		model.addAttribute("partidos", partidoService.findJugados(liga));
+		
 		return "ligaJugados";
 	}
 	

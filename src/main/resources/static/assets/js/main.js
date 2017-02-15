@@ -17,4 +17,9 @@ $(function () {
 		
 	});
 	
+	// Fix
+	$('[data-toggle="buttons"] a[href]').click(function (e) {
+		e.stopPropagation();
+	});
+	
 });
