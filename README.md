@@ -44,3 +44,6 @@ Pasamos a la siguiente página resultado de seleccionar un equipo cualquiera:
 ![Alt text](https://github.com/arubioVK/La-Apostada/blob/master/Screenshots/screenshot.3.jpg)
 Muestra los partidos que jugará ese equipo y los ya jugados si se selecciona la opción "partidos jugados" con sus resultados:
 ![Alt text](https://github.com/arubioVK/La-Apostada/blob/master/Screenshots/screenshot.4.jpg)
+
+![Alt text](https://github.com/arubioVK/La-Apostada/blob/master/Screenshots/Diagramadeclase.png)
+
