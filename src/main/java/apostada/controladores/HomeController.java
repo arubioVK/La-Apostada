@@ -6,6 +6,10 @@ import apostada.servicios.ApuestaService;
 import apostada.servicios.PartidoService;
 import apostada.servicios.UsuarioService;
 
+import java.util.Date;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -28,21 +32,24 @@ public class HomeController {
 	@RequestMapping(value={"/", "/home",})
 	public String home(Model model, @RequestParam double cuota, @RequestParam Partido partido, @RequestParam int resultado, @RequestParam Date fe, @RequestParam double cantidad ) {
 		
-		if(u.getPuntos()< cantidad){
-			httpSession.setAttribute("error","No tienes los puntos suficientes");
-		}
-		else if(cantidad<=0){
-			httpSession.setAttribute("error","Cantidad insuficientes para apostar");
-		}
-		else{
-			Apuesta apuesta = new Apuesta(partido, u ,cuota, cantidad, fe, resultado);
-			u.restarPuntos(cantidad);
-			//Modificar cuotas
-			partido.ajusteCuota(cantidad,resultado);
-			partidoService.save(partido);
-			apuestaService.save(apuesta);
-			
-			httpSession.setAtrribute("success","Apuesta realizada");
+		
+		if (usuario != null) {
+			if (usuario.getPuntos() < cantidad) {
+				httpSession.setAttribute("error", "No tienes los puntos suficientes");
+			} else if (cantidad <= 0) {
+				httpSession.setAttribute("error", "Cantidad insuficientes para apostar");
+			} else {
+				Apuesta apuesta = new Apuesta(partido, usuario ,cuota, cantidad, fe, resultado);
+				usuario.restarPuntos(cantidad);
+				// Modificar cuotas
+				partido.ajusteCuota(cantidad,resultado);
+				partidoService.save(partido);
+				apuestaService.save(apuesta);
+
+				httpSession.setAttribute("success", "Apuesta realizada");
+			}
+		} else {
+			httpSession.setAttribute("error", "Tienes que iniciar sesion");
 		}
 		
 		model.addAttribute("num_apuestas", apuestaService.count());
