@@ -10,6 +10,10 @@ import apostada.servicios.UsuarioService;
 import java.util.Date;
 import javax.servlet.http.HttpSession;
 
+import java.util.Date;
+
+import javax.servlet.http.HttpSession;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -48,7 +52,7 @@ public class HomeController {
 	@RequestMapping(value={"/", "/home",}, method=RequestMethod.POST)
 	public String home(Model model, @RequestParam double cuota, @RequestParam Partido partido, @RequestParam int resultado, @RequestParam double cantidad ) {
 		Usuario usuario = sessionService.getUsuarioActual();
-		
+
 		if (usuario != null) {
 			if (usuario.getPuntos() < cantidad) {
 				httpSession.setAttribute("error", "No tienes los puntos suficientes");
