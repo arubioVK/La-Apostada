@@ -52,5 +52,13 @@ Al pulsar la opción de registrase seremos dirigidos a esta página donde debere
 Por último, una vez registrados se podrá acceder a la página de la cuenta donde podremos verlos partidos a los que se ha apostado tanto como a los que se ha apostado y se ha ganado/perdido:
 ![Alt text](https://github.com/arubioVK/La-Apostada/blob/master/Screenshots/screenshot.6.jpg)
 
+
+
+Diagrama de navegación:
+![Alt text](https://github.com/arubioVK/La-Apostada/blob/master/Screenshots/screenshot.7.jpg)
+Las páginas están muy bien comunicadas entre ellas.
+
+
+
 ![Alt text](https://github.com/arubioVK/La-Apostada/blob/master/Screenshots/Diagramadeclase.png)
 
