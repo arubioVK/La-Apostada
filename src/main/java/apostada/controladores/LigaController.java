@@ -4,9 +4,11 @@ import apostada.entidades.Apuesta;
 import apostada.entidades.Equipo;
 import apostada.entidades.Liga;
 import apostada.entidades.Partido;
+import apostada.entidades.Usuario;
 import apostada.servicios.ApuestaService;
 import apostada.servicios.LigaService;
 import apostada.servicios.PartidoService;
+import apostada.servicios.SessionService;
 
 import java.util.Date;
 import java.util.List;
@@ -18,6 +20,7 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
@@ -27,35 +30,62 @@ public class LigaController {
 	private HttpSession httpSession;
 	
 	@Autowired
+	private SessionService sessionService;
+	
+	@Autowired
 	private ApuestaService apuestaService;
 	
 	@Autowired
-	LigaService ligaService;
+	private LigaService ligaService;
+	
 	@Autowired
 	private PartidoService partidoService;
-	@RequestMapping("/liga/{id}")
-	public String inicio(@PathVariable long id, Model model, @RequestParam double cuota, @RequestParam Partido partido, @RequestParam int resultado, @RequestParam Date fe, @RequestParam double cantidad ) {
+	
+	@RequestMapping(value="/liga/{id}", method=RequestMethod.GET)
+	public String inicio(@PathVariable long id, Model model) {
+		Usuario usuario = sessionService.getUsuarioActual();
 		Liga liga =ligaService.findById(id);
-		model.addAttribute("liga",liga);
-		if(u.getPuntos()< cantidad){
-			httpSession.setAttribute("error","No tienes los puntos suficientes");
-		}
-		else if(cantidad<=0){
-			httpSession.setAttribute("error","Cantidad insuficientes para apostar");
-		}
-		else{
-			Apuesta apuesta = new Apuesta(partido,u ,cuota, cantidad, fe, resultado);
-			u.restarPuntos(cantidad);
-			//Modificar cuotas
-			partido.ajusteCuota(cantidad,resultado);
-			partidoService.save(partido);
-			apuestaService.save(apuesta);
-			
-			httpSession.setAttribute("success","Apuesta realizada");
+		
+		if (liga != null) {
+			model.addAttribute("usuario", usuario);
+			model.addAttribute("liga", liga);
+			model.addAttribute("equipos", partidoService.findByLiga(liga));
+
+			return "liga";
 		}
 		
+		return "404";
+	}
+	
+	@RequestMapping(value="/liga/{id}", method=RequestMethod.POST)
+	public String inicio(@PathVariable long id, Model model, @RequestParam double cuota, @RequestParam Partido partido, @RequestParam int resultado, @RequestParam Date fe, @RequestParam double cantidad ) {
+		Usuario usuario = sessionService.getUsuarioActual();
+		Liga liga =ligaService.findById(id);
+		
+		if (usuario != null) {
+			if (usuario.getPuntos() < cantidad) {
+				httpSession.setAttribute("error","No tienes los puntos suficientes");
+			}
+			else if (cantidad <= 0) {
+				httpSession.setAttribute("error","Cantidad insuficientes para apostar");
+			} else {
+				Apuesta apuesta = new Apuesta(partido, usuario, cuota, cantidad, fe, resultado);
+				usuario.restarPuntos(cantidad);
+				//Modificar cuotas
+				partido.ajusteCuota(cantidad,resultado);
+				partidoService.save(partido);
+				apuestaService.save(apuesta);
 
-		model.addAttribute("equipos",partidoService.findByLiga(liga));
+				httpSession.setAttribute("success","Apuesta realizada");
+			}
+		} else {
+			httpSession.setAttribute("error", "Tienes que iniciar sesion");
+		}
+		
+		model.addAttribute("usuario", usuario);
+		model.addAttribute("liga", liga);
+		model.addAttribute("equipos", partidoService.findByLiga(liga));
+		
 		return "liga";
 	}
 	
