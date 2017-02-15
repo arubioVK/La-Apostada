@@ -25,11 +25,19 @@ public class LoginController {
 	
 	@RequestMapping(value="/login", method=RequestMethod.GET)
 	public String login(Model model) {
+		if (sessionService.getUsuarioActual() != null) {
+			return "redirect:/";
+		}
+		
 		return "login";
 	}
 	
 	@RequestMapping(value="/login", method=RequestMethod.POST)
 	public String login(@ModelAttribute Usuario usuario) {
+		if (sessionService.getUsuarioActual() != null) {
+			return "redirect:/";
+		}
+		
 		if (usuario.getEmail() != null && !usuario.getEmail().isEmpty()
 				&& usuario.getPassword() != null && !usuario.getPassword().isEmpty()) {
 			if (usuarioService.checkLogin(usuario)) {

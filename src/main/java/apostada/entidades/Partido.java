@@ -1,14 +1,7 @@
 package apostada.entidades;
 
-import java.text.DecimalFormat;
-import java.time.Instant;
-import java.time.LocalDate;
-import java.time.ZoneId;
-import java.time.format.DateTimeFormatter;
-import java.time.format.TextStyle;
 import java.util.Date;
 import java.util.List;
-import java.util.Locale;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -30,7 +23,7 @@ public class Partido {
 	@ManyToOne
 	private Equipo equipoVisitante;
 	
-	@OneToMany
+	@OneToMany(mappedBy="partido")
 	private List<Apuesta> apuestas;
 	
 	private double cuotaLocal;
