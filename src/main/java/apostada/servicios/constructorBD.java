@@ -34,7 +34,7 @@ public class constructorBD implements InitializingBean {
 		//  LOG.info("Bootstrapping data...");
 
 		// Solo actualizar datos
-		if (!ddlAuto.equals("create-drop")) {
+		if (!ddlAuto.equals("create-drop") && ligaService.count() >= 3) {
 			return;
 		}
 		

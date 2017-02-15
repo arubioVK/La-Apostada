@@ -45,7 +45,7 @@
 				</thead>
 				<tbody>
 					{{#partidos}}
-						<tr class="form-ajax" data-action="/" data-method="POST" data-toggle="buttons">
+						<tr class="form-ajax" data-action="/apuesta/apostar" data-method="POST" data-toggle="buttons">
 							<td><a href="/equipo/{{equipoLocal.id}}">{{equipoLocal.name}}</a></td>
 							<td><a href="/equipo/{{equipoVisitante.id}}">{{equipoVisitante.name}}</a></td>
 
@@ -53,7 +53,7 @@
 
 							<td>
 								<label class="btn btn-default">
-									<input type="radio" name="resultado" value= "1" autocomplete="off">{{cuotaLocal}}
+									<input type="radio" name="resultado" value="1" autocomplete="off">{{cuotaLocal}}
 								</label>
 							</td>
 							<td>

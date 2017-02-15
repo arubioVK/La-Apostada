@@ -165,7 +165,20 @@ public class Partido {
 				+ " " + String.format("%02d", fecha.getHours()) + ":" + String.format("%02d", fecha.getMinutes());
 	}
 	
-	public void ajusteCuota(double cantidad, int resultado){
+	public double getCuotaDeResultado(int resultado) {
+		switch (resultado) {
+			case Apuesta.RESULTADO_VICTORIA_LOCAL:
+				return this.getCuotaLocal();
+			case Apuesta.RESULTADO_EMPATE:
+				return this.getCuotaEmpate();
+			case Apuesta.RESULTADO_VICTORIA_VISITANTE:
+				return this.getCuotaVisitante();
+			default:
+				return this.getCuotaEmpate();
+		}
+	}
+	
+	public void ajusteCuota(double cantidad, int resultado) {
 		double ajusteap =cantidad /1000;
 		double ajusteot = ajusteap / 2;
 		if(resultado == Apuesta.RESULTADO_VICTORIA_LOCAL) {

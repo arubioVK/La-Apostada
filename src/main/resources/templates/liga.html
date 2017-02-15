@@ -55,21 +55,40 @@
 					</tr>
 				</thead>
 			<tbody>
-				{{#equipos}}
-					<tr>
+				{{#partidos}}
+					<tr class="form-ajax" data-action="/apuesta/apostar" data-method="POST" data-toggle="buttons">
 						<td><a href="/equipo/{{equipoLocal.id}}">{{equipoLocal.name}}</a></td>
 						<td><a href="/equipo/{{equipoVisitante.id}}">{{equipoVisitante.name}}</a></td>
-						<form action = "liga/{{liga.id}}">
-							 <td><input type="radio" name="cuota" value="{{cuotaLocal}}"  name = "partido" value="{{equipos}}" name ="resultado" value= "1" name = "fe" value="{{fecha}}">{{cuotaLocal}}</td>
-							 <td><input type="radio" name="cuota" value="{{cuotaEmpate}}" name = "partido" value="{{equipos}}" name ="resultado" value= "2" name = "fe" value="{{fecha}}" >{{cuotaEmpate}}</td>
-							 <td><input type="radio" name="cuota" value="{{cuotaVisitante}}" name = "partido" value="{{equipos}}" name ="resultado" value= "3" name = "fe" value="{{fecha}}" >{{cuotaVisitante}}</td>
 
-							<td>{{fecha}}</td>
-							<td><input type="text" name="cantidad" placeholder="Cantidad"></td>
-							<td><input type="submit" value="Apostar"></td>
-						</form>
+						<input type="hidden" name="partido" value="{{id}}">
+
+						<td>
+							<label class="btn btn-default">
+								<input type="radio" name="resultado" value="1" autocomplete="off">{{cuotaLocal}}
+							</label>
+						</td>
+						<td>
+							<label class="btn btn-default">
+								<input type="radio" name="resultado" value="2" autocomplete="off">{{cuotaEmpate}}
+							</label>
+						</td>
+						<td>
+							<label class="btn btn-default">
+								<input type="radio" name="resultado" value="3" autocomplete="off">{{cuotaVisitante}}
+							</label>
+						</td>
+
+						<td>{{fechaBuena}}</td>
+						<td>
+							<div class="input-group">
+								<input type="text" class="form-control" name="cantidad" placeholder="Cantidad">
+								<span class="input-group-btn">
+									<input class="btn btn-default enviar-apuesta" type="submit" value="Apostar">
+								</span>
+							</div>
+						</td>
 					</tr>
-				{{/equipos}}
+				{{/partidos}}
 			</table>
 		</div>
 	</div>
