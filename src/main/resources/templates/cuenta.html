@@ -5,11 +5,10 @@
 		<div class="container">
 			<h1><a href="/home">La Apostada</a></h1>
 			<p>Hola {{usuario.name}}, tienes un total de {{usuario.puntos}} puntos</p>
-
-
 		</div>
 	</div>
 
+	<div class="container">
 
 		<hr>
 
@@ -27,23 +26,19 @@
 				</thead>
 				
 				<tbody>
-				{{#apuestasGanadas}}
-                     <tr>
-                     <td><a href="/equipo/{{partido.equipoLocal.id}}">{{partido.equipoLocal.name}}</a></td>
-                     <td><a href="/equipo/{{partido.equipoVisitante.id}}">{{partido.equipoVisitante.name}}</a></td>
-                     <td>{{cuota}}</td>
-                     <td>{{cantidadApostada}}</td>
-                     <td>{{partido.fecha}}</td>
-                     
-                     </tr>
-					
-
+					{{#apuestasGanadas}}
+						 <tr>
+							<td><a href="/equipo/{{partido.equipoLocal.id}}">{{partido.equipoLocal.name}}</a></td>
+							<td><a href="/equipo/{{partido.equipoVisitante.id}}">{{partido.equipoVisitante.name}}</a></td>
+							<td>{{cuota}}</td>
+							<td>{{cantidadApostada}} puntos</td>
+							<td>{{partido.fechaBuena}}</td>
+						 </tr>
+					{{/apuestasGanadas}}
 				</tbody>
-				{{/apuestasGanadas}}
 			</table>
 		</div>
-	</div>
-	<h2 class="sub-header">Tus apuestas perdidas:</h2>
+		<h2 class="sub-header">Tus apuestas perdidas:</h2>
 		<div class="table-responsive">
 			<table class="table table-striped">
 				<thead>
@@ -56,23 +51,19 @@
 					</tr>
 				</thead>
 				<tbody>
-				{{#apuestasPerdidas}}
-                     <tr>
-                     <td><a href="/equipo/{{partido.equipoLocal.id}}">{{partido.equipoLocal.name}}</a></td>
-                     <td><a href="/equipo/{{partido.equipoVisitante.id}}">{{partido.equipoVisitante.name}}</a></td>
-                     <td>{{cuota}}</td>
-                     <td>{{cantidadApostada}}</td>
-                     <td>{{partido.fecha}}</td>
-                     
-                     </tr>
-					
-
+					{{#apuestasPerdidas}}
+						 <tr>
+							<td><a href="/equipo/{{partido.equipoLocal.id}}">{{partido.equipoLocal.name}}</a></td>
+							<td><a href="/equipo/{{partido.equipoVisitante.id}}">{{partido.equipoVisitante.name}}</a></td>
+							<td>{{cuota}}</td>
+							<td>{{cantidadApostada}} puntos</td>
+							<td>{{partido.fechaBuena}}</td>
+						 </tr>
+					{{/apuestasPerdidas}}
 				</tbody>
-				{{/apuestasPerdidas}}
 			</table>
 		</div>
-	</div>
-	<h2 class="sub-header">Tus apuestas no finalizadas:</h2>
+		<h2 class="sub-header">Tus apuestas no finalizadas:</h2>
 		<div class="table-responsive">
 			<table class="table table-striped">
 				<thead>
@@ -84,21 +75,18 @@
 						<th>Fecha</th>
 					</tr>
 				</thead>
-				
-				<tbody>
-				{{#apuestasNoFinalizadas}}
-                     <tr>
-                     <td><a href="/equipo/{{partido.equipoLocal.id}}">{{partido.equipoLocal.name}}</a></td>
-                     <td><a href="/equipo/{{partido.equipoVisitante.id}}">{{partido.equipoVisitante.name}}</a></td>
-                     <td>{{cuota}}</td>
-                     <td>{{cantidadApostada}}</td>
-                     <td>{{partido.fecha}}</td>
-                     
-                     </tr>
-					
 
+				<tbody>
+					{{#apuestasNoFinalizadas}}
+						 <tr>
+							<td><a href="/equipo/{{partido.equipoLocal.id}}">{{partido.equipoLocal.name}}</a></td>
+							<td><a href="/equipo/{{partido.equipoVisitante.id}}">{{partido.equipoVisitante.name}}</a></td>
+							<td>{{cuota}}</td>
+							<td>{{cantidadApostada}} puntos</td>
+							<td>{{partido.fechaBuena}}</td>
+						 </tr>
+					{{/apuestasNoFinalizadas}}
 				</tbody>
-				{{/apuestasNoFinalizadas}}
 			</table>
 		</div>
 	</div>
