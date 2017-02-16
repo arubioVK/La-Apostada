@@ -69,7 +69,9 @@ public class Usuario {
 	public double getPuntos() {
 		return puntos;
 	}
-
+	public void addPuntos(double puntos){
+		this.puntos += puntos;
+	}
 	public void setPuntos(double puntos) {
 		this.puntos = puntos;
 	}
