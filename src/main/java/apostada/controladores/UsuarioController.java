@@ -8,20 +8,31 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import apostada.entidades.Apuesta;
+import apostada.entidades.Partido;
 import apostada.entidades.Usuario;
 import apostada.servicios.ApuestaService;
 import apostada.servicios.EquipoService;
 import apostada.servicios.PartidoService;
 import apostada.servicios.SessionService;
+import apostada.servicios.UsuarioService;
+import javax.servlet.http.HttpSession;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 public class UsuarioController {
+	
+	@Autowired
+	private HttpSession httpSession;
 	
 	@Autowired
 	private SessionService sessionService;
 	
 	@Autowired
 	private ApuestaService apuestaService;
+	
+	@Autowired
+	private UsuarioService usuarioService;
 	
 	@Autowired
 	private EquipoService equipoService;
@@ -53,6 +64,29 @@ public class UsuarioController {
 			a.setReclamado(true);
 		}*/
 		return "cuenta";
+	}
+	
+	@RequestMapping(value="/add", method=RequestMethod.POST)
+	public String add(Model model, @RequestParam int puntos) {
+		Usuario usuario = sessionService.getUsuarioActual();
+		if (usuario == null) {
+			return "redirect:/";
+		}
+		
+		if (puntos <= 0) {
+			httpSession.setAttribute("error", "Puntos tienen que ser mayor a 0");
+			return "redirect:/cuenta";
+		}
+		
+		// Sumar puntos
+		usuario.sumarPuntos(puntos);
+		if (usuarioService.save(usuario) != null) {
+			httpSession.setAttribute("success", "Puntos añadidos");
+		} else {
+			httpSession.setAttribute("error", "Algo ha ido mal");
+		}
+		
+		return "redirect:/cuenta";
 	}
 	
 	/*@RequestMapping("")

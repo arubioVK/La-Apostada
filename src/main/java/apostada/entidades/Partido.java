@@ -90,7 +90,7 @@ public class Partido {
 	
 	
 	public double getCuotaEmpate() {
-		return cuotaEmpate;
+		return Double.parseDouble(String.format("%.2f", cuotaEmpate));
 	}	
 	
 	public void setCuotaEmpate(double cuotaEmpate) {
@@ -98,7 +98,7 @@ public class Partido {
 	}
 
 	public double getCuotaLocal() {
-		return cuotaLocal;
+		return Double.parseDouble(String.format("%.2f", cuotaLocal));
 	}
 
 	public void setCuotaLocal(double cuotaLocal) {
@@ -106,7 +106,7 @@ public class Partido {
 	}
 
 	public double getCuotaVisitante() {
-		return cuotaVisitante;
+		return Double.parseDouble(String.format("%.2f", cuotaVisitante));
 	}
 
 	public void setCuotaVisitante(double cuotaVisitante) {

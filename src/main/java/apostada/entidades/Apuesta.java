@@ -59,7 +59,7 @@ public class Apuesta {
 	}
 
 	public double getCuota() {
-		return cuota;
+		return Double.parseDouble(String.format("%.2f", cuota));
 	}
 
 	public void setCuota(double cuota) {
@@ -88,6 +88,11 @@ public class Apuesta {
 
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
+	}
+	
+	public String getFechaBuena() {
+		return String.format("%02d", fecha.getDate()) + "/" + String.format("%02d", fecha.getMonth())
+				+ " " + String.format("%02d", fecha.getHours()) + ":" + String.format("%02d", fecha.getMinutes());
 	}
 
 	public boolean isReclamado() {
