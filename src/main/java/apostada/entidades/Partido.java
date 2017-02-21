@@ -2,6 +2,7 @@ package apostada.entidades;
 
 import java.util.Date;
 import java.util.List;
+import java.util.Locale;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -90,15 +91,15 @@ public class Partido {
 	
 	
 	public double getCuotaEmpate() {
-		return Double.parseDouble(String.format("%.2f", cuotaEmpate));
+		return Double.parseDouble(String.format(Locale.ROOT, "%.2f", cuotaEmpate));
 	}	
 	
 	public void setCuotaEmpate(double cuotaEmpate) {
 		this.cuotaEmpate = cuotaEmpate;
 	}
 
-	public double getCuotaLocal() {
-		return Double.parseDouble(String.format("%.2f", cuotaLocal));
+	public double getCuotaLocal() { 
+		return Double.parseDouble(String.format(Locale.ROOT, "%.2f", cuotaLocal));
 	}
 
 	public void setCuotaLocal(double cuotaLocal) {
@@ -106,7 +107,7 @@ public class Partido {
 	}
 
 	public double getCuotaVisitante() {
-		return Double.parseDouble(String.format("%.2f", cuotaVisitante));
+		return Double.parseDouble(String.format(Locale.ROOT, "%.2f", cuotaVisitante));
 	}
 
 	public void setCuotaVisitante(double cuotaVisitante) {

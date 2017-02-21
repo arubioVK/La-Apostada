@@ -23,7 +23,9 @@ public class SchedulerService {
 	//@Scheduled(cron = "*/5 * * * * ?")
 	public void doSchedule() {
 		logger.debug("Empezar scheduler");
-
+		
+		
+		
 		// Partidos no finalizados => finalizar
 		List<Partido> partidosNoFinalizados = partidoService.findNoJugados();
 		for (Partido partido : partidosNoFinalizados) {
