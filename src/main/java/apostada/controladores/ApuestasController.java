@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
+@RequestMapping("/apuesta")
 public class ApuestasController {
 
 	@Autowired
@@ -30,7 +31,7 @@ public class ApuestasController {
 	@Autowired
 	private ApuestaService apuestaService;
 	
-	@RequestMapping(value="/apuesta/apostar", method=RequestMethod.POST)
+	@RequestMapping(value="/apostar", method=RequestMethod.POST)
 	public String apostar(Model model, @RequestParam Partido partido, @RequestParam int resultado, @RequestParam double cantidad, @RequestParam String redirect) {
 		Usuario usuario = sessionService.getUsuarioActual();
 		

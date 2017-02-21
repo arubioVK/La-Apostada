@@ -8,7 +8,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import apostada.entidades.Apuesta;
-import apostada.entidades.Partido;
 import apostada.entidades.Usuario;
 import apostada.servicios.ApuestaService;
 import apostada.servicios.EquipoService;

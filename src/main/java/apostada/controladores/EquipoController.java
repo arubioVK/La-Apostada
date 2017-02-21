@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
+@RequestMapping("/equipo")
 public class EquipoController {
 	
 	@Autowired
@@ -25,7 +26,7 @@ public class EquipoController {
 	@Autowired
 	private PartidoService partidoService;
 	
-	@RequestMapping(value="/equipo/{id}", method=RequestMethod.GET)
+	@RequestMapping(value="/{id}", method=RequestMethod.GET)
 	public String inicio(@PathVariable long id, Model model) {
 		Usuario usuario = sessionService.getUsuarioActual();
 		Equipo equipo = equipoService.findById(id);
@@ -39,6 +40,15 @@ public class EquipoController {
 		}
 		
 		return "404";
+	}
+	
+	@RequestMapping("/{id}/jugados")
+	public String partidosJugados(@PathVariable long id, Model model) {
+		Equipo equipo = equipoService.findById(id);
+		model.addAttribute("equipo", equipo);
+		model.addAttribute("partidos", partidoService.findJugadosEquipo(equipo));
+		
+		return "equipoJugados";
 	}
 	
 }

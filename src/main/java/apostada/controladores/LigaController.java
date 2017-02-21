@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
+@RequestMapping("/liga")
 public class LigaController {
 	
 	@Autowired
@@ -25,7 +26,7 @@ public class LigaController {
 	@Autowired
 	private PartidoService partidoService;
 	
-	@RequestMapping(value="/liga/{id}", method=RequestMethod.GET)
+	@RequestMapping(value="/{id}", method=RequestMethod.GET)
 	public String inicio(@PathVariable long id, Model model) {
 		Usuario usuario = sessionService.getUsuarioActual();
 		Liga liga =ligaService.findById(id);
@@ -39,6 +40,15 @@ public class LigaController {
 		}
 		
 		return "404";
+	}
+	
+	@RequestMapping("/{id}/jugados")
+	public String partidosJugados(@PathVariable long id, Model model) {
+		Liga liga = ligaService.findById(id);
+		model.addAttribute("liga", liga);
+		model.addAttribute("partidos", partidoService.findJugados(liga));
+		
+		return "ligaJugados";
 	}
 	
 }
