@@ -2,7 +2,7 @@
 	{{#title}}{{usuario.name}}{{/title}}
 	<div class="jumbotron">
 		<div class="container">
-			<h1><a href="/">La Apostada</a></h1>
+			<a href="/"><h1>La Apostada</h1></a>
 			<p>Hola {{usuario.name}}, tienes un total de {{usuario.puntos}} puntos</p>
 		</div>
 	</div>
@@ -11,7 +11,7 @@
 		
 		{{#flash}}{{/flash}}
 		
-		<h2 class="sub-header">Tus apuestas ganadas:</h2>
+		<h2 class="sub-header"><span class="glyphicon glyphicon-ok"></span>&nbsp;Tus apuestas ganadas:</h2>
 		<div class="table-responsive">
 			<table class="table table-striped">
 				<thead>
@@ -23,21 +23,20 @@
 						<th>Fecha de la apuesta</th>
 					</tr>
 				</thead>
-				
 				<tbody>
 					{{#apuestasGanadas}}
-						 <tr>
+						<tr>
 							<td><a href="/equipo/{{partido.equipoLocal.id}}">{{partido.equipoLocal.name}}</a></td>
 							<td><a href="/equipo/{{partido.equipoVisitante.id}}">{{partido.equipoVisitante.name}}</a></td>
 							<td>{{cuota}}</td>
 							<td>{{cantidadApostada}} puntos</td>
 							<td>{{fechaBuena}}</td>
-						 </tr>
+						</tr>
 					{{/apuestasGanadas}}
 				</tbody>
 			</table>
 		</div>
-		<h2 class="sub-header">Tus apuestas perdidas:</h2>
+		<h2 class="sub-header"><span class="glyphicon glyphicon-remove"></span>&nbsp;Tus apuestas perdidas:</h2>
 		<div class="table-responsive">
 			<table class="table table-striped">
 				<thead>
@@ -62,7 +61,7 @@
 				</tbody>
 			</table>
 		</div>
-		<h2 class="sub-header">Tus apuestas no finalizadas:</h2>
+		<h2 class="sub-header"><span class="glyphicon glyphicon-time"></span>&nbsp;Tus apuestas no finalizadas:</h2>
 		<div class="table-responsive">
 			<table class="table table-striped">
 				<thead>
@@ -74,7 +73,6 @@
 						<th>Fecha de la apuesta</th>
 					</tr>
 				</thead>
-
 				<tbody>
 					{{#apuestasNoFinalizadas}}
 						 <tr>
@@ -88,5 +86,9 @@
 				</tbody>
 			</table>
 		</div>
+		
+		{{> footer}}
+		
 	</div>
+	
 {{/layout}}

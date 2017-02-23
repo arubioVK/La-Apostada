@@ -27,7 +27,7 @@ public class Apuesta {
 	private double cantidadApostada;
 	private Date fecha;
 
-	//Valor entre "1"(Victoria Local)"2"(Empate)"3"(Victoria Visitante)
+	// Valor entre "1"(Victoria Local)"2"(Empate)"3"(Victoria Visitante)
 	private int resultado;
 
 	private boolean reclamado;

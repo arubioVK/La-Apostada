@@ -19,7 +19,7 @@
 						Salir
 					</a>
 				</div>
-				<p class="navbar-text navbar-right">Bienvenido {{usuario.name}}. Tienes {{usuario.puntos}} puntos</p>
+				<p class="navbar-text navbar-right">Bienvenido {{usuario.name}}. Tienes <b>{{usuario.puntos}} puntos</b></p>
 			{{/usuario}}
 			{{^usuario}}
 				<form class="navbar-form navbar-right" action="/login" method="POST">

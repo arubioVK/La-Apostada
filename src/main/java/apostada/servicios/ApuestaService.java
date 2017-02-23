@@ -39,7 +39,7 @@ public class ApuestaService {
 	}
 
 	public List<Apuesta> findApuestaUserNoFinalizada(Usuario u) {
-		return apuestaRepository.findApuestasNoFinalizadas(u);
+		return apuestaRepository.findApuestasNoFinalizadasByUser(u);
 	}
 
 	public List<Apuesta> findApuestaUserGanada(Usuario u) {
@@ -55,11 +55,11 @@ public class ApuestaService {
 	}
 
 	public List<Apuesta> findApuestaUserGanadasinReclamar(Usuario u) {
-		return apuestaRepository.findApuestaByUserGanadasnoReclamadas(u);
+		return apuestaRepository.findApuestaGanadaNoReclamadaByUser(u);
 	}
 
 	public List<Apuesta> findApuestaUserPerdidasinReclamar(Usuario u) {
-		return apuestaRepository.findApuestaByUserPerdidasnoReclamadas(u);
+		return apuestaRepository.findApuestaPerdidasNoReclamadaByUser(u);
 	}
 
 }

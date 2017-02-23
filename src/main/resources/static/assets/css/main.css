@@ -13,6 +13,14 @@ input[type="radio"]:focus {
 	outline: none;
 }
 
+.navbar-inverse .navbar-text b {
+	color: #eee;
+}
+
+.sub-header .glyphicon {
+	font-size: 26px;
+}
+
 /*----------------*/
 
 .live-bets-container {

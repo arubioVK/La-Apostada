@@ -14,23 +14,23 @@ public interface ApuestaRepository extends JpaRepository<Apuesta, Long> {
 	List<Apuesta> findByUser(Usuario s);
 	
 	// Apuestas ganadas de un usuario
-	@Query("SELECT a FROM Apuesta a JOIN a.partido p WHERE a.user = ?1 AND a.resultado=p.resultado AND p.resultado <> 'null'")
+	@Query("SELECT a FROM Apuesta a LEFT OUTER JOIN a.partido p WHERE a.user = ?1 AND a.resultado = p.resultado AND p.resultado <> 'null'")
 	List<Apuesta> findApuestaByUserGanadas(Usuario s);
 	
 	// Apuestas perdidas de un usuario
-	@Query("SELECT a FROM Apuesta a JOIN a.partido p WHERE a.user = ?1 AND a.resultado<>p.resultado AND p.resultado <> 'null'")
+	@Query("SELECT a FROM Apuesta a LEFT OUTER JOIN a.partido p WHERE a.user = ?1 AND a.resultado <> p.resultado AND p.resultado <> 'null'")
 	List<Apuesta> findApuestaByUserPerdidas(Usuario s);
 	
 	// Apuestas ganadas de un usuario no Reclamadas
-	@Query("SELECT a FROM Apuesta a JOIN a.partido p WHERE a.user = ?1 AND a.resultado=p.resultado AND a.reclamado = 'false'")
-	List<Apuesta> findApuestaByUserGanadasnoReclamadas(Usuario s);
+	@Query("SELECT a FROM Apuesta a LEFT OUTER JOIN a.partido p WHERE a.user = ?1 AND a.resultado = p.resultado AND a.reclamado = 'false'")
+	List<Apuesta> findApuestaGanadaNoReclamadaByUser(Usuario s);
 	
 	// Apuestas perdidas de un usuario no Reclamadas
-	@Query("SELECT a FROM Apuesta a JOIN a.partido p WHERE a.user = ?1 AND a.resultado <> p.resultado AND a.reclamado = 'false'")
-	List<Apuesta> findApuestaByUserPerdidasnoReclamadas(Usuario s);
+	@Query("SELECT a FROM Apuesta a LEFT OUTER JOIN a.partido p WHERE a.user = ?1 AND a.resultado <> p.resultado AND a.reclamado = 'false'")
+	List<Apuesta> findApuestaPerdidasNoReclamadaByUser(Usuario s);
 	
-	//apuestas no finalizadas del usuario
-	@Query("SELECT a FROM Apuesta a JOIN a.partido p WHERE a.user = ?1 AND p.resultado = 'null'")
-	List<Apuesta> findApuestasNoFinalizadas(Usuario s);
+	// Apuestas no finalizadas del usuario
+	@Query("SELECT a FROM Apuesta a LEFT OUTER JOIN a.partido p WHERE a.user = ?1 AND p.resultado = 'null'")
+	List<Apuesta> findApuestasNoFinalizadasByUser(Usuario s);
 	
 }
