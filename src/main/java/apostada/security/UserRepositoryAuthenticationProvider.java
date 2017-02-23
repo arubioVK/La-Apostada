@@ -23,7 +23,7 @@ public class UserRepositoryAuthenticationProvider implements AuthenticationProvi
 
 	@Override
 	public Authentication authenticate(Authentication auth) throws AuthenticationException {
-		/*Usuario user = usuarioRepository.findByName(auth.getName());
+		Usuario user = usuarioRepository.findByEmail(auth.getName());
 		if (user == null) {
 			throw new BadCredentialsException("User not found");
 		}
@@ -36,7 +36,12 @@ public class UserRepositoryAuthenticationProvider implements AuthenticationProvi
 		for (String role : user.getRoles()) {
 			roles.add(new SimpleGrantedAuthority(role));
 		}
-		return new UsernamePasswordAuthenticationToken(user.getName(), password, roles);*/
+		return new UsernamePasswordAuthenticationToken(user.getName(), password, roles);
+	}
+
+	@Override
+	public boolean supports(Class<?> authentication) {
+		return authentication.equals(UsernamePasswordAuthenticationToken.class);
 	}
 
 }
