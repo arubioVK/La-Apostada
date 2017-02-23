@@ -4,10 +4,10 @@ import apostada.entidades.Apuesta;
 import apostada.entidades.Partido;
 import apostada.entidades.Usuario;
 import apostada.servicios.ApuestaService;
+import apostada.servicios.FlashService;
 import apostada.servicios.PartidoService;
 import apostada.servicios.SessionService;
 import java.util.Date;
-import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -20,7 +20,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 public class ApuestasController {
 
 	@Autowired
-	private HttpSession httpSession;
+	private FlashService flashService;
 
 	@Autowired
 	private SessionService sessionService;
@@ -37,9 +37,9 @@ public class ApuestasController {
 		
 		if (usuario != null) {
 			if (usuario.getPuntos() < cantidad) {
-				httpSession.setAttribute("error", "No tienes los puntos suficientes");
+				flashService.setError("No tienes los puntos suficientes");
 			} else if (cantidad <= 0) {
-				httpSession.setAttribute("error", "Cantidad insuficientes para apostar");
+				flashService.setError("Cantidad insuficientes para apostar");
 			} else {
 				Apuesta apuesta = new Apuesta(partido, usuario, partido.getCuotaDeResultado(resultado), cantidad, new Date(), resultado);
 				usuario.restarPuntos(cantidad);
@@ -47,10 +47,10 @@ public class ApuestasController {
 				partidoService.save(partido);
 				apuestaService.save(apuesta);
 
-				httpSession.setAttribute("success", "Apuesta realizada");
+				flashService.setSuccess("Apuesta realizada");
 			}
 		} else {
-			httpSession.setAttribute("error", "Tienes que iniciar sesion");
+			flashService.setError("Tienes que iniciar sesion");
 		}
 		
 		return "redirect:" + redirect;

@@ -1,35 +1,32 @@
 package apostada.servicios;
 
 import apostada.entidades.Usuario;
-import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.authentication.AnonymousAuthenticationToken;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 
 @Component
 public class SessionService {
 	
 	@Autowired
-	HttpSession httpSession;
-	
-	@Autowired
 	UsuarioService usuarioService;
 	
 	public Usuario getUsuarioActual() {
-		Long usuarioId = (Long) httpSession.getAttribute("usuario_id");
+		Authentication authentication = SecurityContextHolder.getContext().getAuthentication();
 		
-		if (usuarioId != null) {
-			return usuarioService.findById(usuarioId);
+		if (!(authentication instanceof AnonymousAuthenticationToken)) {
+			return usuarioService.findByEmail(authentication.getName());
 		}
 		
 		return null;
 	}
-
-	public void setUsuarioActual(Usuario usuario) {
-		httpSession.setAttribute("usuario_id", usuario.getId());
-	}
-
-	public void logoutUsuario() {
-		httpSession.removeAttribute("usuario_id");
+	
+	public boolean usuarioActualHasRole(String role) {
+		Usuario usuario = this.getUsuarioActual();
+		
+		return usuario.getRoles().contains(role);
 	}
 	
 }

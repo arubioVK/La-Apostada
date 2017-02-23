@@ -22,9 +22,8 @@ public class SchedulerService {
 	//@Scheduled(fixedRate=5000)
 	//@Scheduled(cron = "*/5 * * * * ?")
 	public void doSchedule() {
-		logger.debug("Empezar scheduler");
-		
-		
+		//logger.debug("Empezar scheduler");
+		System.out.println("Empezar scheduler");
 		
 		// Partidos no finalizados => finalizar
 		List<Partido> partidosNoFinalizados = partidoService.findNoJugados();
@@ -37,8 +36,22 @@ public class SchedulerService {
 		for (Partido partido : partidosFinalizados) {
 			
 		}
+		
+		/*Usuario usuario = sessionService.getUsuarioActual();
+		
+		List<Apuesta> apuestasGanadas = apuestaService.findApuestaUserGanadasinReclamar(usuario);
+		List<Apuesta> apuestasPerdidas = apuestaService.findApuestaUserPerdidasinReclamar(usuario);
+		usuario.reclamarApuestas(apuestasGanadas);
+		for (Apuesta a:apuestasGanadas) {
+			a.setReclamado(true);
+		}
+		for (Apuesta a: apuestasPerdidas) {
+			a.setReclamado(true);
+		}
+		return "";*/
 
-		logger.debug("Terminar scheduler");
+		//logger.debug("Terminar scheduler");
+		System.out.println("Terminar scheduler");
 	}
 
 }

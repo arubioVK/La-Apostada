@@ -20,10 +20,9 @@ public class HomeController {
 	@Autowired
 	private PartidoService partidoService;
 	
-	@RequestMapping(value={"/", "/home",}, method=RequestMethod.GET)
+	@RequestMapping(value={"/"}, method=RequestMethod.GET)
 	public String home(Model model) {
-		Usuario usuario = sessionService.getUsuarioActual();
-		model.addAttribute("usuario", usuario);
+		model.addAttribute("usuario", sessionService.getUsuarioActual());
 		model.addAttribute("num_apuestas", partidoService.findProximosPartidos().size());
 		model.addAttribute("partidos", partidoService.findProximosPartidos());
 

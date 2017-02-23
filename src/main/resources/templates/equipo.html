@@ -1,30 +1,16 @@
 {{#layout}}
 	{{#title}}{{equipo.name}}{{/title}}
-	<!-- Main jumbotron for a primary marketing message or call to action -->
 	<div class="jumbotron">
 		<div class="container">
-			<h1><a href="/home">La Apostada</a></h1>
+			<h1><a href="/">La Apostada</a></h1>
 			<p>La pagina de apuestas favorita de los alumnos de la Universidad Rey Juan Carlos</p>
 
 		</div>
 	</div>
 
 	<div class="container">
-		<!-- Example row of columns -->
-		<div class="row">
-			<div class="col-md-4">
-				<h2>LIGA BBVA</h2>
-				<p><a class="btn btn-default" href="/liga/1" role="button">Ver apuestas &raquo;</a></p>
-			</div>
-			<div class="col-md-4">
-				<h2>PREMIER LEAGUE</h2>
-				<p><a class="btn btn-default" href="/liga/2" role="button">Ver apuestas &raquo;</a></p>
-			</div>
-			<div class="col-md-4">
-				<h2>SERIE A</h2>
-				<p><a class="btn btn-default" href="/liga/3" role="button">Ver apuestas &raquo;</a></p>
-			</div>
-		</div>
+		
+		{{> menuLigas}}
 
 		<div class="masthead">
 			<nav>

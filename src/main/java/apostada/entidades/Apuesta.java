@@ -10,15 +10,15 @@ import javax.persistence.ManyToOne;
 
 @Entity
 public class Apuesta {
-	
+
 	public final static int RESULTADO_VICTORIA_LOCAL = 1;
 	public final static int RESULTADO_EMPATE = 2;
 	public final static int RESULTADO_VICTORIA_VISITANTE = 3;
-	
+
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private long id;
-	
+
 	@ManyToOne
 	private Partido partido;
 	@ManyToOne
@@ -26,14 +26,16 @@ public class Apuesta {
 	private double cuota;
 	private double cantidadApostada;
 	private Date fecha;
-	
+
 	//Valor entre "1"(Victoria Local)"2"(Empate)"3"(Victoria Visitante)
 	private int resultado;
-	
+
 	private boolean reclamado;
-	
-	public Apuesta(){}
-	public Apuesta(Partido p,Usuario u ,double c, double ca, Date f, int r){
+
+	public Apuesta() {
+	}
+
+	public Apuesta(Partido p, Usuario u, double c, double ca, Date f, int r) {
 		partido = p;
 		user = u;
 		cuota = c;
@@ -42,20 +44,21 @@ public class Apuesta {
 		resultado = r;
 		reclamado = false;
 	}
-	
-	public long getId(){
+
+	public long getId() {
 		return id;
 	}
-	
-	public void setId(long id){
-		this.id=id;
+
+	public void setId(long id) {
+		this.id = id;
 	}
-	public Partido getPartido(){
+
+	public Partido getPartido() {
 		return partido;
 	}
-	
-	public void setPartido(Partido partido){
-		this.partido=partido;
+
+	public void setPartido(Partido partido) {
+		this.partido = partido;
 	}
 
 	public double getCuota() {
@@ -89,7 +92,7 @@ public class Apuesta {
 	public void setFecha(Date fecha) {
 		this.fecha = fecha;
 	}
-	
+
 	public String getFechaBuena() {
 		return String.format("%02d", fecha.getDate()) + "/" + String.format("%02d", fecha.getMonth())
 				+ " " + String.format("%02d", fecha.getHours()) + ":" + String.format("%02d", fecha.getMinutes());

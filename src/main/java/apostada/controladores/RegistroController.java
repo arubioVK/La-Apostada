@@ -1,11 +1,12 @@
 package apostada.controladores;
 
 import apostada.entidades.Usuario;
+import apostada.servicios.FlashService;
 import apostada.servicios.SessionService;
 import apostada.servicios.UsuarioService;
 import java.util.regex.Pattern;
-import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -13,10 +14,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
 @Controller
+@RequestMapping("/registro")
 public class RegistroController {
 	
 	@Autowired
-	HttpSession httpSession;
+	FlashService flashService;
 	
 	@Autowired
 	SessionService sessionService;
@@ -24,7 +26,7 @@ public class RegistroController {
 	@Autowired
 	UsuarioService usuarioService;
 	
-	@RequestMapping(value="/registro", method=RequestMethod.GET)
+	@RequestMapping(value="", method=RequestMethod.GET)
 	public String registro(Model model) {
 		if (sessionService.getUsuarioActual() != null) {
 			return "redirect:/";
@@ -33,40 +35,43 @@ public class RegistroController {
 		return "registro";
 	}
 	
-	@RequestMapping(value="/registro", method=RequestMethod.POST)
+	@RequestMapping(value="", method=RequestMethod.POST)
 	public String registro(@ModelAttribute Usuario usuario) {
 		if (sessionService.getUsuarioActual() != null) {
 			return "redirect:/";
 		}
 		
 		if (usuario.getName() == null || usuario.getName().isEmpty()) {
-			httpSession.setAttribute("error", "Introduce un nombre");
+			flashService.setError("Introduce un nombre");
 			return "registro";
 		}
 		
 		if (usuario.getEmail() == null || usuario.getEmail().isEmpty() || !Pattern.compile("^(.+)@(.+)$").matcher(usuario.getEmail()).matches()) {
-			httpSession.setAttribute("error", "Email no valido");
+			flashService.setError("Email no valido");
 			return "registro";
 		}
 		
 		if (usuario.getPassword() == null || usuario.getPassword().isEmpty() || usuario.getPassword().length() < 4) {
-			httpSession.setAttribute("error", "La contraseña es demasiado corta. (min 4)");
+			flashService.setError("La contraseña es demasiado corta. (min 4)");
 			return "registro";
 		}
 		
 		Usuario usuarioFound = usuarioService.findByEmail(usuario.getEmail());
 		
 		if (usuarioFound != null) {
-			httpSession.setAttribute("error", "Ese email ya esta en uso");
+			flashService.setError("Ese email ya esta en uso");
 			return "registro";
 		}
+		
+		// Generar hash
+		usuario.setPasswordHash(new BCryptPasswordEncoder().encode(usuario.getPassword()));
 		
 		// Save usuario
 		usuario.setPuntos(Usuario.PUNTOS_POR_DEFECTO);
 		if (usuarioService.save(usuario) != null) {
-			httpSession.setAttribute("success", "Ya puedes iniciar sesion");
+			flashService.setSuccess("Ya puedes iniciar sesion");
 		} else {
-			httpSession.setAttribute("error", "Algo ha ido mal");
+			flashService.setError("Algo ha ido mal");
 		}
 		
 		return "registro";

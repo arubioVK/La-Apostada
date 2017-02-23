@@ -1,6 +1,5 @@
 {{#layout}}
 	{{#title}}Inicio{{/title}}
-	<!-- Main jumbotron for a primary marketing message or call to action -->
 	<div class="jumbotron">
 		<div class="container">
 			<h1>La Apostada</h1>
@@ -10,27 +9,17 @@
 	</div>
 
 	<div class="container">
-		<!-- Example row of columns -->
-		<div class="row">
-			<div class="col-md-4">
-				<h2>LIGA BBVA</h2>
-				<p><a class="btn btn-default" href="/liga/1" role="button">Ver apuestas &raquo;</a></p>
-			</div>
-			<div class="col-md-4">
-				<h2>PREMIER LEAGUE</h2>
-				<p><a class="btn btn-default" href="/liga/2" role="button">Ver apuestas &raquo;</a></p>
-			</div>
-			<div class="col-md-4">
-				<h2>SERIE A</h2>
-				<p><a class="btn btn-default" href="/liga/3" role="button">Ver apuestas &raquo;</a></p>
-			</div>
-		</div>
+		
+		{{> menuLigas}}
 
 		<hr>
 
 		{{#flash}}{{/flash}}
 		
-		<h2 class="sub-header">Apuestas del momento:</h2>
+		<h2 class="sub-header">
+			<span class="glyphicon glyphicon-fire"></span>
+			Apuestas del momento:
+		</h2>
 		<div class="table-responsive">
 			<table class="table table-striped">
 				<thead>

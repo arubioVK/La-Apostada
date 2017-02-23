@@ -16,9 +16,10 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	protected void configure(HttpSecurity http) throws Exception {
 
 		// Public pages
-		http.authorizeRequests().antMatchers("/").permitAll();
+		http.authorizeRequests().antMatchers("/assets/**").permitAll();
+		
 		http.authorizeRequests().antMatchers("/equipo/**").permitAll();
-		http.authorizeRequests().antMatchers("/home").permitAll();
+		http.authorizeRequests().antMatchers("/").permitAll();
 		http.authorizeRequests().antMatchers("/liga/**").permitAll();
 		http.authorizeRequests().antMatchers("/login/**").permitAll();
 		http.authorizeRequests().antMatchers("/logout/**").permitAll();
@@ -32,7 +33,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.formLogin().loginPage("/login");
 		http.formLogin().usernameParameter("email");
 		http.formLogin().passwordParameter("password");
-		http.formLogin().defaultSuccessUrl("/home");
+		http.formLogin().defaultSuccessUrl("/");
 		http.formLogin().failureUrl("/login");
 
 		// Logout
@@ -45,16 +46,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
 	@Override
 	protected void configure(AuthenticationManagerBuilder auth) throws Exception {
-		// User
-		auth.inMemoryAuthentication().withUser("user").password("pass").roles("USER");
-		
-		// Users
-		auth.inMemoryAuthentication().withUser("user").password("pass")
-		.roles("USER");
-
-		auth.inMemoryAuthentication().withUser("admin").password("adminpass")
-		.roles("USER", "ADMIN");
-		
+		// Database authentication provider
+		auth.authenticationProvider(authenticationProvider);
 	}
 
 }

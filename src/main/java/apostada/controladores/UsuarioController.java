@@ -11,18 +11,19 @@ import apostada.entidades.Apuesta;
 import apostada.entidades.Usuario;
 import apostada.servicios.ApuestaService;
 import apostada.servicios.EquipoService;
+import apostada.servicios.FlashService;
 import apostada.servicios.PartidoService;
 import apostada.servicios.SessionService;
 import apostada.servicios.UsuarioService;
-import javax.servlet.http.HttpSession;
 import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
+@RequestMapping("/usuario")
 public class UsuarioController {
 	
 	@Autowired
-	private HttpSession httpSession;
+	private FlashService flashService;
 	
 	@Autowired
 	private SessionService sessionService;
@@ -54,15 +55,13 @@ public class UsuarioController {
 		model.addAttribute("apuestasGanadas", apuestasGanadas);
 		model.addAttribute("apuestasPerdidas", apuestasPerdidas);
 		model.addAttribute("apuestasNoFinalizadas", apuestasNoFinalizadas);
-
-		//usuario.reclamarApuestas(apuestasGanadas);
-/*		for(Apuesta a:apuestasGanadas){
-			a.setReclamado(true);
-		}
-		for(Apuesta a: apuestasPerdidas){
-			a.setReclamado(true);
-		}*/
+		
 		return "cuenta";
+	}
+	
+	@RequestMapping(value="/add", method=RequestMethod.GET)
+	public String add(Model model) {
+		return "add";
 	}
 	
 	@RequestMapping(value="/add", method=RequestMethod.POST)
@@ -73,38 +72,20 @@ public class UsuarioController {
 		}
 		
 		if (puntos <= 0) {
-			httpSession.setAttribute("error", "Puntos tienen que ser mayor a 0");
-			return "redirect:/cuenta";
+			flashService.setError("Puntos tienen que ser mayor a 0");
+			return "redirect:/usuario/cuenta";
 		}
 		
 		// Sumar puntos
 		usuario.sumarPuntos(puntos);
 		if (usuarioService.save(usuario) != null) {
-			httpSession.setAttribute("success", "Puntos añadidos");
+			flashService.setSuccess("Puntos añadidos");
 		} else {
-			httpSession.setAttribute("error", "Algo ha ido mal");
+			flashService.setError("Algo ha ido mal");
 		}
 		
-		return "redirect:/cuenta";
+		return "redirect:/usuario/cuenta";
 	}
-	
-	/*@RequestMapping("")
-	public String reclamar(Model model){
-		
-		Usuario usuario = sessionService.getUsuarioActual();
-		
-		List<Apuesta> apuestasGanadas= apuestaService.findApuestaUserGanadasinReclamar(usuario);
-		List<Apuesta> apuestasPerdidas = apuestaService.findApuestaUserPerdidasinReclamar(usuario);
-		usuario.reclamarApuestas(apuestasGanadas);
-		for(Apuesta a:apuestasGanadas){
-			a.setReclamado(true);
-		}
-		for(Apuesta a: apuestasPerdidas){
-			a.setReclamado(true);
-		}
-		return "";
-	}*/
-	
 	
 }
 

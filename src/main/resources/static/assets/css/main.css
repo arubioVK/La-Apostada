@@ -12,3 +12,44 @@
 input[type="radio"]:focus {
 	outline: none;
 }
+
+/*----------------*/
+
+.live-bets-container {
+	position: relative;
+    top: -6px;
+	padding: 0px 0px 0px 6px;
+    margin-right: 2px;
+}
+
+.live-bets-icon {
+	width: 10px;
+    height: 10px;
+    display: inline-block;
+    border-radius: 50%;
+    background: #0f0;
+}
+
+.blink {
+    -moz-animation: change-color 2s step-end infinite;
+    -o-animation: change-color 2s step-end infinite;
+    -webkit-animation: change-color 2s step-end infinite;
+    animation: change-color 2s step-end infinite;
+}
+
+.blink-with-delay {
+    -moz-animation: change-color 2s step-end infinite;
+    -o-animation: change-color 2s step-end infinite;
+    -webkit-animation: change-color 2s step-end infinite;
+    animation: change-color 2s step-end infinite;
+    -moz-animation-delay: 1s;
+    -o-animation-delay: 1s;
+    -webkit-animation-delay: 1s;
+    animation-delay: 1s;
+}
+
+@keyframes change-color {
+	50% {
+		background: green;
+	}
+}
