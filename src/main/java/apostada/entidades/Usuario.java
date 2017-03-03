@@ -1,5 +1,6 @@
 package apostada.entidades;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.ElementCollection;
 
@@ -40,6 +41,17 @@ public class Usuario {
 		email = e;
 		password = p;
 		puntos = PUNTOS_POR_DEFECTO;
+		List<String> roles = new ArrayList<String>();
+		roles.add("USER");
+	}
+	
+	public Usuario(String n, String e, String p, String rol) {
+		name = n;
+		email = e;
+		password = p;
+		puntos = PUNTOS_POR_DEFECTO;
+		List<String> roles = new ArrayList<String>();
+		roles.add(rol);
 	}
 
 	public long getId() {
