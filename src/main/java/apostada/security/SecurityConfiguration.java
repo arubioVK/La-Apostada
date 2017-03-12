@@ -15,6 +15,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		
+		
 		// Public pages
 		http.authorizeRequests().antMatchers("/assets/**").permitAll();
 		
@@ -28,7 +29,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		
 		
 		// Private pagina del Admin 
-		//http.authorizeRequests().antMatchers("/admin/**").permitAll();
 		http.authorizeRequests().antMatchers("/admin/**").hasAnyRole("ADMIN");
 		
 		

@@ -43,7 +43,7 @@ public class Usuario {
 		puntos = PUNTOS_POR_DEFECTO;
 		passwordHash = new BCryptPasswordEncoder().encode(p);
 		roles = new ArrayList<String>();
-		roles.add("USER");
+		roles.add("ROLE_USER");
 	}
 	
 	public Usuario(String n, String e, String p, String rol) {
