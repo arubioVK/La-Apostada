@@ -28,8 +28,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		
 		
 		// Private pagina del Admin 
-		http.authorizeRequests().antMatchers("/admin/**").permitAll();
-		//http.authorizeRequests().antMatchers("/admin/**").hasAnyRole("ADMIN");
+		//http.authorizeRequests().antMatchers("/admin/**").permitAll();
+		http.authorizeRequests().antMatchers("/admin/**").hasAnyRole("ADMIN");
 		
 		
 		// Private pages (all other pages)

@@ -40,10 +40,7 @@ public class constructorBD implements InitializingBean {
 		if (!ddlAuto.equals("create-drop") && ligaService.count() >= 3) {
 			return;
 		}
-		Usuario adm = new Usuario("Administrator","administrator@gmail.com","admin123456","ADMIN");
-		adm.setPasswordHash(new BCryptPasswordEncoder().encode("admin123456"));
-		adm.setPuntos(Usuario.PUNTOS_POR_DEFECTO);
-		
+		Usuario adm = new Usuario("Administrator","administrator@gmail.com","admin123456","ADMIN");		
 		usuarioService.save(adm);		
 		
 		//Liga BBVA
