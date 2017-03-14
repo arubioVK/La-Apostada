@@ -54,15 +54,6 @@ public class Usuario {
 		roles = new ArrayList<String>();
 		roles.add(rol);
 	}
-
-	public Usuario(String n, String e, String p, String rol) {
-		name = n;
-		email = e;
-		password = p;
-		puntos = PUNTOS_POR_DEFECTO;
-		roles = new ArrayList<>();
-		roles.add(rol);
-	}
 	
 	public long getId() {
 		return id;
