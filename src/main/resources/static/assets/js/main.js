@@ -1,5 +1,6 @@
 $(function () {
-	
+	//tokensito
+
 	// Apostar
 	$('.enviar-apuesta').click(function () {
 		
@@ -13,10 +14,11 @@ $(function () {
 			if (wrapper.find('[name="partido"]').length >= 1) {
 				nuevoForm.append('<input type="text" name="partido" value="' + wrapper.find('[name="partido"]').eq(0).val() + '">');
 				
-				if (wrapper.find('[name="cantidad"]').eq(0).val() != "") {
+				if (wrapper.find('[name="cantidad"]').eq(0).val(	) != "") {
 					nuevoForm.append('<input type="text" name="cantidad" value="' + wrapper.find('[name="cantidad"]').eq(0).val() + '">');
 					nuevoForm.append('<input type="text" name="redirect" value="' + window.location.pathname + '">');
-					
+					nuevoForm.append('<input type="hidden" name='+$("meta[name='_csrf_header']").attr("content")+' value="' + $("meta[name='_csrf']").attr("content") + '">');
+
 					$('body').append(nuevoForm);
 
 					nuevoForm.submit();

@@ -1,5 +1,9 @@
 {{#layout}}
 	{{#title}}Inicio{{/title}}
+<!-- <head>
+	<meta name="_csrf" content="${_csrf.token}"/>
+	<meta name="_csrf_header" content="${_csrf.headerName}"/>
+</head>-->
 	<div class="jumbotron">
 		<div class="container">
 			<h1>La Apostada</h1>
@@ -33,6 +37,7 @@
 					</tr>
 				</thead>
 				<tbody>
+				
 					{{#partidos}}
 						<tr class="form-ajax" data-action="/apuesta/apostar" data-method="POST" data-toggle="buttons">
 							<td><a href="/equipo/{{equipoLocal.id}}">{{equipoLocal.name}}</a></td>
@@ -61,7 +66,10 @@
 								<div class="input-group">
 									<input type="text" class="form-control" name="cantidad" placeholder="Cantidad">
 									<span class="input-group-btn">
+									
 										<input class="btn btn-default enviar-apuesta" type="submit" value="Apostar">
+										<input type="hidden" name="_csrf" value="{{token}}"/>
+										
 									</span>
 								</div>
 							</td>

@@ -5,8 +5,12 @@ import apostada.servicios.FlashService;
 import apostada.servicios.SessionService;
 import apostada.servicios.UsuarioService;
 import java.util.regex.Pattern;
+
+import javax.servlet.http.HttpServletRequest;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
@@ -26,8 +30,11 @@ public class RegistroController {
 	@Autowired
 	UsuarioService usuarioService;
 	
+	
+	
 	@RequestMapping(value="", method=RequestMethod.GET)
 	public String registro(Model model) {
+		
 		if (sessionService.getUsuarioActual() != null) {
 			return "redirect:/";
 		}
@@ -37,6 +44,7 @@ public class RegistroController {
 	
 	@RequestMapping(value="", method=RequestMethod.POST)
 	public String registro(@ModelAttribute Usuario usuario) {
+
 		if (sessionService.getUsuarioActual() != null) {
 			return "redirect:/";
 		}
