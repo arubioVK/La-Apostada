@@ -44,9 +44,5 @@ public class UsuarioService {
 		usuarioRepository.delete(usuario);
 	}
 
-	public boolean checkLogin(Usuario usuario) {
-		Usuario usuarioEncontrado = usuarioRepository.findByEmailAndPassword(usuario.getEmail(), usuario.getPassword());
-		return usuarioEncontrado != null;
-	}
 	
 }

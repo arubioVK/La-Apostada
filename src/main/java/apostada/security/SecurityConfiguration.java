@@ -15,12 +15,15 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 	@Override
 	protected void configure(HttpSecurity http) throws Exception {
 		
+		
 		// Public pages
 		http.authorizeRequests().antMatchers("/assets/**").permitAll();
 		
 		http.authorizeRequests().antMatchers("/equipo/**").permitAll();
 		http.authorizeRequests().antMatchers("/").permitAll();
-		http.authorizeRequests().antMatchers("/liga/**").permitAll();
+		
+		http.authorizeRequests().antMatchers("/liga/**").hasAnyRole("ADMIN");
+		
 		http.authorizeRequests().antMatchers("/login/**").permitAll();
 		http.authorizeRequests().antMatchers("/logout/**").permitAll();
 		http.authorizeRequests().antMatchers("/registro/**").permitAll();
@@ -28,8 +31,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		
 		
 		// Private pagina del Admin 
-		http.authorizeRequests().antMatchers("/admin/**").permitAll();
-		//http.authorizeRequests().antMatchers("/admin/**").hasAnyRole("ADMIN");
+		http.authorizeRequests().antMatchers("/admin/**").hasAnyRole("ADMIN");
 		
 		
 		// Private pages (all other pages)

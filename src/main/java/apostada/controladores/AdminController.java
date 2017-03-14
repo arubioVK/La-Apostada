@@ -38,7 +38,6 @@ public class AdminController {
 		model.addAttribute("usuario", sessionService.getUsuarioActual());
 		model.addAttribute("num_apuestas", partidoService.findProximosPartidos().size());
 		model.addAttribute("partidos", partidoService.findProximosPartidos());
-
 		return "admin";
 	}
 	

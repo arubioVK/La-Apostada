@@ -17,7 +17,7 @@ import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Service
-public class constructorBD implements InitializingBean {
+public class ConstructorBD implements InitializingBean {
 
 	@Value("${spring.jpa.hibernate.ddl-auto}")
 	String ddlAuto;
@@ -40,10 +40,7 @@ public class constructorBD implements InitializingBean {
 		if (!ddlAuto.equals("create-drop") && ligaService.count() >= 3) {
 			return;
 		}
-		Usuario adm = new Usuario("Administrator","administrator@gmail.com","admin123456","ADMIN");
-		adm.setPasswordHash(new BCryptPasswordEncoder().encode("admin123456"));
-		adm.setPuntos(Usuario.PUNTOS_POR_DEFECTO);
-		
+		Usuario adm = new Usuario("Administrator","administrator@gmail.com","admin123456","ROLE_ADMIN");		
 		usuarioService.save(adm);		
 		
 		//Liga BBVA

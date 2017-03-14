@@ -1,32 +1,42 @@
 package apostada.servicios;
 
-import apostada.entidades.Partido;
-import java.util.List;
-import org.apache.log4j.Logger;
+import java.util.concurrent.Future;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.scheduling.annotation.Async;
+import org.springframework.scheduling.annotation.AsyncResult;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Service;
 
 @Service
-public class SchedulerService {
+public class InternalService {
 
-	protected static Logger logger = Logger.getLogger("service");	
-
+	//private static final Logger logger = Logger.getLogger(InternalService.class);
+	
 	@Autowired
 	PartidoService partidoService;
 	
 	@Autowired
 	ApuestaService apuestaService;
 	
+	@Async
+	public synchronized Future<Object> updateCuota() {
+		return new AsyncResult<>(new Object());
+	}
+
+	/**
+	 * Auto reclama las apuesta de los usuarios
+	 **/
 	@Scheduled(fixedDelay=5000)
 	//@Scheduled(fixedRate=5000)
 	//@Scheduled(cron = "*/5 * * * * ?")
-	public void doSchedule() {
+	public void reclamarApuestas() {
 		//logger.debug("Empezar scheduler");
-		System.out.println("Empezar scheduler");
+		System.out.println("Empezar a reclamar apuestas");
+		
+		// Connect to "La Apostada Interno" through SOCKETS
 		
 		// Partidos no finalizados => finalizar
-		List<Partido> partidosNoFinalizados = partidoService.findNoJugados();
+		/*List<Partido> partidosNoFinalizados = partidoService.findNoJugados();
 		for (Partido partido : partidosNoFinalizados) {
 			
 		}
@@ -35,7 +45,7 @@ public class SchedulerService {
 		List<Partido> partidosFinalizados = partidoService.findAll();
 		for (Partido partido : partidosFinalizados) {
 			
-		}
+		}*/
 		
 		/*Usuario usuario = sessionService.getUsuarioActual();
 		
@@ -50,8 +60,8 @@ public class SchedulerService {
 		}
 		return "";*/
 
-		//logger.debug("Terminar scheduler");
-		System.out.println("Terminar scheduler");
+		//logger.debug("Terminar de reclamar apuestas");
+		//System.out.println("Terminar scheduler");
 	}
 
 }
