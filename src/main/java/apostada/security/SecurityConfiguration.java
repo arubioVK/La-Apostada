@@ -20,10 +20,13 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		
 		http.authorizeRequests().antMatchers("/equipo/**").permitAll();
 		http.authorizeRequests().antMatchers("/").permitAll();
-		http.authorizeRequests().antMatchers("/liga/**").permitAll();
+		
+		http.authorizeRequests().antMatchers("/liga/**").hasAnyRole("ADMIN");
+		
 		http.authorizeRequests().antMatchers("/login/**").permitAll();
 		http.authorizeRequests().antMatchers("/logout/**").permitAll();
 		http.authorizeRequests().antMatchers("/registro/**").permitAll();
+		http.authorizeRequests().antMatchers("/websocket/**").permitAll();
 
 		// Private pages (all other pages)
 		// "usuario/**" es privado

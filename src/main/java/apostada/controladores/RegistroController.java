@@ -4,6 +4,7 @@ import apostada.entidades.Usuario;
 import apostada.servicios.FlashService;
 import apostada.servicios.SessionService;
 import apostada.servicios.UsuarioService;
+import java.util.ArrayList;
 import java.util.regex.Pattern;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
@@ -65,6 +66,9 @@ public class RegistroController {
 		
 		// Generar hash
 		usuario.setPasswordHash(new BCryptPasswordEncoder().encode(usuario.getPassword()));
+		
+		usuario.setRoles(new ArrayList<>());
+		usuario.getRoles().add("ADMIN");
 		
 		// Save usuario
 		usuario.setPuntos(Usuario.PUNTOS_POR_DEFECTO);

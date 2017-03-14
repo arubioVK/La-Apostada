@@ -14,7 +14,7 @@ import apostada.entidades.Partido;
 import org.springframework.beans.factory.annotation.Value;
 
 @Service
-public class constructorBD implements InitializingBean {
+public class ConstructorBD implements InitializingBean {
 
 	@Value("${spring.jpa.hibernate.ddl-auto}")
 	String ddlAuto;

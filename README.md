@@ -1,4 +1,4 @@
-# La-Apostada
+# La Apostada
 
 ## Descripción
 Página de apuestas de fútbol, con diversas ligas.
@@ -23,6 +23,8 @@ El usuario previamente logueado, puede realizar su apuesta. Además de ver las a
  
 ## Servicio Interno
 La página se apoya en un servicio el cual calcula dinámicamente las cuotas de las apuestas que se están llevando a cabo en función de las apuestas que se vayan realizando.
+
+Link al repositorio: [La Apostada Interno](https://github.com/alexurjc/La-Apostada-Interno)
 
 ## Capturas de pantalla
 ![Alt text](https://github.com/arubioVK/La-Apostada/blob/master/Screenshots/screenshot.jpg)
