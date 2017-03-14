@@ -1,0 +1,87 @@
+{{#layout}}
+	{{#title}}Opciones del ADMIN{{/title}}
+	
+	<div class="jumbotron">
+		<div class="container">
+			<a href="/"><h1>La Apostada</h1></a>
+			<p>La pagina de apuestas favorita de los alumnos de la Universidad Rey Juan Carlos</p>
+		</div>
+	</div>
+
+	<div class="container">
+		
+		{{> menuLigas}}
+
+		<hr>
+
+		{{#flash}}{{/flash}}
+		
+		<h2 class="sub-header">
+			<span class="glyphicon glyphicon-fire"></span>
+			Añadir Partido:
+		</h2>
+					
+			<form action="/admin/partido" method="post">
+				Fecha: <input type="text" name="dia" placeholder="Dia">
+				<input type="text" name="mes" placeholder="Mes">
+				<input type="text" name="ano" placeholder="Año">
+				<input type="text" name="hora" placeholder="Hora">
+				<input type="text" name="min" placeholder="Minuto">
+				</br>
+				Equipos: <input type="text" name="equipoLocal" placeholder="Equipo Local">
+				<input type="text" name="equipoVisitante" placeholder="Equipo Visitante">
+				</br>
+				Cuotas: <input type="text" name="cuotaLocal" placeholder="Cuota Local">
+				<input type="text" name="cuotaEmpate" placeholder="Cuota Empate">
+				<input type="text" name="cuotaVisitante" placeholder="Cuota Visitante">	
+  				<input type="submit" value="Añadir Partido" >
+  			</form>
+					
+					
+					
+			
+		
+		
+		
+		
+		<h2 class="sub-header">
+			<span class="glyphicon glyphicon-fire"></span>
+			Añadir Resultado:
+		</h2>
+		<div class="table-responsive">
+			<table class="table table-striped">
+				<thead>
+					<tr>
+						<th>Equipo local</th>
+						<th>Equipo visitante</th>
+						<th>Fecha</th>
+					</tr>
+				</thead>
+			<tbody>
+				{{#partidos}}
+					<tr class="form-ajax" data-action="/admin/resultado" data-method="POST" data-toggle="buttons">
+						<td><a href="/equipo/{{equipoLocal.id}}">{{equipoLocal.name}}</a></td>
+						<td><a href="/equipo/{{equipoVisitante.id}}">{{equipoVisitante.name}}</a></td>
+
+						<input type="hidden" name="partido" value="{{id}}">
+
+						<td>{{fechaBuena}}</td>
+						<td>
+							<div class="input-group">
+								<input type="text" class="form-control" name="golLocal" placeholder="goles Locales">
+								<input type="text" class="form-control" name="golVisitante" placeholder="goles Visitantes">
+								<span class="input-group-btn">
+									<input class="btn btn-default anadir-resultado" type="submit" value="Añadir Resultado">
+								</span>
+							</div>
+						</td>
+					</tr>
+				{{/partidos}}
+			</tbody>
+			</table>
+		</div>
+		
+		{{> footer}}
+		
+	</div>
+{{/layout}}

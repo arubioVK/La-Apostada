@@ -13,6 +13,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.bind.annotation.RequestParam;
 
 @Controller
 @RequestMapping("/registro")
@@ -37,42 +38,37 @@ public class RegistroController {
 	}
 	
 	@RequestMapping(value="", method=RequestMethod.POST)
-	public String registro(@ModelAttribute Usuario usuario) {
+	public String registro(@ModelAttribute Usuario usuario, @RequestParam String name, @RequestParam String email, @RequestParam String password) {
 		if (sessionService.getUsuarioActual() != null) {
 			return "redirect:/";
 		}
 		
-		if (usuario.getName() == null || usuario.getName().isEmpty()) {
+		if (name == null || name.isEmpty()) {
 			flashService.setError("Introduce un nombre");
 			return "registro";
 		}
 		
-		if (usuario.getEmail() == null || usuario.getEmail().isEmpty() || !Pattern.compile("^(.+)@(.+)$").matcher(usuario.getEmail()).matches()) {
+		if (email == null || email.isEmpty() || !Pattern.compile("^(.+)@(.+)$").matcher(email).matches()) {
 			flashService.setError("Email no valido");
 			return "registro";
 		}
 		
-		if (usuario.getPassword() == null || usuario.getPassword().isEmpty() || usuario.getPassword().length() < 4) {
+		if (password == null || password.isEmpty() || password.length() < 4) {
 			flashService.setError("La contraseña es demasiado corta. (min 4)");
-			return "registro";
-		}
+			return "registro";}
 		
-		Usuario usuarioFound = usuarioService.findByEmail(usuario.getEmail());
+		Usuario usuarioFound = usuarioService.findByEmail(email);
 		
 		if (usuarioFound != null) {
 			flashService.setError("Ese email ya esta en uso");
 			return "registro";
 		}
 		
-		// Generar hash
-		usuario.setPasswordHash(new BCryptPasswordEncoder().encode(usuario.getPassword()));
-		
-		usuario.setRoles(new ArrayList<>());
-		usuario.getRoles().add("ADMIN");
-		
+		Usuario user = new Usuario(name,email,password); 		
+				
+				
 		// Save usuario
-		usuario.setPuntos(Usuario.PUNTOS_POR_DEFECTO);
-		if (usuarioService.save(usuario) != null) {
+		if (usuarioService.save(user) != null) {
 			flashService.setSuccess("Ya puedes iniciar sesion");
 		} else {
 			flashService.setError("Algo ha ido mal");

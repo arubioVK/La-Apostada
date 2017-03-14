@@ -11,6 +11,8 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
+
 @Entity
 public class Usuario {
 
@@ -22,7 +24,6 @@ public class Usuario {
 
 	private String name;
 	private String email;
-	private String password;
 	private String passwordHash;
 	private double puntos;
 
@@ -39,10 +40,19 @@ public class Usuario {
 	public Usuario(String n, String e, String p) {
 		name = n;
 		email = e;
-		password = p;
 		puntos = PUNTOS_POR_DEFECTO;
-		roles = new ArrayList<>();
-		roles.add("USER");
+		passwordHash = new BCryptPasswordEncoder().encode(p);
+		roles = new ArrayList<String>();
+		roles.add("ROLE_USER");
+	}
+	
+	public Usuario(String n, String e, String p, String rol) {
+		name = n;
+		email = e;
+		puntos = PUNTOS_POR_DEFECTO;
+		passwordHash = new BCryptPasswordEncoder().encode(p);
+		roles = new ArrayList<String>();
+		roles.add(rol);
 	}
 
 	public Usuario(String n, String e, String p, String rol) {
@@ -76,14 +86,6 @@ public class Usuario {
 
 	public void setEmail(String email) {
 		this.email = email;
-	}
-
-	public String getPassword() {
-		return password;
-	}
-
-	public void setPassword(String password) {
-		this.password = password;
 	}
 
 	public String getPasswordHash() {
