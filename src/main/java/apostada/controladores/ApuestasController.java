@@ -9,10 +9,7 @@ import apostada.servicios.PartidoService;
 import apostada.servicios.SessionService;
 import java.util.Date;
 
-import javax.servlet.http.HttpServletRequest;
-
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.web.csrf.CsrfToken;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -37,8 +34,6 @@ public class ApuestasController {
 	
 	@RequestMapping(value="/apostar", method=RequestMethod.POST)
 	public String apostar(Model model, @RequestParam Partido partido, @RequestParam int resultado, @RequestParam double cantidad, @RequestParam String redirect) {
-		//CsrfToken token = (CsrfToken) request.getAttribute("_csrf");
-		//model.addAttribute("token", token.getToken()); 
 		Usuario usuario = sessionService.getUsuarioActual();
 		
 		if (usuario != null) {

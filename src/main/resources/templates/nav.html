@@ -29,10 +29,11 @@
 					<div class="form-group">
 						<input class="form-control" type="password" placeholder="Contraseña" name="password">
 					</div>
+					
+					<input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+					
 					<button type="submit" class="btn btn-success">Iniciar Sesion</button>
 					<a class="btn btn-info" href="/registro">Registrate</a>
-											<input type="hidden" name="_csrf" value="{{token}}"/>
-					
 				</form>
 			{{/usuario}}
 		</div>

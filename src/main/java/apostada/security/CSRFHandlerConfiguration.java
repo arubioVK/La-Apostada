@@ -12,17 +12,26 @@ import org.springframework.web.servlet.handler.HandlerInterceptorAdapter;
 
 @Configuration
 public class CSRFHandlerConfiguration extends WebMvcConfigurerAdapter {
- @Override
- public void addInterceptors(InterceptorRegistry registry) {
- registry.addInterceptor(new CSRFHandlerInterceptor());
- }
+	
+	@Override
+	public void addInterceptors(InterceptorRegistry registry) {
+		registry.addInterceptor(new CSRFHandlerInterceptor());
+	}
+	
 }
+
 class CSRFHandlerInterceptor extends HandlerInterceptorAdapter {
- @Override
- public void postHandle(final HttpServletRequest request,
- final HttpServletResponse response, final Object handler,
- final ModelAndView modelAndView) throws Exception {
- CsrfToken token = (CsrfToken) request.getAttribute("_csrf");
- modelAndView.addObject("token", token.getToken());
- }
+	
+	@Override
+	public void postHandle(HttpServletRequest request, HttpServletResponse response,
+			Object handler, ModelAndView modelAndView) throws Exception {
+		
+		// A veces "modelAndView" es null cuando no encuentra la pagina
+		if (modelAndView != null) {
+			CsrfToken token = (CsrfToken) request.getAttribute("_csrf");
+			modelAndView.addObject("_csrf", token);
+		}
+		
+	}
+	
 }

@@ -20,10 +20,6 @@ public class InternalService {
 	public synchronized Future<Object> updateCuota() {
 		return new AsyncResult<>(new Object());
 	}
-
-	private void generarResultado() {
-		
-	}
 	
 	/**
 	 * Funciones:
