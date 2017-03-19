@@ -17,9 +17,11 @@ El usuario previamente logueado, puede realizar su apuesta. Además de ver las a
 * **Usuario**: Dinero disponible que tiene en su cuenta, puede apostar, historial de sus últimas apuestas.
 
 ## Integrantes
-* Nombre: Alejandro  Apellidos: Morais Tejerina Correo: a.morais@alumnos.urjc.es  Cuenta Github: alexurjc
-* Nombre: Pablo      Apellidos: Muñoz Aceituno  Correo: p.munozac@alumnos.urjc.es Cuenta Github: ovejaURJC
-* Nombre: Álvaro     Apellidos: Rubio Jiménez   Correo: a.rubioji@alumnos.urjc.es Cuenta Github: arubioVK
+|Nombre     |Apellidos       |Correo                    |Cuenta Github
+|-----------|----------------|--------------------------|---------------|
+|Alejandro  |Morais Tejerina |[a.morais@alumnos.urjc.es](mailto:a.morais@alumnos.urjc.es)  |[alexurjc](https://github.com/alexurjc)
+|Pablo      |Muñoz Aceituno  |[p.munozac@alumnos.urjc.es](mailto:p.munozac@alumnos.urjc.es) |[ovejaURJC](https://github.com/ovejaURJC)
+|Álvaro     |Rubio Jiménez   |[a.rubioji@alumnos.urjc.es](mailto:a.rubioji@alumnos.urjc.es) |[arubioVK](https://github.com/arubioVK)
  
 ## Servicio Interno
 La página se apoya en un servicio el cual calcula dinámicamente las cuotas de las apuestas que se están llevando a cabo en función de las apuestas que se vayan realizando.
@@ -50,11 +52,8 @@ Muestra los partidos que jugará ese equipo y los ya jugados si se selecciona la
 Al pulsar la opción de registrase seremos dirigidos a esta página donde deberemos instroducir Email,nombre de usuario y contraseña.En caso de que se produzca algun error se mostrará un pequeño aviso informando del error:
 ![Alt text](https://github.com/arubioVK/La-Apostada/blob/master/Screenshots/screenshot.5.jpg)
 
-Una vez registrados se podrá acceder a la página de la cuenta donde podremos verlos partidos a los que se ha apostado tanto como a los que se ha apostado y se ha ganado/perdido:
+Por último, una vez registrados se podrá acceder a la página de la cuenta donde podremos verlos partidos a los que se ha apostado tanto como a los que se ha apostado y se ha ganado/perdido:
 ![Alt text](https://github.com/arubioVK/La-Apostada/blob/master/Screenshots/screenshot.6.jpg)
-
-Por último, esta es la página desde la que el administrador añade partidos y fija los resultados de los partidos finalizados.A esta página solo tiene acceso los administradores de La Apostada:
-![Alt text](https://github.com/arubioVK/La-Apostada/blob/master/Screenshots/screenshot.8.jpg)
 
 ## Diagrama de navegación
 ![Alt text](https://github.com/arubioVK/La-Apostada/blob/master/Screenshots/screenshot.7.jpg)
