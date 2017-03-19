@@ -1,6 +1,7 @@
 package apostada.servicios;
 
 import apostada.entidades.Usuario;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AnonymousAuthenticationToken;
 import org.springframework.security.core.Authentication;
@@ -26,7 +27,7 @@ public class SessionService {
 	public boolean usuarioActualHasRole(String role) {
 		Usuario usuario = this.getUsuarioActual();
 		
-		return usuario.getRoles().contains(role);
+		return (usuario != null) && usuario.getRoles().contains(role);
 	}
 	
 }

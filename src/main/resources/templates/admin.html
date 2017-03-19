@@ -65,7 +65,7 @@
 									<input type="text" class="form-control" name="golLocal" placeholder="Goles Locales">
 									<input type="text" class="form-control" name="golVisitante" placeholder="Goles Visitantes">
 									<span class="input-group-btn">
-										<input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+										<input type="hidden" name="{{_csrf.parameterName}}" value="{{_csrf.token}}"/>
 										<input class="btn btn-default anadir-resultado" type="submit" value="Añadir Resultado">
 									</span>
 								</div>

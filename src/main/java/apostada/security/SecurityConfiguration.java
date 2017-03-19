@@ -18,11 +18,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		// Public pages
 		http.authorizeRequests().antMatchers("/assets/**").permitAll();
 		
-		http.authorizeRequests().antMatchers("/equipo/**").permitAll();
 		http.authorizeRequests().antMatchers("/").permitAll();
-		
+		http.authorizeRequests().antMatchers("/equipo/**").permitAll();
 		http.authorizeRequests().antMatchers("/liga/**").permitAll();
-		
 		http.authorizeRequests().antMatchers("/login/**").permitAll();
 		http.authorizeRequests().antMatchers("/logout/**").permitAll();
 		http.authorizeRequests().antMatchers("/registro/**").permitAll();
@@ -31,7 +29,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/websocket/**").permitAll();
 	
 		// Private pagina del Admin 
-		http.authorizeRequests().antMatchers("/admin/**").hasAnyRole("ADMIN");
+		http.authorizeRequests().antMatchers("/admin/**").hasRole("ADMIN");
 		
 		// Private pages (all other pages)
 		// "usuario/**" es privado
@@ -48,6 +46,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.logout().logoutUrl("/logout");
 		http.logout().logoutSuccessUrl("/");
 
+		http.exceptionHandling().accessDeniedPage("/error/403");
+		
 		// Disable CSRF at the moment
 		//http.csrf().disable();
 	}

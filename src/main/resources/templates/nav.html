@@ -12,11 +12,23 @@
 		<div id="navbar" class="navbar-collapse collapse">
 			{{#usuario}}
 				<div class="navbar-form navbar-right">
-					<a class="btn btn-success" href="/usuario/add">+ Puntos</a>
-					<a class="btn btn-primary" href="/usuario/cuenta">Mi Cuenta</a>
+					{{#isAdmin}}
+						<a class="btn btn-success" href="/admin">
+							<span class="glyphicon glyphicon-th" aria-hidden="true"></span>
+							Panel Admin
+						</a>
+					{{/isAdmin}}
+					<a class="btn btn-success" href="/usuario/add">
+						<span class="glyphicon glyphicon-plus" aria-hidden="true"></span>
+						Puntos
+					</a>
+					<a class="btn btn-primary" href="/usuario/cuenta">
+						<span class="glyphicon glyphicon-user" aria-hidden="true"></span>
+						Mi Cuenta
+					</a>
 					<form class="inline-form" action="/logout" method="POST">
 						<input type="hidden" name="{{_csrf.parameterName}}" value="{{_csrf.token}}"/>
-						<button class="btn btn-success" type="submit">
+						<button class="btn btn-danger" type="submit">
 							<span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
 							Salir
 						</button>

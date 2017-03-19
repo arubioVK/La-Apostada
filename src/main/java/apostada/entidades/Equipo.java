@@ -27,7 +27,7 @@ public class Equipo {
 	private List<Partido>partidosVisitante;
 	
 	public Equipo(){}
-	public Equipo(String n, Liga l){
+	public Equipo(String n, Liga l) {
 		name = n;
 		liga = l;		
 	}
@@ -62,7 +62,7 @@ public class Equipo {
 		return partidosVisitante;
 	}
 	public void setPartidosVisitante(List<Partido> partidosVisitante) {
-		this.partidosVisitante=partidosVisitante;
+		this.partidosVisitante = partidosVisitante;
 	}
 	
 }

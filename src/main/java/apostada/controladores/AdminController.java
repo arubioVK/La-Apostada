@@ -33,14 +33,13 @@ public class AdminController {
 	@Autowired
 	private PartidoService partidoService;
 	
-	@RequestMapping(value="/", method=RequestMethod.GET)
+	@RequestMapping(value="", method=RequestMethod.GET)
 	public String home(Model model) {
 		model.addAttribute("usuario", sessionService.getUsuarioActual());
 		model.addAttribute("num_apuestas", partidoService.findProximosPartidos().size());
 		model.addAttribute("partidos", partidoService.findProximosPartidos());
 		return "admin";
 	}
-	
 	
 	@RequestMapping(value="/partido", method=RequestMethod.POST)
 	public String partidoNuevo(Model model, @RequestParam int ano,@RequestParam int mes,@RequestParam int dia,@RequestParam int hora,@RequestParam int min, @RequestParam String equipoLocal, @RequestParam String equipoVisitante, @RequestParam double cuotaLocal, @RequestParam double cuotaEmpate, @RequestParam double cuotaVisitante) {
@@ -62,11 +61,11 @@ public class AdminController {
 		} else {
 			flashService.setError("Tienes que iniciar sesion");
 		}
+		
 		model.addAttribute("num_apuestas", partidoService.findProximosPartidos().size());
 		model.addAttribute("partidos", partidoService.findProximosPartidos());
 		return "admin";
 	}
-	
 	
 	@RequestMapping(value="/resultado", method=RequestMethod.POST)
 	public String resultadoNuevo(Model model, @RequestParam Partido partido, @RequestParam int golLocal, @RequestParam int golVisitante, @RequestParam String redirect) {

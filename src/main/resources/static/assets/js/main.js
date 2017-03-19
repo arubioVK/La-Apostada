@@ -1,6 +1,5 @@
 $(function () {
 
-
 	// Apostar
 	$('.enviar-apuesta').click(function () {
 		var wrapper = $(this).closest('.form-ajax');
@@ -81,11 +80,16 @@ $(function () {
 		e.stopPropagation();
 	});
 
+	function getTimestamp() {
+		return (new Date()).toISOString().substr(0, 19).replace('T', ' ');
+	}
+
 	// Websocket para cuotas
-	var lastViewTimestamp = "2017-03-12 12:07:32";
-	var connectionCuotas = new WebSocket('wss://127.0.0.1:8443/websocket/cuotas');
+	var location = window.location;
+	
+	var connectionCuotas = new WebSocket("wss://" + location.host + "/websocket/cuotas");
 	connectionCuotas.onopen = function () {
-		connectionCuotas.send('{last_view_timestamp: "' + lastViewTimestamp + '"}');
+		connectionCuotas.send('{last_view_timestamp: "' + getTimestamp() + '"}');
 	};
 	connectionCuotas.onerror = function (e) {
 		console.log("WS error: " + e);

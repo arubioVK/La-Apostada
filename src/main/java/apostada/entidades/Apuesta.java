@@ -63,7 +63,7 @@ public class Apuesta {
 	}
 
 	public double getCuota() {
-		return Double.parseDouble(String.format(Locale.ROOT,"%.2f", cuota));
+		return Double.parseDouble(String.format(Locale.ROOT, "%.2f", cuota));
 	}
 
 	public void setCuota(double cuota) {

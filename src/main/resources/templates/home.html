@@ -42,17 +42,17 @@
 							<input type="hidden" name="partido" value="{{id}}">
 
 							<td>
-								<label class="btn btn-default" data-partido="1" data-tipo="1" data-cuota-attr="local">
+								<label class="btn btn-default" data-partido="{{id}}" data-tipo="1" data-cuota-attr="local">
 									<input type="radio" name="resultado" value="1" autocomplete="off">{{cuotaLocal}}
 								</label>
 							</td>
 							<td>
-								<label class="btn btn-default" data-partido="1" data-tipo="1" data-cuota-attr="empate">
+								<label class="btn btn-default" data-partido="{{id}}" data-tipo="1" data-cuota-attr="empate">
 									<input type="radio" name="resultado" value="2" autocomplete="off">{{cuotaEmpate}}
 								</label>
 							</td>
 							<td>
-								<label class="btn btn-default" data-partido="1" data-tipo="1" data-cuota-attr="visitante">
+								<label class="btn btn-default" data-partido="{{id}}" data-tipo="1" data-cuota-attr="visitante">
 									<input type="radio" name="resultado" value="3" autocomplete="off">{{cuotaVisitante}}
 								</label>
 							</td>
@@ -62,11 +62,8 @@
 								<div class="input-group">
 									<input type="text" class="form-control" name="cantidad" placeholder="Cantidad">
 									<span class="input-group-btn">
-										
-										<input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
-										
+										<input type="hidden" name="{{_csrf.parameterName}}" value="{{_csrf.token}}"/>
 										<input class="btn btn-default enviar-apuesta" type="submit" value="Apostar">
-										
 									</span>
 								</div>
 							</td>
