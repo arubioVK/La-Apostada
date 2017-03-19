@@ -69,6 +69,7 @@
 							<div class="input-group">
 								<input type="text" class="form-control" name="cantidad" placeholder="Cantidad">
 								<span class="input-group-btn">
+								<input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
 									<input class="btn btn-default enviar-apuesta" type="submit" value="Apostar">
 									
 								</span>

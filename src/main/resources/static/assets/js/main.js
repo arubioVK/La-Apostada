@@ -104,8 +104,8 @@ $(function () {
 					visitante: 6.32
 				},
 				last_view_timestamp: 2017-03-01 22:01:24
-			}
-		*/
+			}*/
+		
 	   
 		console.log("WS recibido: ", msg.data);
 	   

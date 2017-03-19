@@ -131,8 +131,8 @@ public class ConstructorBD implements InitializingBean {
 		partidoService.save(new Partido(palmas, valencia, 3, 2, 1.7, fecha202, 3, 1));
 
 		//Jornada 29 ligaBBVA (Futura)
-		Date fecha291 = new Date(117, 3, 2, 22, 30, 00);
-		Date fecha292 = new Date(117, 3, 3, 20, 00, 00);
+		Date fecha291 = new Date(117, 5, 2, 22, 30, 00);
+		Date fecha292 = new Date(117, 5, 3, 20, 00, 00);
 		partidoService.save(new Partido(madrid, alaves, 2.45, 3.25, 2.75, fecha291));
 		partidoService.save(new Partido(celta, palmas, 1.83, 3.4, 4, fecha291));
 		partidoService.save(new Partido(villa, eibar, 2.25, 3, 3.20, fecha291));
@@ -235,8 +235,8 @@ public class ConstructorBD implements InitializingBean {
 		partidoService.save(new Partido(ham, mid, 2, 3, 4.5, fecha73, 1, 1));
 
 		//jornada 28 Premier League (Futura)
-		Date fecha284 = new Date(117, 2, 11, 17, 00, 00);
-		Date fecha283 = new Date(117, 2, 13, 21, 00, 00);
+		Date fecha284 = new Date(117, 6, 11, 17, 00, 00);
+		Date fecha283 = new Date(117, 6, 13, 21, 00, 00);
 
 		partidoService.save(new Partido(afc, ham, 9, 4.75, 1.35, fecha283));
 		partidoService.save(new Partido(ars, lei, 2.05, 3.2, 3.75, fecha283));
