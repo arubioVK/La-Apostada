@@ -33,7 +33,7 @@ public class AdminController {
 	@Autowired
 	private PartidoService partidoService;
 	
-	@RequestMapping(value={"/"}, method=RequestMethod.GET)
+	@RequestMapping(value="/", method=RequestMethod.GET)
 	public String home(Model model) {
 		model.addAttribute("usuario", sessionService.getUsuarioActual());
 		model.addAttribute("num_apuestas", partidoService.findProximosPartidos().size());

@@ -27,9 +27,8 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/login/**").permitAll();
 		http.authorizeRequests().antMatchers("/logout/**").permitAll();
 		http.authorizeRequests().antMatchers("/registro/**").permitAll();
+		http.authorizeRequests().antMatchers("/websocket/**").permitAll();
 	
-		
-		
 		// Private pagina del Admin 
 		http.authorizeRequests().antMatchers("/admin/**").hasAnyRole("ADMIN");
 		

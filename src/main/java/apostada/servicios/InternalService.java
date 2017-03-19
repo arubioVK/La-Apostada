@@ -9,8 +9,6 @@ import org.springframework.stereotype.Service;
 
 @Service
 public class InternalService {
-
-	//private static final Logger logger = Logger.getLogger(InternalService.class);
 	
 	@Autowired
 	PartidoService partidoService;
@@ -23,14 +21,19 @@ public class InternalService {
 		return new AsyncResult<>(new Object());
 	}
 
+	private void generarResultado() {
+		
+	}
+	
 	/**
-	 * Auto reclama las apuesta de los usuarios
+	 * Funciones:
+	 * 1. Termina partidos
+	 * 2. Auto-reclama las apuestas de los usuarios
 	 **/
 	@Scheduled(fixedDelay=5000)
 	//@Scheduled(fixedRate=5000)
 	//@Scheduled(cron = "*/5 * * * * ?")
 	public void reclamarApuestas() {
-		//logger.debug("Empezar scheduler");
 		System.out.println("Empezar a reclamar apuestas");
 		
 		// Connect to "La Apostada Interno" through SOCKETS
@@ -60,7 +63,6 @@ public class InternalService {
 		}
 		return "";*/
 
-		//logger.debug("Terminar de reclamar apuestas");
 		//System.out.println("Terminar scheduler");
 	}
 

@@ -26,6 +26,9 @@ La página se apoya en un servicio el cual calcula dinámicamente las cuotas de 
 
 Link al repositorio: [La Apostada Interno](https://github.com/alexurjc/La-Apostada-Interno)
 
+## Comunicación
+La comunicación entre el navegador y [la web]() se realiza mediante [Websockets]().
+
 ## Capturas de pantalla
 ![Alt text](https://github.com/arubioVK/La-Apostada/blob/master/Screenshots/screenshot.jpg)
 Esta es la página principal de La Apostada, desde esta página el usuario puede:

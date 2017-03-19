@@ -14,7 +14,6 @@ import apostada.entidades.Partido;
 import apostada.entidades.Usuario;
 
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 
 @Service
 public class ConstructorBD implements InitializingBean {
