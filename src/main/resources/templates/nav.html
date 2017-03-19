@@ -14,10 +14,13 @@
 				<div class="navbar-form navbar-right">
 					<a class="btn btn-success" href="/usuario/add">+ Puntos</a>
 					<a class="btn btn-primary" href="/usuario/cuenta">Mi Cuenta</a>
-					<a class="btn btn-primary" href="/logout">
-						 <span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
-						Salir
-					</a>
+					<form class="inline-form" action="/logout" method="POST">
+						<input type="hidden" name="{{_csrf.parameterName}}" value="{{_csrf.token}}"/>
+						<button class="btn btn-success" type="submit">
+							<span class="glyphicon glyphicon-log-out" aria-hidden="true"></span>
+							Salir
+						</button>
+					</form>
 				</div>
 				<p class="navbar-text navbar-right">Bienvenido {{usuario.name}}. Tienes <b>{{usuario.puntos}} puntos</b></p>
 			{{/usuario}}
@@ -30,7 +33,7 @@
 						<input class="form-control" type="password" placeholder="Contraseña" name="password">
 					</div>
 					
-					<input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+					<input type="hidden" name="{{_csrf.parameterName}}" value="{{_csrf.token}}"/>
 					
 					<button type="submit" class="btn btn-success">Iniciar Sesion</button>
 					<a class="btn btn-info" href="/registro">Registrate</a>
