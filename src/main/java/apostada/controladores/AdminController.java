@@ -54,6 +54,7 @@ public class AdminController {
 			else if (eLocal.getLiga() != eVisitante.getLiga()){
 				flashService.setError("No pertenecen a la misma liga");
 			}
+			ano = ano-1900;
 			partidoService.save(new Partido(eLocal,eVisitante,cuotaLocal,cuotaEmpate,cuotaVisitante,new Date(ano,mes,dia,hora,min,00)));
 
 			flashService.setSuccess("Partido Añadido");

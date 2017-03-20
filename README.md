@@ -52,8 +52,11 @@ Muestra los partidos que jugará ese equipo y los ya jugados si se selecciona la
 Al pulsar la opción de registrase seremos dirigidos a esta página donde deberemos instroducir Email,nombre de usuario y contraseña.En caso de que se produzca algun error se mostrará un pequeño aviso informando del error:
 ![Alt text](https://github.com/arubioVK/La-Apostada/blob/master/Screenshots/screenshot.5.jpg)
 
-Por último, una vez registrados se podrá acceder a la página de la cuenta donde podremos verlos partidos a los que se ha apostado tanto como a los que se ha apostado y se ha ganado/perdido:
+Una vez registrados se podrá acceder a la página de la cuenta donde podremos verlos partidos a los que se ha apostado tanto como a los que se ha apostado y se ha ganado/perdido:
 ![Alt text](https://github.com/arubioVK/La-Apostada/blob/master/Screenshots/screenshot.6.jpg)
+
+Por último, la página del admin donde se podremos añadir un resultado de un partido o poner un nuevo partido:
+![Alt text](https://github.com/arubioVK/La-Apostada/blob/master/Screenshots/pagina-admin.jpg)
 
 ## Diagrama de navegación
 ![Alt text](https://github.com/arubioVK/La-Apostada/blob/master/Screenshots/screenshot.7.jpg)
