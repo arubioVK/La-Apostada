@@ -1,5 +1,6 @@
 package apostada.entidades;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -16,27 +17,29 @@ public class Liga {
 	private long id;
 	private String name;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="liga")
 	private List<Equipo> equipos;
 	
 	public Liga(){}
-	public Liga(String n){
+	
+	public Liga(String n) {
 		name = n;
 	}
 	
-	public long getId(){
+	public long getId() {
 		return id;
 	}
 	
-	public void setId(long id){
-		this.id=id;
+	public void setId(long id) {
+		this.id = id;
 	}
 	
 	public List<Equipo> getEquipos() {
 		return equipos;
 	}
 	public void setEquipos(List<Equipo> equipos) {
-		this.equipos=equipos;
+		this.equipos = equipos;
 	}
 
 	public String getName() {

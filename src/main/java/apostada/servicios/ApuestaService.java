@@ -3,6 +3,7 @@ package apostada.servicios;
 import apostada.entidades.Apuesta;
 import apostada.entidades.Usuario;
 import apostada.repositorios.ApuestaRepository;
+import java.util.Date;
 
 import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -60,6 +61,10 @@ public class ApuestaService {
 
 	public List<Apuesta> findApuestaUserPerdidasinReclamar(Usuario u) {
 		return apuestaRepository.findApuestaPerdidasNoReclamadaByUser(u);
+	}
+	
+	public List<Apuesta> findByFechaGreaterThanOrderByFechaAsc(Date fecha) {
+		return apuestaRepository.findByFechaGreaterThanOrderByFechaAsc(fecha);
 	}
 
 }

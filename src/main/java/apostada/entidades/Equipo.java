@@ -1,5 +1,6 @@
 package apostada.entidades;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.List;
 
 import javax.persistence.Entity;
@@ -20,9 +21,11 @@ public class Equipo {
 	@ManyToOne
 	private Liga liga;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="equipoLocal")
 	private List<Partido>partidosLocal;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="equipoVisitante")
 	private List<Partido>partidosVisitante;
 	

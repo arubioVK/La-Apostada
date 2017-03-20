@@ -1,5 +1,6 @@
 package apostada.entidades;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.ElementCollection;
@@ -27,6 +28,7 @@ public class Usuario {
 	private String passwordHash;
 	private double puntos;
 
+	@JsonIgnore
 	@OneToMany(mappedBy = "user")
 	private List<Apuesta> apuestas;
 	

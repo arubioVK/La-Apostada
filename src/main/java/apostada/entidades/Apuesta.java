@@ -106,5 +106,13 @@ public class Apuesta {
 	public void setReclamado(boolean reclamado) {
 		this.reclamado = reclamado;
 	}
+	
+	public Usuario getUsuario () {
+		return user;
+	}
+	
+	public void setUsuario(Usuario usuario) {
+		this.user = usuario;
+	}
 
 }

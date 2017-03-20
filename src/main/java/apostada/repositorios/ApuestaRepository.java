@@ -2,6 +2,7 @@ package apostada.repositorios;
 
 import apostada.entidades.Apuesta;
 import apostada.entidades.Usuario;
+import java.util.Date;
 
 import java.util.List;
 
@@ -33,4 +34,5 @@ public interface ApuestaRepository extends JpaRepository<Apuesta, Long> {
 	@Query("SELECT a FROM Apuesta a LEFT OUTER JOIN a.partido p WHERE a.user = ?1 AND p.resultado = 'null'")
 	List<Apuesta> findApuestasNoFinalizadasByUser(Usuario s);
 	
+	List<Apuesta> findByFechaGreaterThanOrderByFechaAsc(Date fecha);
 }

@@ -43,7 +43,7 @@ public class ConstructorBD implements InitializingBean {
 		usuarioService.save(adm);		
 		
 		//Liga BBVA
-		Liga ligaBBVA = new Liga("liga BBVA");
+		Liga ligaBBVA = new Liga("Liga BBVA");
 		ligaService.save(ligaBBVA);
 		//Equipo ligaBBVA
 		Equipo malaga = new Equipo("Malaga", ligaBBVA);

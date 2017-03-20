@@ -1,5 +1,6 @@
 package apostada.entidades;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import java.util.Date;
 import java.util.List;
 import java.util.Locale;
@@ -24,6 +25,7 @@ public class Partido {
 	@ManyToOne
 	private Equipo equipoVisitante;
 	
+	@JsonIgnore
 	@OneToMany(mappedBy="partido")
 	private List<Apuesta> apuestas;
 	
@@ -174,27 +176,31 @@ public class Partido {
 	public void ajusteCuota(double cantidad, int resultado) {
 		double ajusteap =cantidad /1000;
 		double ajusteot = ajusteap / 2;
-		if (resultado == Apuesta.RESULTADO_VICTORIA_LOCAL) {
-			this.cuotaEmpate +=ajusteot;
-			this.cuotaVisitante+=ajusteot;
-			this.cuotaLocal -= ajusteap;
-			if (this.cuotaLocal < 1.01) {
-				this.cuotaLocal = 1.01;
-			}
-		} else if (resultado == Apuesta.RESULTADO_EMPATE){
-			this.cuotaLocal +=ajusteot;
-			this.cuotaVisitante+=ajusteot;
-			this.cuotaEmpate -= ajusteap;
-			if (this.cuotaEmpate < 1.01) {
-				this.cuotaEmpate = 1.01;
-			}
-		} else {
-			this.cuotaLocal +=ajusteot;
-			this.cuotaEmpate+=ajusteot;
-			this.cuotaVisitante -= ajusteap;
-			if (this.cuotaVisitante < 1.01) {
-				this.cuotaVisitante = 1.01;
-			}
+		switch (resultado) {
+			case Apuesta.RESULTADO_VICTORIA_LOCAL:
+				this.cuotaEmpate +=ajusteot;
+				this.cuotaVisitante+=ajusteot;
+				this.cuotaLocal -= ajusteap;
+				if (this.cuotaLocal < 1.01) {
+					this.cuotaLocal = 1.01;
+				}
+				break;
+			case Apuesta.RESULTADO_EMPATE:
+				this.cuotaLocal +=ajusteot;
+				this.cuotaVisitante+=ajusteot;
+				this.cuotaEmpate -= ajusteap;
+				if (this.cuotaEmpate < 1.01) {
+					this.cuotaEmpate = 1.01;
+				}
+				break;
+			case Apuesta.RESULTADO_VICTORIA_VISITANTE:
+				this.cuotaLocal +=ajusteot;
+				this.cuotaEmpate+=ajusteot;
+				this.cuotaVisitante -= ajusteap;
+				if (this.cuotaVisitante < 1.01) {
+					this.cuotaVisitante = 1.01;
+				}
+				break;
 		}
 	}
 	
