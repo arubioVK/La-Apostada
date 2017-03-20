@@ -59,7 +59,7 @@ Por último, la página del admin donde se podremos añadir un resultado de un p
 ![Alt text](https://github.com/arubioVK/La-Apostada/blob/master/Screenshots/screenshot.8.jpg)
 
 ## Diagrama de navegación
-![Alt text](https://github.com/arubioVK/La-Apostada/blob/master/Screenshots/screenshot.7.jpg)
+![Alt text](https://github.com/arubioVK/La-Apostada/blob/master/Screenshots/navegacion.jpg)
 
 Las páginas están muy bien comunicadas entre ellas.
 
