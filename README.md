@@ -41,9 +41,6 @@ Además en el caso de los errores, se envia un mensaje de error en el cuerpo de 
 
 La web se autentica con el servicio interno mediante HTTP Auth Basic.
 
-## Comunicacion con el navegador para las cuotas
-Para actualizar las cuotas de los partidos en tiempo real se realiza la comunicación entre el navegador y [la web](https://github.com/arubioVK/La-Apostada) mediante [Websockets](https://docs.spring.io/spring/docs/current/spring-framework-reference/html/websocket.html).
-
 ## Instrucciones de despligue
 
 ### Crear JARs
