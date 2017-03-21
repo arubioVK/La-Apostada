@@ -83,6 +83,18 @@ mysql -u root -p
  CREATE DATABASE la-apostada;
 ```
 
+```bash
+USE la-apostada;
+```
+
+```bash
+CREATE USER 'la_apostada_user'@'localhost' IDENTIFIED BY '98741236';
+```
+
+```bash
+GRANT ALL PRIVILEGES ON `la-apostada`.* TO 'la_apostada_user'@'localhost';
+```
+
 ### Subir los JARs a la máquina virtual
 Una vez compilado los proyectos, se generará un JAR por cada uno en la carpeta `target`.
 
