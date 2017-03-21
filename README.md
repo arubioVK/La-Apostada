@@ -29,7 +29,7 @@ La página se apoya en un servicio el cual calcula dinámicamente las cuotas de 
 Link al repositorio del Servicio Interno: [La Apostada Interno](https://github.com/alexurjc/La-Apostada-Interno)
 
 ## Comunicación con el Servicio Interno
-Para comunicar la web con el servicio interno se ha creado una API REST en el servicio interno.
+Para comunicar la web con el servicio interno se ha creado una API REST en el servicio interno (mediante JSON).
 
 De momento, se utiliza para apostar.
 
