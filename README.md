@@ -100,18 +100,18 @@ scp ./la-apostada-interno-0.0.1-SNAPSHOT.jar azureuser@la-apostada.cloudapp.net:
 ```
 
 ### Ejecutar la app
-1) Ejecutar el JAR del servicio interno
+1) Ejecutar el JAR de la web
 ```bash
-java -jar ./la-apostada-0.0.1-SNAPSHOT.jar &
+nohup java -jar ./la-apostada-0.0.1-SNAPSHOT.jar
 ```
 
-2) Ejecutar el JAR de la web
+2) Ejecutar el JAR del servicio interno
 ```bash
-java -jar ./la-apostada-interno-0.0.1-SNAPSHOT.jar &
+nohup java -jar ./la-apostada-interno-0.0.1-SNAPSHOT.jar
 ```
 
 ### Probar la app
-Abrir navegador con la url: `https://la-apostada.cloudapp.net:8443/`
+Abrir navegador con la url: `https://la-apostada.cloudapp.net/` o `https://la-apostada.cloudapp.net:8443/`
 
 ## Capturas de Pantalla
 ![Alt text](https://github.com/arubioVK/La-Apostada/blob/master/screenshots/screenshot.jpg)
