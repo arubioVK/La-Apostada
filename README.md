@@ -102,12 +102,12 @@ scp ./la-apostada-interno-0.0.1-SNAPSHOT.jar azureuser@la-apostada.cloudapp.net:
 ### Ejecutar la app
 1) Ejecutar el JAR de la web
 ```bash
-nohup java -jar ./la-apostada-0.0.1-SNAPSHOT.jar
+nohup java -jar ./la-apostada-0.0.1-SNAPSHOT.jar &
 ```
 
 2) Ejecutar el JAR del servicio interno
 ```bash
-nohup java -jar ./la-apostada-interno-0.0.1-SNAPSHOT.jar
+nohup java -jar ./la-apostada-interno-0.0.1-SNAPSHOT.jar &
 ```
 
 ### Probar la app
