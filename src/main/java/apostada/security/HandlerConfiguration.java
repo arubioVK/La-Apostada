@@ -26,7 +26,7 @@ public class HandlerConfiguration extends WebMvcConfigurerAdapter {
 
 class HandlerInterceptor extends HandlerInterceptorAdapter {
 	
-	private SessionService sessionService;
+	private final SessionService sessionService;
 	
 	public HandlerInterceptor(SessionService sessionService) {
 		super();
