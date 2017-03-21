@@ -27,8 +27,6 @@ public class RegistroController {
 	@Autowired
 	UsuarioService usuarioService;
 	
-	
-	
 	@RequestMapping(value="", method=RequestMethod.GET)
 	public String registro(Model model) {
 		

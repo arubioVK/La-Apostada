@@ -8,6 +8,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 public class Application {
 
 	public static void main(String[] args) throws Exception {
+		// Setear certificado para el servicio interno
 		System.setProperty("javax.net.ssl.trustStore", URLDecoder.decode(Application.class.getClass().getResource("/truststore.jks").getPath(), "UTF-8"));
 		System.setProperty("javax.net.ssl.trustStorePassword", "password");
 		

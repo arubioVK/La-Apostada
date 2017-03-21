@@ -10,9 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import apostada.entidades.Apuesta;
 import apostada.entidades.Usuario;
 import apostada.servicios.ApuestaService;
-import apostada.servicios.EquipoService;
 import apostada.servicios.FlashService;
-import apostada.servicios.PartidoService;
 import apostada.servicios.SessionService;
 import apostada.servicios.UsuarioService;
 import org.springframework.web.bind.annotation.RequestMethod;
@@ -33,12 +31,6 @@ public class UsuarioController {
 	
 	@Autowired
 	private UsuarioService usuarioService;
-	
-	@Autowired
-	private EquipoService equipoService;
-	
-	@Autowired
-	private PartidoService partidoService;
 	
 	@RequestMapping("/cuenta")
 	public String cuenta(Model model) {

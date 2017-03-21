@@ -87,33 +87,16 @@ $(function () {
 		e.stopPropagation();
 	});
 
-	function setupWebSocket() {	
+	function setupWebSocket() {
 		// Websocket para cuotas
 		var connectionCuotas = new WebSocket("wss://" + window.location.host + "/websocket/cuotas");
 		var interval = null;
-
-		function waitForSocketConnection(socket, callback) {
-			setTimeout(function () {
-					if (socket.readyState === 1) {
-						console.log("Connection is made")
-						if (callback != null) {
-							callback();
-						}
-					} else {
-						console.log(connectionCuotas);
-						//console.log("wait for connection...")
-						//waitForSocketConnection(socket, callback);
-					}
-			}, 5);
-		}
 
 		connectionCuotas.onopen = function () {
 			if (interval) clearInterval(interval);
 			
 			interval = setInterval(function () {
-				waitForSocketConnection(connectionCuotas, function () {
-					connectionCuotas.send('{"last_view_timestamp": "' + last_view_timestamp + '"}');
-				});
+				connectionCuotas.send('{"last_view_timestamp": "' + last_view_timestamp + '"}');
 			}, 5000);
 		};
 		connectionCuotas.onclose = function() {

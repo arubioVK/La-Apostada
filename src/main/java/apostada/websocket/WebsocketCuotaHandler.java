@@ -26,6 +26,7 @@ public class WebsocketCuotaHandler extends TextWebSocketHandler {
 		try {
 			obj = new JSONObject(message.getPayload());
 		} catch (JSONException ignored) {
+			System.out.println("ERROR");
 			return;
 		}
 		
