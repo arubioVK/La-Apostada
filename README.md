@@ -58,6 +58,7 @@ git clone https://github.com/alexurjc/La-Apostada-Interno
 ```
 
 2) Compilar los dos proyectos
+
 Ejecutar esto en la raiz de cada proyecto:
 ```bash
 mvn clean install
@@ -151,9 +152,10 @@ Las páginas están muy bien comunicadas entre ellas.
 ![Alt text](https://github.com/arubioVK/La-Apostada/blob/master/screenshots/diagrama_er.jpg)
 
 ## Diagrama de Clases y Templates
-![Alt text](https://github.com/arubioVK/La-Apostada/blob/master/screenshots/diagrama_clases_templates_web.jpg)
+![Alt text](https://github.com/arubioVK/La-Apostada/blob/master/screenshots/diagrama_clases_templates_web.png)
 
 Leyenda:
+
 |Color		|Tipo			|
 |---------------|-----------------------|
 |Verde		|@Service		|
