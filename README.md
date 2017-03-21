@@ -139,8 +139,8 @@ Una vez registrados se podrá acceder a la página de la cuenta donde podremos v
 Por último, la página del admin donde se podremos añadir un resultado de un partido o poner un nuevo partido:
 ![Alt text](https://github.com/arubioVK/La-Apostada/blob/master/screenshots/screenshot.8.jpg)
 
-## Diagrama de navegación
-![Alt text](https://github.com/arubioVK/La-Apostada/blob/master/Screenshots/Navegacion.jpg)
+## Diagrama de Navegación
+![Alt text](https://github.com/arubioVK/La-Apostada/blob/master/screenshots/navegacion.jpg)
 
 Las páginas están muy bien comunicadas entre ellas.
 
