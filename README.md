@@ -47,32 +47,32 @@ La web se autentica con el servicio interno mediante HTTP Auth Basic.
 1) Clonar los dos repositorios (web y servicio interno)
 
 ```bash
-git clone https://github.com/arubioVK/La-Apostada
+$ git clone https://github.com/arubioVK/La-Apostada
 ```
 
 ```bash
-git clone https://github.com/alexurjc/La-Apostada-Interno
+$ git clone https://github.com/alexurjc/La-Apostada-Interno
 ```
 
 2) Compilar los dos proyectos
 
 Ejecutar esto en la raiz de cada proyecto:
 ```bash
-mvn clean install
+$ mvn clean install
 ```
 
 ### Configurar la máquina virtual
 1) Instalar Java
 
 ```bash
-sudo add-apt-repository ppa:webupd8team/java
-sudo apt-get update
-sudo apt-get install oracle-java8-installer
+$ sudo add-apt-repository ppa:webupd8team/java
+$ sudo apt-get update
+$ sudo apt-get install oracle-java8-installer
 ```
 
 2) Instalar MySQL
 ```bash
-sudo apt-get install mysql-server
+$ sudo apt-get install mysql-server
 ```
 3) Crear una base de datos
 ```bash
@@ -100,23 +100,23 @@ Una vez compilado los proyectos, se generará un JAR por cada uno en la carpeta 
 
 Dentro de la carpeta `target` de la web:
 ```bash
-scp ./la-apostada-0.0.1-SNAPSHOT.jar azureuser@la-apostada.cloudapp.net:/home/azureuser/la-apostada-0.0.1-SNAPSHOT.jar
+$ scp ./la-apostada-0.0.1-SNAPSHOT.jar azureuser@la-apostada.cloudapp.net:/home/azureuser/la-apostada-0.0.1-SNAPSHOT.jar
 ```
 
 Dentro de la carpeta `target` del servicio interno:
 ```bash
-scp ./la-apostada-interno-0.0.1-SNAPSHOT.jar azureuser@la-apostada.cloudapp.net:/home/azureuser/la-apostada-interno-0.0.1-SNAPSHOT.jar
+$ scp ./la-apostada-interno-0.0.1-SNAPSHOT.jar azureuser@la-apostada.cloudapp.net:/home/azureuser/la-apostada-interno-0.0.1-SNAPSHOT.jar
 ```
 
 ### Ejecutar la app
 1) Ejecutar el JAR de la web
 ```bash
-nohup java -jar ./la-apostada-0.0.1-SNAPSHOT.jar &
+$ nohup java -jar ./la-apostada-0.0.1-SNAPSHOT.jar &
 ```
 
 2) Ejecutar el JAR del servicio interno
 ```bash
-nohup java -jar ./la-apostada-interno-0.0.1-SNAPSHOT.jar &
+$ nohup java -jar ./la-apostada-interno-0.0.1-SNAPSHOT.jar &
 ```
 
 ### Probar la app
