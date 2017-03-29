@@ -76,23 +76,23 @@ sudo apt-get install mysql-server
 ```
 3) Crear una base de datos
 ```bash
-mysql -u root -p
+$ mysql -u root -p
 ```
 
 ```bash
- CREATE DATABASE la-apostada;
+mysql> CREATE DATABASE la-apostada;
 ```
-
 ```bash
-USE la-apostada;
+mysql> USE la-apostada;
 ```
-
 ```bash
-CREATE USER 'la_apostada_user'@'localhost' IDENTIFIED BY '98741236';
+mysql> CREATE USER 'la_apostada_user'@'localhost' IDENTIFIED BY '98741236';
 ```
-
 ```bash
-GRANT ALL PRIVILEGES ON `la-apostada`.* TO 'la_apostada_user'@'localhost';
+mysql> GRANT ALL PRIVILEGES ON `la-apostada`.* TO 'la_apostada_user'@'localhost';
+```
+```bash
+mysql> FLUSH PRIVILEGES;
 ```
 
 ### Subir los JARs a la máquina virtual
