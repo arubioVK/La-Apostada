@@ -80,18 +80,14 @@ $ mysql -u root -p
 ```
 
 ```bash
-mysql> CREATE DATABASE la-apostada;
-```
-```bash
-mysql> USE la-apostada;
-```
-```bash
+mysql> CREATE DATABASE `la-apostada`;
+
+mysql> USE `la-apostada`;
+
 mysql> CREATE USER 'la_apostada_user'@'localhost' IDENTIFIED BY '98741236';
-```
-```bash
+
 mysql> GRANT ALL PRIVILEGES ON `la-apostada`.* TO 'la_apostada_user'@'localhost';
-```
-```bash
+
 mysql> FLUSH PRIVILEGES;
 ```
 

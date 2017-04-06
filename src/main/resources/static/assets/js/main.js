@@ -147,6 +147,6 @@ $(function () {
 		};
 	}
 	
-	setupWebSocket();
+	//setupWebSocket();
 
 });
