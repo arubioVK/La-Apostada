@@ -5,6 +5,7 @@ import apostada.entidades.Partido;
 import apostada.entidades.Usuario;
 import apostada.servicios.FlashService;
 import apostada.servicios.SessionService;
+import java.net.HttpURLConnection;
 import java.security.KeyManagementException;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
@@ -19,10 +20,10 @@ import org.apache.http.impl.client.HttpClients;
 import org.apache.http.ssl.TrustStrategy;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
-import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.client.HttpComponentsClientHttpRequestFactory;
 import org.springframework.stereotype.Controller;
@@ -43,6 +44,15 @@ public class ApuestaController {
 	@Autowired
 	private SessionService sessionService;
 	
+	@Value("${internal_service.url}")
+	private String internalServiceURL;
+	
+	@Value("${internal_service.user}")
+	private String internalServiceUser;
+	
+	@Value("${internal_service.password}")
+	private String internalServicePasswordt;
+	
 	@RequestMapping(value="/apostar", method=RequestMethod.POST)
 	public String apostar(Model model, @RequestParam Partido partido, @RequestParam double cuota,
 			@RequestParam int resultado, @RequestParam double cantidad, @RequestParam String redirect) throws NoSuchAlgorithmException, KeyStoreException, KeyStoreException, KeyStoreException, KeyStoreException, KeyManagementException, KeyStoreException, KeyStoreException {
@@ -53,9 +63,9 @@ public class ApuestaController {
 		} else {
 			Apuesta apuesta = new Apuesta(partido, usuario, cuota, cantidad, new Date(), resultado);
 			
-			String url = "https://localhost:8888/apuesta";
+			String url = internalServiceURL + "/apuesta";
 
-			String plainCreds = "usuario:secreto123456";
+			String plainCreds = internalServiceUser + ":" + internalServicePasswordt;
 			byte[] plainCredsBytes = plainCreds.getBytes();
 			byte[] base64CredsBytes = Base64.getEncoder().encode(plainCredsBytes);
 			String base64Creds = new String(base64CredsBytes);
@@ -64,17 +74,7 @@ public class ApuestaController {
 			headers.add("Authorization", "Basic " + base64Creds);
 			HttpEntity<Apuesta> httpEntity = new HttpEntity<>(apuesta, headers);
 			
-			// Quitar validacion SSL
-			HttpsURLConnection.setDefaultHostnameVerifier(
-					(String hostname, javax.net.ssl.SSLSession sslSession) -> {
-				return true;
-			});
-			TrustStrategy acceptingTrustStrategy = (X509Certificate[] chain, String authType) -> true;
-			SSLContext sslContext = org.apache.http.ssl.SSLContexts.custom()
-						.loadTrustMaterial(null, acceptingTrustStrategy)
-						.build();
-			SSLConnectionSocketFactory csf = new SSLConnectionSocketFactory(sslContext, SSLConnectionSocketFactory.ALLOW_ALL_HOSTNAME_VERIFIER);
-			CloseableHttpClient httpClient = HttpClients.custom().setSSLSocketFactory(csf).build();
+			CloseableHttpClient httpClient = HttpClients.custom().build();
 			HttpComponentsClientHttpRequestFactory requestFactory = new HttpComponentsClientHttpRequestFactory();
 			requestFactory.setHttpClient(httpClient);
 
