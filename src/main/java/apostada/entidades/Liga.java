@@ -49,4 +49,25 @@ public class Liga {
 	public void setName(String name) {
 		this.name = name;
 	}
+	
+	@Override
+	public int hashCode() {
+		return Long.hashCode(this.id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		final Liga other = (Liga) obj;
+		return this.id == other.id;
+	}
+	
 }

@@ -205,12 +205,31 @@ public class Partido {
 	}
 	
 	public void nuevoResultado(int gL, int gV) {
-		setGolLocal(gL);
-		setGolVisitante(gV);
+		this.setGolLocal(gL);
+		this.setGolVisitante(gV);
 		if (gL > gV) {resultado = Apuesta.RESULTADO_VICTORIA_LOCAL;}
 		else if (gV > gL) { resultado = Apuesta.RESULTADO_VICTORIA_VISITANTE;}
 		else {resultado = Apuesta.RESULTADO_EMPATE;}
 	}
 	
+	@Override
+	public int hashCode() {
+		return Long.hashCode(this.id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		final Partido other = (Partido) obj;
+		return this.id == other.id;
+	}
 	
 }

@@ -16,37 +16,41 @@ public class PartidoService {
 	@Autowired
 	PartidoRepository partidoRepository;
 	
-	public Partido findById(long id) {
-		return partidoRepository.findOne(id);
+	public Long count() {
+		return partidoRepository.count();
 	}
 	
-	public List<Partido> findByLiga(Liga id) {//PARA LIGA
-		return partidoRepository.findPartidoByLiga(id,new Date());
+	public Partido findById(long id) {
+		return partidoRepository.findOne(id);
 	}
 	
 	public List<Partido> findAll() {
 		return partidoRepository.findAll();
 	}
 	
-	public List<Partido> findByEquipo(Equipo id){
-		return partidoRepository.findPartidoByEquipoName(id, new Date());
+	public List<Partido> findProximosByEquipo(Equipo equipo) {
+		// Para equipo
+		return partidoRepository.findPartidoProximoByEquipoAndFecha(equipo, new Date());
 	}
 	
-	public Long count() {
-		return partidoRepository.count();
+	public List<Partido> findProximosByLiga(Liga liga) {
+		// Para liga
+		return partidoRepository.findPartidoProximoByLigaAndFecha(liga, new Date());
 	}
 	
-	public List<Partido> findJugadosEquipo(Equipo id) {//PARA Partidos de un equipo JUGADOS
-		return partidoRepository.findByPartidoEquipoFinalizado(id);
+	public List<Partido> findJugadosByEquipo(Equipo equipo) {
+		// Para equipo JUGADOS
+		return partidoRepository.findPartidoFinalizadoByEquipo(equipo);
 	}
 	
-	public List<Partido> findJugados(Liga id) {//PARA LIGA JUGADOS
-		return partidoRepository.findByPartidoFinalizado(id);
+	public List<Partido> findJugadosByLiga(Liga liga) {
+		// Para liga JUGADOS
+		return partidoRepository.findPartidoFinalizadoByLiga(liga);
 	}
 	
-	public List<Partido> findNoJugados() {
-		Date fecha = new Date();
-		return partidoRepository.findPartidoByAnteriorFecha(fecha);
+	public List<Partido> findProximosPartidos() {
+		// Para home
+		return partidoRepository.findPartidoProximoByFecha(new Date());
 	}
 	
 	public boolean exists(long id) {
@@ -59,9 +63,6 @@ public class PartidoService {
 	
 	public void delete(Partido partido) {
 		partidoRepository.delete(partido);
-	}
-	public List<Partido> findProximosPartidos() {//PARA HOME
-		return partidoRepository.findPartidoByAnteriorFecha(new Date());
 	}
 	
 }

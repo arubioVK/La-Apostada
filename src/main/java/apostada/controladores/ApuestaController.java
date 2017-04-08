@@ -5,19 +5,13 @@ import apostada.entidades.Partido;
 import apostada.entidades.Usuario;
 import apostada.servicios.FlashService;
 import apostada.servicios.SessionService;
-import java.net.HttpURLConnection;
 import java.security.KeyManagementException;
 import java.security.KeyStoreException;
 import java.security.NoSuchAlgorithmException;
-import java.security.cert.X509Certificate;
 import java.util.Base64;
 import java.util.Date;
-import javax.net.ssl.HttpsURLConnection;
-import javax.net.ssl.SSLContext;
-import org.apache.http.conn.ssl.SSLConnectionSocketFactory;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClients;
-import org.apache.http.ssl.TrustStrategy;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
@@ -93,14 +87,6 @@ public class ApuestaController {
 		}
 		
 		return "redirect:" + redirect;
-	}
-	
-	static {
-	    //for localhost testing only
-	    javax.net.ssl.HttpsURLConnection.setDefaultHostnameVerifier(
-				(String hostname, javax.net.ssl.SSLSession sslSession) -> {
-			return true;
-		});
 	}
 	
 }

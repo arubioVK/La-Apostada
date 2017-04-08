@@ -24,6 +24,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		http.authorizeRequests().antMatchers("/login/**").permitAll();
 		http.authorizeRequests().antMatchers("/logout/**").permitAll();
 		http.authorizeRequests().antMatchers("/registro/**").permitAll();
+		http.authorizeRequests().antMatchers("/cache/**").permitAll();
 		
 		// Public websocket
 		http.authorizeRequests().antMatchers("/websocket/**").permitAll();
@@ -50,6 +51,9 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		
 		// Disable CSRF at the moment
 		//http.csrf().disable();
+		
+		// Port
+		http.portMapper().http(8080).mapsTo(8443);
 	}
 
 	@Override

@@ -42,22 +42,32 @@ public class AdminController {
 	}
 	
 	@RequestMapping(value="/partido", method=RequestMethod.POST)
-	public String partidoNuevo(Model model, @RequestParam int ano,@RequestParam int mes,@RequestParam int dia,@RequestParam int hora,@RequestParam int min, @RequestParam String equipoLocal, @RequestParam String equipoVisitante, @RequestParam double cuotaLocal, @RequestParam double cuotaEmpate, @RequestParam double cuotaVisitante) {
+	public String partidoNuevo(Model model,
+			@RequestParam int ano, @RequestParam int mes, @RequestParam int dia , @RequestParam int hora, @RequestParam int min,
+			@RequestParam String equipoLocal, @RequestParam String equipoVisitante,
+			@RequestParam double cuotaLocal, @RequestParam double cuotaEmpate, @RequestParam double cuotaVisitante) {
 		Usuario usuario = sessionService.getUsuarioActual();
+		
 		if (usuario != null) {
 			Equipo eLocal = equipoService.findByName(equipoLocal);
 			Equipo eVisitante = equipoService.findByName(equipoVisitante);
-			if(eLocal == null||eVisitante == null){
+			if (eLocal == null || eVisitante == null) {
 				flashService.setError("No existe el equipo");
-			}
-			else if (eLocal.getLiga() != eVisitante.getLiga()){
+			} else if (eLocal.getLiga() != eVisitante.getLiga()){
 				flashService.setError("No pertenecen a la misma liga");
+			} else if (eLocal.equals(eVisitante)) {
+				flashService.setError("No pueden ser el mismo equipo");
+			} else {
+				ano = ano - 1900;
+				partidoService.save(
+					new Partido(eLocal, eVisitante,
+						cuotaLocal, cuotaEmpate, cuotaVisitante,
+						new Date(ano, mes, dia, hora, min, 00)
+					)
+				);
+			
+				flashService.setSuccess("Partido Añadido");
 			}
-			ano = ano-1900;
-			partidoService.save(new Partido(eLocal,eVisitante,cuotaLocal,cuotaEmpate,cuotaVisitante,new Date(ano,mes,dia,hora,min,00)));
-
-			flashService.setSuccess("Partido Añadido");
-
 		} else {
 			flashService.setError("Tienes que iniciar sesion");
 		}
@@ -72,13 +82,13 @@ public class AdminController {
 		Usuario usuario = sessionService.getUsuarioActual();
 		
 		if (usuario != null) {
-				partido.nuevoResultado(golLocal, golVisitante);
-				partidoService.save(partido);
-				flashService.setSuccess("Resultado Añadido");
-
+			partido.nuevoResultado(golLocal, golVisitante);
+			partidoService.save(partido);
+			flashService.setSuccess("Resultado añadido");
 		} else {
 			flashService.setError("Tienes que iniciar sesion");
 		}
+		
 		model.addAttribute("num_apuestas", partidoService.findProximosPartidos().size());
 		model.addAttribute("partidos", partidoService.findProximosPartidos());
 		

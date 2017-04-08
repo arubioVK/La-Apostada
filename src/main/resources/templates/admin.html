@@ -21,21 +21,57 @@
 			Añadir Partido:
 		</h2>
 					
-		<form action="/admin/partido" method="post">
-			Fecha: <input type="text" name="dia" placeholder="Dia">
-			<input type="text" name="mes" placeholder="Mes">
-			<input type="text" name="ano" placeholder="Año">
-			<input type="text" name="hora" placeholder="Hora">
-			<input type="text" name="min" placeholder="Minuto">
-			</br>
-			Equipos: <input type="text" name="equipoLocal" placeholder="Equipo Local">
-			<input type="text" name="equipoVisitante" placeholder="Equipo Visitante">
-			</br>
-			Cuotas: <input type="text" name="cuotaLocal" placeholder="Cuota Local">
-			<input type="text" name="cuotaEmpate" placeholder="Cuota Empate">
-			<input type="text" name="cuotaVisitante" placeholder="Cuota Visitante">	
-			<input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
-			<input type="submit" value="Añadir Partido" >
+		<form action="/admin/partido" method="POST">
+			<div class="form-inline">
+				<div class="form-group">
+					Fecha:
+				</div>
+				<div class="form-group">
+					<input class="form-control" type="text" name="dia" placeholder="Dia">
+				</div>
+				<div class="form-group">
+					<input class="form-control" type="text" name="mes" placeholder="Mes">
+				</div>
+				<div class="form-group">
+					<input class="form-control" type="text" name="ano" placeholder="Año">
+				</div>
+				<div class="form-group">
+					<input class="form-control" type="text" name="hora" placeholder="Hora">
+				</div>
+				<div class="form-group">
+					<input class="form-control" type="text" name="min" placeholder="Minuto">
+				</div>
+			</div>
+			<div class="form-inline">
+				<div class="form-group">
+					Equipos::
+				</div>
+				<div class="form-group">
+					<input class="form-control" type="text" name="equipoLocal" placeholder="Equipo Local">
+				</div>
+				<div class="form-group">
+					<input class="form-control" type="text" name="equipoVisitante" placeholder="Equipo Visitante">
+				</div>
+			</div>
+			<div class="form-inline">
+				<div class="form-group">
+					Cuotas:
+				</div>
+				<div class="form-group">
+					<input class="form-control" type="text" name="cuotaLocal" placeholder="Cuota Local">
+				</div>
+				<div class="form-group">
+					<input class="form-control" type="text" name="cuotaEmpate" placeholder="Cuota Empate">
+				</div>
+				<div class="form-group">
+					<input class="form-control" type="text" name="cuotaVisitante" placeholder="Cuota Visitante">
+				</div>
+			</div>
+			<br />
+			<span class="input-group-btn">
+				<input type="hidden" name="_csrf" value="{{_csrf.token}}"/>
+				<input class="btn btn-default" type="submit" value="Añadir Partido">
+			</span>
 		</form>
 		
 		<h2 class="sub-header">

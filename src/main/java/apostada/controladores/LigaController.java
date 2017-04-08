@@ -34,7 +34,7 @@ public class LigaController {
 		if (liga != null) {
 			model.addAttribute("usuario", usuario);
 			model.addAttribute("liga", liga);
-			model.addAttribute("partidos", partidoService.findByLiga(liga));
+			model.addAttribute("partidos", partidoService.findProximosByLiga(liga));
 
 			return "liga";
 		}
@@ -46,7 +46,7 @@ public class LigaController {
 	public String partidosJugados(@PathVariable long id, Model model) {
 		Liga liga = ligaService.findById(id);
 		model.addAttribute("liga", liga);
-		model.addAttribute("partidos", partidoService.findJugados(liga));
+		model.addAttribute("partidos", partidoService.findJugadosByLiga(liga));
 		
 		return "ligaJugados";
 	}

@@ -7,6 +7,7 @@ import apostada.servicios.PartidoService;
 import apostada.servicios.SessionService;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,7 +34,7 @@ public class EquipoController {
 		
 		if (equipo != null) {
 			model.addAttribute("usuario", usuario);
-			model.addAttribute("partidos", partidoService.findByEquipo(equipo));
+			model.addAttribute("partidos", partidoService.findProximosByEquipo(equipo));
 			model.addAttribute("equipo", equipo);
 			
 			return "equipo";	
@@ -46,7 +47,7 @@ public class EquipoController {
 	public String partidosJugados(@PathVariable long id, Model model) {
 		Equipo equipo = equipoService.findById(id);
 		model.addAttribute("equipo", equipo);
-		model.addAttribute("partidos", partidoService.findJugadosEquipo(equipo));
+		model.addAttribute("partidos", partidoService.findJugadosByEquipo(equipo));
 		
 		return "equipoJugados";
 	}
