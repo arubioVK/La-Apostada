@@ -51,9 +51,6 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 		
 		// Disable CSRF at the moment
 		//http.csrf().disable();
-		
-		// Port
-		http.portMapper().http(8080).mapsTo(8443);
 	}
 
 	@Override
