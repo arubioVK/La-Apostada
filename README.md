@@ -172,3 +172,5 @@ Leyenda:
 |Amarillo	|@ControllerAdvice	|
 |Rojo		|Template		|
 
+## Estructura en Azure
+![Alt text](https://github.com/arubioVK/La-Apostada/blob/master/screenshots/Estructura.png)
