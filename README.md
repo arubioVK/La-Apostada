@@ -1,5 +1,5 @@
 # La Apostada
-[![Video de Youtube](http://img.youtube.com/vi/wRHiTgAeK6I&t=5s/0.jpg)](http://www.youtube.com/watch?v=wRHiTgAeK6I&t=5s)
+[![Video de Youtube](http://img.youtube.com/vi/wRHiTgAeK6I&t=0s/0.jpg)](http://www.youtube.com/watch?v=wRHiTgAeK6I&t=0s)
 ## Descripción
 Página de apuestas de fútbol, con diversas ligas.
 
