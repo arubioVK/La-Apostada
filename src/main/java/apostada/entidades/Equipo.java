@@ -30,6 +30,7 @@ public class Equipo {
 	private List<Partido>partidosVisitante;
 	
 	public Equipo(){}
+	
 	public Equipo(String n, Liga l) {
 		name = n;
 		liga = l;		
@@ -46,26 +47,53 @@ public class Equipo {
 	public String getName() {
 		return name;
 	}
+	
 	public void setName(String name) {
 		this.name = name;
 	}
+	
 	public Liga getLiga() {
 		return liga;
 	}
+	
 	public void setLiga(Liga liga) {
 		this.liga = liga;
 	}
+	
 	public List<Partido> getPartidosLocal() {
 		return partidosLocal;
 	}
+	
 	public void setPartidosLocal(List<Partido> partidosLocal) {
 		this.partidosLocal=partidosLocal;
 	}
+	
 	public List<Partido> getPartidosVisitante() {
 		return partidosVisitante;
 	}
+	
 	public void setPartidosVisitante(List<Partido> partidosVisitante) {
 		this.partidosVisitante = partidosVisitante;
+	}
+	
+	@Override
+	public int hashCode() {
+		return Long.hashCode(this.id);
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if (this == obj) {
+			return true;
+		}
+		if (obj == null) {
+			return false;
+		}
+		if (getClass() != obj.getClass()) {
+			return false;
+		}
+		final Equipo other = (Equipo) obj;
+		return this.id == other.id;
 	}
 	
 }
