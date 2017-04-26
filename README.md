@@ -172,7 +172,9 @@ Leyenda:
 |Amarillo	|@ControllerAdvice	|
 |Rojo		|Template		|
 
-## Estructura en Azure
+## Azure
+
+### Estructura en Azure
 ![Alt text](https://github.com/arubioVK/La-Apostada/blob/master/screenshots/EstructuraDef.png)
 
 En la imagen salen los puertos por los que uno se puede conectar desde fuera del "servicion en la nube" de Azure a las máquinas por SSH. Cabe destacar que, también, los puertos `80` y`443` del `balanceador web` es público para que los usuarios puedan acceder a la web.
@@ -189,6 +191,8 @@ Pero además usamos estos puertos para comunicarlos entre sí:
 | Balanceador BD | 3306 | Para escuchar las peticiones, que vienen de los nodos web o interno, a los nodos de la base de datos. Utilizando "round robin" para distribuir la carga.
 | Nodos de la BD | 3306 | Para escuchar las peticiones que vienen del balanceador y resolver las queries.
 
+Además, usamos Hazelcast para la distribución de datos y que la sesión del usuario se mantenga entre peticiones a diferentes nodos web.
+
 Por último, HAProxy proporciona una web para visualizar el estado de los nodos del balanceador. Estos son los puertos:
 
 | Máquina | Puerto |
@@ -196,4 +200,30 @@ Por último, HAProxy proporciona una web para visualizar el estado de los nodos 
 | Balanceador web | 8801 |
 | Balanceador interno | 8821 |
 | Balanceador BD | 8841 |
+
+### Despliegue en Azure
+
+Para desplegar en Azure es necesario saber las IPs de las máquinas. Por eso mismo al ejecutar los nodos de la web, o los nodos del servicio interno, se introducen las IPs antes de arrancar los JARs.
+
+Estos son los comandos:
+
+#### Comando para la web
+
+```sh
+java -jar ./la-apostada-0.0.1-SNAPSHOT.jar \
+ --spring.datasource.url=jdbc:mysql://{MYSQL_IP}/la-apostada?useSSL=false \
+ --spring.jpa.hibernate.ddl-auto=validate \
+ --server.port=8080 \
+ --internal_service.url="http://{INTERNAL_SERVICE_IP}:8080" \
+ --hazelcast.member="{HAZELCAST_IP}"
+```
+
+#### Comando para el servicio interno
+
+```sh
+java -jar ./la-apostada-interno-0.0.1-SNAPSHOT.jar \
+ --spring.datasource.url=jdbc:mysql://{MYSQL_IP}/la-apostada?useSSL=false \
+ --spring.jpa.hibernate.ddl-auto=validate \
+ --server.port=8080
+```
 
