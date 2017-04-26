@@ -174,3 +174,16 @@ Leyenda:
 
 ## Estructura en Azure
 ![Alt text](https://github.com/arubioVK/La-Apostada/blob/master/screenshots/EstructuraDef.png)
+
+En la imagen salen los puertos por los que uno se puede conectar desde fuera del "servicion en la nube" de Azure a las máquinas por SSH. Cabe destacar que, también, el puerto `443` del `balanceador web` es público para que los usuarios puedan acceder a la web.
+
+Pero además usamos estos puertos para comunicarlos entre sí:
+
+| Máquina | Puerto | Descripción
+|---|---|---|
+| Balanceador web | 443 | Este es público para acceder desde fuera del "servicion en la nube" de Azure. Se usa para escuchar las peticiones de los usuarios de la web. Se encarga de hacer el SSL handshake y reenviar la petición por HTTP a los nodos web.
+| WEB | 8080 | Utilizan HTTP para escuchar las peticiones que vienen del balanceador.
+| Balanceador Interno | 8080 | Para escuchar las peticiones de las nodos web.
+| Interno | 8080 | Para escuchar las peticiones que viene del balanceador. Es una API Rest que usa JSON.
+| Balanceador BD | 3306 | Para escuchar las peticiones, que vienen de los nodos web o interno, a los nodos de la base de datos. Utilizando "round robin" para distribuir la carga.
+| Base de datos | 3306 | Para escuchar las peticiones que vienen del balanceador y resolver las queries.
